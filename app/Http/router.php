@@ -15,6 +15,9 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
 Route::get('logs','\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 
+Route::any('/wechat', 'WeChatController@serve');
+
+
 Route::group(['prefix' => 'api/v1'],function (){
 
     /*不需要授权的接口*/

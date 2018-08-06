@@ -72,4 +72,13 @@ class LoginController extends Controller
         $token = $this->setLoginInfo($user);
         return response(Response::Success($token));
     }
+
+
+    public function wechatAuth(Request $request)
+    {
+        $userinfo = session('wechat.oauth_user')->original; // 拿到授权用户资料
+
+        //这里写用户注册到mysql的相关逻辑代码，请自行补充
+        dump($userinfo);
+    }
 }

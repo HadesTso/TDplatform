@@ -20,6 +20,10 @@ Route::any('wechat', 'WeChatController@serve');
 Route::any('wechat/login','LoginController@wechatLogin');
 Route::get('wechat/oauth/callback','WechatController@OauthCallback');
 
+Route::group(['middleware' => ['wechat.oauth']], function () {
+  Route::get('/auth','LoginController@wechatAuth');
+});
+
 Route::group(['prefix' => 'api/v1'],function (){
 
     /*不需要授权的接口*/

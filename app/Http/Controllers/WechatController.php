@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Log;
 
-class WeChatController extends Controller
+class WechatController extends Controller
 {
 
     /**

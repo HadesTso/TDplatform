@@ -15,7 +15,7 @@ Route::get('/', function (\Illuminate\Http\Request $request) {
 Route::get('logs','\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 
-Route::any('wechat', 'WeChatController@serve');
+Route::any('wechat', 'WechatController@serve');
 
 Route::any('wechat/login','LoginController@wechatLogin');
 Route::get('wechat/oauth/callback','WechatController@OauthCallback');

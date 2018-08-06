@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Log;
 
 class WeChatController extends Controller
@@ -28,5 +29,27 @@ class WeChatController extends Controller
         });
 
         return $app->server->serve();
+    }
+
+
+    public function OauthCallback(Request $request)
+    {
+        $redirect = $request->input('redirect');
+	    $redirect = urldecode(base64_decode($redirect));
+        $urlData = parse_url($redirect);
+        if(isset($urlData['query'])){
+            $urlData['query'] .= '&code='.$request->input('code');
+        }else{
+            $urlData['query'] = 'code='.$request->input('code');
+        }
+        $newRedirect = $urlData['scheme'].'://'.$urlData['host'];
+        if(isset($urlData['path'])){
+            $newRedirect .= $urlData['path'];
+        }
+        $newRedirect .= '?'.$urlData['query'];
+        if(isset($urlData['fragment'])){
+            $newRedirect .= '#'.$urlData['fragment'];
+        }
+        header('location: '.$newRedirect);
     }
 }

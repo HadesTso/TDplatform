@@ -15,6 +15,15 @@ class WeChatController extends Controller
 {
 
     /**
+     * @var $application Application
+     */
+    protected $application;
+    public function __construct()
+    {
+        $this->application = app('easyWechat');
+    }
+
+    /**
      * 处理微信的请求消息
      *
      * @return string
@@ -32,24 +41,12 @@ class WeChatController extends Controller
     }
 
 
-    public function OauthCallback(Request $request)
+    public function OauthCallback()
     {
-        $redirect = $request->input('redirect');
-	    $redirect = urldecode(base64_decode($redirect));
-        $urlData = parse_url($redirect);
-        if(isset($urlData['query'])){
-            $urlData['query'] .= '&code='.$request->input('code');
-        }else{
-            $urlData['query'] = 'code='.$request->input('code');
-        }
-        $newRedirect = $urlData['scheme'].'://'.$urlData['host'];
-        if(isset($urlData['path'])){
-            $newRedirect .= $urlData['path'];
-        }
-        $newRedirect .= '?'.$urlData['query'];
-        if(isset($urlData['fragment'])){
-            $newRedirect .= '#'.$urlData['fragment'];
-        }
-        header('location: '.$newRedirect);
+        $app = app('easywechat');
+        $response = $app->oauth->scopes(['snsapi_userinfo'])
+                          ->redirect();
+
+        return $response;
     }
 }

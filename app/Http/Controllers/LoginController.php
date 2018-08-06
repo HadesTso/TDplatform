@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WechatRegisterRequestValidation;
+
 class LoginController extends Controller
 {
     public function wechatLogin(WechatRegisterRequestValidation $request,User $userModel){

@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\WechatRegisterRequestValidation;
+use App\Libray\Response;
 
 class LoginController extends Controller
 {
@@ -79,6 +80,6 @@ class LoginController extends Controller
         $userinfo = session('wechat.oauth_user')->original; // 拿到授权用户资料
 
         //这里写用户注册到mysql的相关逻辑代码，请自行补充
-        dump($userinfo);
+        return response(Response::Success($userinfo));
     }
 }

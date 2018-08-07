@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Message;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Common\BaseController;
 use App\Http\Requests\bindingAliPayCodeRequestValidation;
 use App\Libray\Message\sendSMS;
 use App\Libray\Response;
@@ -10,7 +10,7 @@ use App\Model\User;
 use App\Model\Message;
 
 
-class MessageController extends Controller
+class MessageController extends BaseController
 {
     /** 发送绑定支付宝账号短信
      * @param bindingAliPayCodeRequestValidation $request

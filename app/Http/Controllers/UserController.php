@@ -12,8 +12,15 @@ use App\Libray\Response;
 use App\Model\User;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
+    public function test(Request $request)
+    {
+        $test = $request->test;
+
+        return response(Response::Success($test));
+    }
     /**
      *
      * 进入页信息

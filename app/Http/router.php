@@ -20,6 +20,9 @@ Route::any('wechat', 'WechatController@serve');
 Route::any('wechat/login','LoginController@wechatLogin');
 Route::get('wechat/oauth/callback','WechatController@OauthCallback');
 
+Route::post('user/info','UserController@index');
+Route::post('personal/info','UserController@personalCenter');
+
 Route::group(['middleware' => ['wechat.oauth']], function () {
   Route::get('/auth','LoginController@wechatAuth');
 });

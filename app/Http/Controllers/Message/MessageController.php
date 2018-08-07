@@ -37,6 +37,6 @@ class MessageController extends BaseController
             return response(Response::Success('验证码发送成功'));
         }
 
-        return response(Response::Error('验证码发送失败，请重试！'));
+        return response(Response::Erorr('验证码发送失败，请重试！'));
     }
 }

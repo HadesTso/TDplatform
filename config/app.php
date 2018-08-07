@@ -29,7 +29,7 @@ return [
     //REST版本号，在官网文档REST介绍中获得。
     'softVersion'   => env('SOFTVERSION'),
 
-    'expire_minutes' => 3,
+    'expire_minutes' => 10,
 
 
 

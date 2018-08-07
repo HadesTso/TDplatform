@@ -26,7 +26,7 @@ class Response
     }
 
 
-    static public function Erorro($Msg = '',$Data = [])
+    static public function Erorr($Msg = '',$Data = [])
     {
         $Res = [
             'Error' => self::ErrorType,

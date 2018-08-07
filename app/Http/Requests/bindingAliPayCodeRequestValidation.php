@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WechatRegisterRequestValidation extends BaseRequestValidator
+class bindingAliPayCodeRequestValidation extends BaseRequestValidator
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,7 +14,7 @@ class WechatRegisterRequestValidation extends BaseRequestValidator
     public function rules()
     {
         return [
-            'code' => 'required'
+            'phone' => 'required|regex:/^1[345678][0-9]{9}$/',
         ];
     }
 }

@@ -2,9 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: cao
- * Date: 4/8/2018
- * Time: 3:26 PM
+ * Date: 7/8/2018
+ * Time: 6:35 PM
  */
+
 
 Route::get('/', function (\Illuminate\Http\Request $request) {
     return response('home page');
@@ -24,16 +25,18 @@ Route::post('user/info','UserController@index');
 Route::post('personal/info','UserController@personalCenter');
 
 Route::post('send/message','Message\MessageController@bindingAliPayCode');
+Route::post('test','UserController@test');
 
 Route::group(['middleware' => ['wechat.oauth']], function () {
   Route::get('/auth','LoginController@wechatAuth');
 });
 
 Route::group(['prefix' => 'api/v1'],function (){
+    Route::post('send/message','Message\MessageController@bindingAliPayCode');
 
     /*不需要授权的接口*/
     Route::group(['prefix' => 'common'],function(){
-        require_once (app_path().'/Http/routers/api.v1.common.php');
+        require_once (app_path().'/Http/routes/api.v1.common.php');
     });
 
 

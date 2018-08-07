@@ -12,9 +12,9 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-namespace App\Http\Controllers;
+namespace App\Libray\Message;
 
-class REST {
+class CCPRestSmsSDK {
 	private $AccountSid = '8aaf07085dcad420015ddfb6dde80581';
 	private $AccountToken = '42e5cc87d5ad4589acdb5a119d1bf3db';
 	private $AppId = '8aaf07085dcad420015ddfb6de340585';
@@ -22,7 +22,7 @@ class REST {
 	private $ServerPort = '8883';
 	private $SoftVersion = '2013-12-26';
 	private $Batch;  //时间戳
-	private $BodyType = "xml";//包体格式，可填值：json 、xml
+	private $BodyType = "json";//包体格式，可填值：json 、xml
 	private $enabeLog = true; //日志开关。可填值：true、
 	private $Filename="./log.txt"; //日志文件
 	private $Handle; 
@@ -116,8 +116,8 @@ class REST {
         // 拼接请求包体
         if($this->BodyType=="json"){
            $data="";
-           for($i=0;$i<count($datas);$i++){
-              $data = $data. "'".$datas[$i]."',"; 
+           for($i=1;$i<count($datas);$i++){
+              $data = $data. "'".$datas[$i]."',";
            }
            $body= "{'to':'$to','templateId':'$tempId','appId':'$this->AppId','datas':[".$data."]}";
         }else{

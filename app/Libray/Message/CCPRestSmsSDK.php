@@ -12,9 +12,9 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-namespace App\Http\Controllers;
+namespace App\Libray\Message;
 
-class REST {
+class CCPRestSmsSDK {
 	private $AccountSid = '8aaf07085dcad420015ddfb6dde80581';
 	private $AccountToken = '42e5cc87d5ad4589acdb5a119d1bf3db';
 	private $AppId = '8aaf07085dcad420015ddfb6de340585';
@@ -116,13 +116,13 @@ class REST {
         // 拼接请求包体
         if($this->BodyType=="json"){
            $data="";
-           for($i=0;$i<count($datas);$i++){
+           for($i=1;$i<count($datas);$i++){
               $data = $data. "'".$datas[$i]."',"; 
            }
            $body= "{'to':'$to','templateId':'$tempId','appId':'$this->AppId','datas':[".$data."]}";
         }else{
            $data="";
-           for($i=0;$i<count($datas);$i++){
+           for($i=1;$i<count($datas);$i++){
               $data = $data. "<data>".$datas[$i]."</data>"; 
            }
            $body="<TemplateSMS>

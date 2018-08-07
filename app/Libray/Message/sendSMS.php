@@ -8,8 +8,7 @@
 
 namespace App\Libray\Message;
 
-include ('./CCPRestSmsSDK.php');
-
+use App\Libray\Message\CCPRestSmsSDK;
 
 class sendSMS
 {
@@ -92,8 +91,8 @@ class sendSMS
         $code = mt_rand(100000, 999999);
 
         $param = [
-            'code'=>(string)$code,
-            'minutes' => config('app.expire_minutes')
+            '1'=>(string)$code,
+            '2' => config('app.expire_minutes')
         ];
 
         // 发送短信
@@ -124,7 +123,7 @@ class sendSMS
     private function sendTemplateSMS($to,$datas,$tempId = 1)
     {
         // 初始化REST SDK
-        $rest = new REST($this->serverIP, $this->serverPort, $this->softVersion);
+        $rest = new CCPRestSmsSDK($this->serverIP, $this->serverPort, $this->softVersion);
         $rest->setAccount($this->accountSid, $this->accountToken);
         $rest->setAppId($this->appId);
 

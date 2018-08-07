@@ -2,15 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: cao
- * Date: 7/8/2018
- * Time: 9:35 AM
+ * Date: 8/8/2018
+ * Time: 12:10 AM
  */
-
 
 namespace App\Http\Controllers;
 
 use App\Libray\Response;
 use App\Model\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

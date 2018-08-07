@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: cao
  * Date: 7/8/2018
- * Time: 9:35 AM
+ * Time: 6:37 PM
  */
 
 
@@ -11,9 +11,19 @@ namespace App\Http\Controllers;
 
 use App\Libray\Response;
 use App\Model\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+
+    public function test(Request $resquest)
+    {
+        $test = $resquest->input('test');
+
+        return response(Response::Success($test));
+    }
+
     /**
      *
      * 进入页信息

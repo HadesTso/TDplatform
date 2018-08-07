@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Message;
 
-use App\Http\Controllers\Common\BaseController;
+use App\Http\Controllers\Controller;
 use App\Libray\Message\sendSMS;
 use App\Libray\Response;
 use App\Model\User;
@@ -10,7 +10,7 @@ use App\Model\Message;
 use Illuminate\Http\Request;
 
 
-class MessageController extends BaseController
+class MessageController extends Controller
 {
     /** 发送绑定支付宝账号短信
      * @param Request $request

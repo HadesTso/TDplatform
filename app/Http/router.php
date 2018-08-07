@@ -23,7 +23,7 @@ Route::get('wechat/oauth/callback','WechatController@OauthCallback');
 Route::post('user/info','UserController@index');
 Route::post('personal/info','UserController@personalCenter');
 
-Route::post('send/message','Message/MessageController@bindingAliPayCode');
+Route::post('send/message','Message\MessageController@bindingAliPayCode');
 
 Route::group(['middleware' => ['wechat.oauth']], function () {
   Route::get('/auth','LoginController@wechatAuth');

@@ -14,7 +14,7 @@ class bindingAliPayCodeRequestValidation extends BaseRequestValidator
     public function rules()
     {
         return [
-            'phone' => 'required|regex:/^1[345678][0-9]{9}$/',
+            'mobile' => 'required|regex:/^1[345678][0-9]{9}$/',
         ];
     }
 }

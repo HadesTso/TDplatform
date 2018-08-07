@@ -90,11 +90,6 @@ class sendSMS
     public function bindingAliPay($phone) {
         $code = mt_rand(100000, 999999);
 
-        /*$param = [
-            'code'=>(string)$code,
-            'minutes' => config('app.expire_minutes')
-        ];*/
-
         $param = [
             '1'=>(string)$code,
             '2' => config('app.expire_minutes')

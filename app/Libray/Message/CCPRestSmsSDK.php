@@ -22,7 +22,7 @@ class CCPRestSmsSDK {
 	private $ServerPort = '8883';
 	private $SoftVersion = '2013-12-26';
 	private $Batch;  //时间戳
-	private $BodyType = "json";//包体格式，可填值：json 、xml
+	private $BodyType = "xml";//包体格式，可填值：json 、xml
 	private $enabeLog = true; //日志开关。可填值：true、
 	private $Filename="./log.txt"; //日志文件
 	private $Handle; 
@@ -117,12 +117,12 @@ class CCPRestSmsSDK {
         if($this->BodyType=="json"){
            $data="";
            for($i=1;$i<count($datas);$i++){
-              $data = $data. "'".$datas[$i]."',";
+              $data = $data. "'".$datas[$i]."',"; 
            }
            $body= "{'to':'$to','templateId':'$tempId','appId':'$this->AppId','datas':[".$data."]}";
         }else{
            $data="";
-           for($i=0;$i<count($datas);$i++){
+           for($i=1;$i<count($datas);$i++){
               $data = $data. "<data>".$datas[$i]."</data>"; 
            }
            $body="<TemplateSMS>

@@ -2,10 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: cao
- * Date: 7/8/2018
- * Time: 6:35 PM
+ * Date: 8/8/2018
+ * Time: 12:03 AM
  */
-
 
 Route::get('/', function (\Illuminate\Http\Request $request) {
     return response('home page');
@@ -25,7 +24,6 @@ Route::post('user/info','UserController@index');
 Route::post('personal/info','UserController@personalCenter');
 
 Route::post('send/message','Message\MessageController@bindingAliPayCode');
-Route::post('test','UserController@test');
 
 Route::group(['middleware' => ['wechat.oauth']], function () {
   Route::get('/auth','LoginController@wechatAuth');

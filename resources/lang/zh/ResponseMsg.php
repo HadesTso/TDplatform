@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Mztli
- * Date: 2016/3/22
- * Time: 14:57
+ * User: cao
+ * Date: 6/8/2018
+ * Time: 11:12 AM
  */
 
 return [
@@ -132,7 +132,7 @@ return [
         "UploadImageMissing"    =>  "上传图片不能为空",
         "UploadImageTypeMissing"    =>  "上传图片类型不能为空",
         "UploadImageTypeError"  =>  "上传图片类型错误",
-        
+
     ],
     "Pay" => [
         "insufficientInAmount" => "支付金额不能小于:Param元"

@@ -2,10 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: cao
- * Date: 7/8/2018
- * Time: 6:37 PM
+ * Date: 8/8/2018
+ * Time: 12:10 AM
  */
-
 
 namespace App\Http\Controllers;
 
@@ -15,15 +14,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
-
-    public function test(Request $resquest)
-    {
-        $test = $resquest->input('test');
-
-        return response(Response::Success($test));
-    }
-
     /**
      *
      * 进入页信息

@@ -18,7 +18,7 @@ class MessageController extends Controller
      */
     public function bindingAliPayCode(bindingAliPayCodeRequestValidation $request) {
         $mobile = $request->input('mobile');
-        // 判断手机号是否已注册
+        // 判断手机号是否已绑定
         $count = User::where('mobile', $mobile)->count();
         if ($count > 0) {
             return response(Response::Error('该手机号码已被绑定！'));

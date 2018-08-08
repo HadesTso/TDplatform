@@ -74,25 +74,25 @@ class MessageController extends Controller
             'user_id'   => 1
         ])->orderBy('id', 'DESC')->first();
          if (empty($m)) {
-            return false;
+            return response(Response::Error());
         }
          // 最后一条是验证成功过的数据
         if ($m->status == 1) {
-            return false;
+            return response(Response::Error());
         }
          // 判断验证码是否过期
         if (strtotime($m->created_at) + $m->expire_minutes * 60 < time()) {
-            return false;
+            return response(Response::Error());
         }
          // 判断验证次数
         if ($m->check_times >= config('app.max_check_times')) {
-            return false;
+            return response(Response::Error());
         }
          // 验证码错误，验证次数+1
         if ($m->code != $code) {
             $m->check_times = $m->check_times + 1;
             $m->save();
-            return false;
+            return response(Response::Error());
         }
         DB::beginTransaction();
         try{

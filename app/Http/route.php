@@ -25,7 +25,6 @@ Route::post('personal/info','UserController@personalCenter');
 
 Route::post('send/message','Message\MessageController@bindingAliPayCode');
 Route::post('send/test','Message\MessageController@test');
-Route::post('check/code','Message\MessageController@checkCode');
 Route::post('test','UserController@test');
 
 Route::group(['middleware' => ['wechat.oauth']], function () {

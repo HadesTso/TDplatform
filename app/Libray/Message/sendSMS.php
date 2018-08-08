@@ -98,7 +98,7 @@ class sendSMS
 
         // 发送短信
         $b = $this->sendTemplateSMS((string)$phone, $param);
-        if (!$b) {
+        if ($b['status'] === 0) {
             return false;
         }
 
@@ -136,16 +136,24 @@ class sendSMS
             return false;
         }
         if ($result->statusCode != 0) {
-            echo "error code :" . $result->statusCode . "<br>";
-            echo "error msg :" . $result->statusMsg . "<br>";
-            //TODO 添加错误处理逻辑
+            $res = array(
+                'status' => 0,
+                'data' => array(
+                    'code' => $result->statusCode,
+                    'msg'  => $result->statusMsg
+                )
+            );
+            return $res;
         } else {
-            echo "Sendind TemplateSMS success!<br/>";
-            // 获取返回信息
             $smsmessage = $result->TemplateSMS;
-            echo "dateCreated:" . $smsmessage->dateCreated . "<br/>";
-            echo "smsMessageSid:" . $smsmessage->smsMessageSid . "<br/>";
-            //TODO 添加成功处理逻辑
+            $res = array(
+                'status' => 1,
+                'data' => array(
+                    'dateCreated' => $smsmessage->dateCreated,
+                    'smsMessageSid'  => $smsmessage->smsMessageSid
+                )
+            );
+            return $res;
         }
     }
 }

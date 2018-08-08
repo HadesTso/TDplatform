@@ -63,6 +63,10 @@ return [
         "AgentPhoneError"   => "服务商手机号错误",
         "UpdatePaymentTypeError" => "修改的提现方式不正确",
         "FileTypeError"=>"文件类型错误,只能上传图片",
+        "binding" => [
+            "Success" => "绑定成功",
+            "Fail" => "绑定失败",
+        ],
         "Register" => [
             "Success" => "注册成功",
             "Fail" => "注册失败",

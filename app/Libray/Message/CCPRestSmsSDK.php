@@ -116,13 +116,13 @@ class CCPRestSmsSDK {
         // 拼接请求包体
         if($this->BodyType=="json"){
            $data="";
-           for($i=1;$i<count($datas);$i++){
+           for($i=0;$i<count($datas);$i++){
               $data = $data. "'".$datas[$i]."',"; 
            }
            $body= "{'to':'$to','templateId':'$tempId','appId':'$this->AppId','datas':[".$data."]}";
         }else{
            $data="";
-           for($i=1;$i<count($datas);$i++){
+           for($i=0;$i<count($datas);$i++){
               $data = $data. "<data>".$datas[$i]."</data>"; 
            }
            $body="<TemplateSMS>

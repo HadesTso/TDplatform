@@ -91,8 +91,8 @@ class sendSMS
         $code = mt_rand(100000, 999999);
 
         $param = [
-            '1'=>(string)$code,
-            '2' => config('app.expire_minutes')
+            (string)$code,
+            config('app.expire_minutes')
         ];
 
         // 发送短信

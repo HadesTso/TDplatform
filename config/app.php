@@ -2,7 +2,8 @@
 
 return [
 
-    'expire_minutes' => 10,
+    'expire_minutes'    => 10,
+    'max_check_times'   => 10,
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +165,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

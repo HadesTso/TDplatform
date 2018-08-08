@@ -104,7 +104,7 @@ class sendSMS
 
         // 记录数据库
         $m = new Message;
-        $m->use_id = 1;
+        $m->user_id = 1;
         $m->type = 1;
         $m->phone = $phone;
         $m->code = $code;

@@ -100,11 +100,11 @@ class MessageController extends Controller
             $b = $m->save();
             if ($b){
                 $userModel = new User();
-                $user = $userModel->where([
+                $userModel->where([
                     'user_id' => 1
-                ])->first();
-                $user->mobile = $mobile;
-                $user->save();
+                ])->update([
+                    'mobile' => $mobile
+                ]);
             }
             DB::commit();
             return response(Response::Success('绑定认证手机成功'));

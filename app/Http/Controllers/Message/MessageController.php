@@ -74,25 +74,25 @@ class MessageController extends Controller
             'user_id'   => 1
         ])->orderBy('id', 'DESC')->first();
          if (empty($m)) {
-            return response(Response::Error());
+            return response(Response::Error('验证码不存在'));
         }
          // 最后一条是验证成功过的数据
         if ($m->status == 1) {
-            return response(Response::Error());
+            return response(Response::Error('验证码错误'));
         }
          // 判断验证码是否过期
         if (strtotime($m->created_at) + $m->expire_minutes * 60 < time()) {
-            return response(Response::Error());
+            return response(Response::Error('验证码已过期'));
         }
          // 判断验证次数
         if ($m->check_times >= config('app.max_check_times')) {
-            return response(Response::Error());
+            return response(Response::Error('已超过验证次数'));
         }
          // 验证码错误，验证次数+1
         if ($m->code != $code) {
             $m->check_times = $m->check_times + 1;
             $m->save();
-            return response(Response::Error());
+            return response(Response::Error('验证码错误'));
         }
         DB::beginTransaction();
         try{
@@ -110,7 +110,7 @@ class MessageController extends Controller
             return response(Response::Success('绑定认证手机成功'));
         }catch (\Exception $exception){
             DB::rollBack();
-            return response(Response::Error(trans("ResponseMsg.User.Register.Fail")));
+            return response(Response::Error(trans("ResponseMsg.User.binding.Fail")));
         }
     }
 }

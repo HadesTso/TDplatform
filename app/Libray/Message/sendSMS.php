@@ -9,6 +9,7 @@
 namespace App\Libray\Message;
 
 use App\Libray\Message\CCPRestSmsSDK;
+use App\Model\Message;
 
 class sendSMS
 {

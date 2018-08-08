@@ -20,8 +20,8 @@ Route::any('wechat', 'WechatController@serve');
 Route::any('wechat/login','LoginController@wechatLogin');
 Route::get('wechat/oauth/callback','WechatController@OauthCallback');
 
-Route::post('user/info','UserController@index');
-Route::post('personal/info','UserController@personalCenter');
+Route::get('user/info','UserController@index');
+Route::get('personal/info','UserController@personalCenter');
 //绑定支付宝账号
 Route::post('binding/alipay','UserController@bindingAliPay');
 

@@ -10,14 +10,14 @@ namespace App\Libray;
 
 class Response
 {
-    const ErrorType = 0;
-    const SuccessType = 1;
+    const ErrorType = 10900;
+    const SuccessType = 200;
     const TokenErrorType = 2;
 
     static public function Success($Data = [])
     {
         $Res = [
-            'Error' => self::SuccessType,
+            'Code' => self::SuccessType,
             'Msg'   => trans("ResponseMsg.Success"),
             'Data'  => $Data
         ];
@@ -29,7 +29,7 @@ class Response
     static public function Error($Msg = '',$Data = [])
     {
         $Res = [
-            'Error' => self::ErrorType,
+            'Code' => self::ErrorType,
             'Msg'   => $Msg?$Msg:trans("ResponseMsg.Error"),
             'Data'  => $Data
         ];
@@ -41,7 +41,7 @@ class Response
     static public function TokenError($Msg = '',$Data = [])
     {
         $Res = [
-            'Error' => self::TokenErrorType,
+            'Code' => self::TokenErrorType,
             'Msg'   => $Msg?$Msg:trans("ResponseMsg.Error"),
             'Data'  => $Data
         ];

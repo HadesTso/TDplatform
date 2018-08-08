@@ -45,7 +45,7 @@ class UserController extends Controller
         $personaInfo = $userModel->where([
             'user_id' => 1
         ])
-            ->select('user_id','nickname','head_img','money','cumulative_amount','is_binding')
+            ->select('user_id','nickname','head_img','money','cumulative_amount','is_binding','alipay','alipay_name')
             ->first();
 
         return response(Response::Success($personaInfo));

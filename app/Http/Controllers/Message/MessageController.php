@@ -16,6 +16,7 @@ use App\Model\User;
 use App\Model\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 
 class MessageController extends Controller
@@ -55,5 +56,61 @@ class MessageController extends Controller
         }
 
         return response(Response::Error('验证码发送失败，请重试！'));
+    }
+
+    /**
+     * 检测验证码是否正确
+     * @param $phone string
+     * @param $use_type integer
+     *
+     * @return bool
+     */
+    public function checkCode() {
+        $mobile = Input::get('mobile');
+        $code = Input::get('code');
+        $m = Message::where([
+            'phone'     => $mobile,
+            'type'      => 1,
+            'user_id'   => 1
+        ])->orderBy('id', 'DESC')->first();
+         if (empty($m)) {
+            return false;
+        }
+         // 最后一条是验证成功过的数据
+        if ($m->status == 1) {
+            return false;
+        }
+         // 判断验证码是否过期
+        if (strtotime($m->created_at) + $m->expire_minutes * 60 < time()) {
+            return false;
+        }
+         // 判断验证次数
+        if ($m->check_times >= config('app.max_check_times')) {
+            return false;
+        }
+         // 验证码错误，验证次数+1
+        if ($m->code != $code) {
+            $m->check_times = $m->check_times + 1;
+            $m->save();
+            return false;
+        }
+        DB::beginTransaction();
+        try{
+            $m->status = 1;
+            $b = $m->save();
+            if ($b){
+                $userModel = new User();
+                $user = $userModel->where([
+                    'user_id' => 1
+                ])->first();
+                $user->mobile = $mobile;
+                $user->save();
+            }
+            DB::commit();
+            return response(Response::Success('绑定认证手机成功'));
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return response(Response::Error(trans("ResponseMsg.User.Register.Fail")));
+        }
     }
 }

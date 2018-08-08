@@ -12,7 +12,6 @@
         "rap2hpoutre/laravel-log-viewer": "^0.19.1"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.4",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",

@@ -9,32 +9,25 @@
 namespace App\Http\Controllers\Message;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TestRequest;
 use App\Libray\Message\sendSMS;
 use App\Libray\Response;
 use App\Model\User;
 use App\Model\Message;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 
 
 class MessageController extends Controller
 {
-
-
-    public function test(TestRequest $request)
-    {
-        $test = Input::get('test');
-
-        return response(Response::Success($test));
-    }
-    /** 发送绑定支付宝账号短信
+    /**
+     *
+     * 发送绑定认证手机短信
+     *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function bindingAliPayCode(Request $request) {
-        $mobile = Input::get('mobile');
+        $mobile = $request->input('mobile');
 
         // 判断手机号是否已绑定
         $count = User::where('mobile', $mobile)->count();
@@ -59,15 +52,17 @@ class MessageController extends Controller
     }
 
     /**
+     *
      * 检测验证码是否正确
+     *
      * @param $phone string
      * @param $use_type integer
      *
      * @return bool
      */
-    public function checkCode() {
-        $mobile = Input::get('mobile');
-        $code = Input::get('code');
+    public function checkCode(Request $request) {
+        $mobile = $request->input('mobile');
+        $code = $request->input('code');
         $m = Message::where([
             'phone'     => $mobile,
             'type'      => 1,

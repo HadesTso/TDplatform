@@ -54,3 +54,11 @@ Route::group(['prefix' => 'api/v1'],function (){
     });
 
 });
+//后台接口
+Route::group(
+    ['prefix' => 'admin', 'namespace'=>'Admin'], function(){
+    Route::group(['prefix' => 'app'], function(){
+        Route::get('list', 'ApplyController@index');
+        Route::get('info', 'ApplyController@index');
+    });
+});

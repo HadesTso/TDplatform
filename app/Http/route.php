@@ -25,7 +25,7 @@ Route::get('personal/info','UserController@personalCenter');
 // 绑定支付宝账号
 Route::post('binding/alipay','UserController@bindingAliPay');
 
-// 获取短信
+// 获取手机验证码
 Route::post('send/message','Message\MessageController@bindingAliPayCode');
 // 检验验证码及绑定手机
 Route::post('check/code','Message\MessageController@checkCode');

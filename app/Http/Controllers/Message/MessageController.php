@@ -21,18 +21,21 @@ class MessageController extends Controller
 {
     /**
      *
-     * 发送绑定认证手机短信
+     * 获取手机验证码
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function bindingAliPayCode(Request $request) {
         $mobile = $request->input('mobile');
+        $flag = $request->input('flag');
 
-        // 判断手机号是否已绑定
-        $count = User::where('mobile', $mobile)->count();
-        if ($count > 0) {
-            return response(Response::Error('该手机号码已被绑定！'));
+        if ($flag == 'binding') {
+            // 判断手机号是否已绑定
+            $count = User::where('mobile', $mobile)->count();
+            if ($count > 0) {
+                return response(Response::Error('该手机号码已被绑定！'));
+            }
         }
 
         // 同一个号码60秒之内不能重复发，无状态，无法用session进行判断
@@ -60,7 +63,7 @@ class MessageController extends Controller
      *
      * @return bool
      */
-    public function checkCode(Request $request) {
+    public function checkCode(Request $request,User $userModel) {
         $mobile = $request->input('mobile');
         $code = $request->input('code');
         $m = Message::where([
@@ -93,16 +96,20 @@ class MessageController extends Controller
         try{
             $m->status = 1;
             $b = $m->save();
-            if ($b){
-                $userModel = new User();
-                $userModel->where([
-                    'user_id' => 1
-                ])->update([
-                    'mobile' => $mobile
-                ]);
+            if (!$userModel->where('phone',$mobile)->count()) {
+                if ($b) {
+                    $userModel = new User();
+                    $userModel->where([
+                        'user_id' => 1
+                    ])->update([
+                        'mobile' => $mobile
+                    ]);
+                }
+                return response(Response::Success('绑定认证手机成功'));
+            }else{
+                return response(Response::Success('验证手机成功'));
             }
             DB::commit();
-            return response(Response::Success('绑定认证手机成功'));
         }catch (\Exception $exception){
             DB::rollBack();
             return response(Response::Error(trans("ResponseMsg.User.binding.Fail")));

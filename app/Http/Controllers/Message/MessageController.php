@@ -96,7 +96,7 @@ class MessageController extends Controller
         try{
             $m->status = 1;
             $b = $m->save();
-            $flag = $userModel->where('phone',$mobile)->count();
+            $flag = $userModel->where(['phone' => $mobile])->first();
             if (!$flag) {
                 if ($b) {
                     $userModel->where([

@@ -92,7 +92,7 @@ class MessageController extends Controller
             $m->save();
             return response(Response::Error('验证码错误'));
         }
-        $flag = $userModel->where(['phone' => $mobile])->first();
+        $flag = $userModel->where(['mobile' => $mobile])->first();
         DB::beginTransaction();
         try{
             $m->status = 1;

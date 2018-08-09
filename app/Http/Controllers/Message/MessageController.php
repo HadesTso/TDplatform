@@ -26,7 +26,7 @@ class MessageController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function bindingAliPayCode(Request $request) {
+    public function getCode(Request $request) {
         $mobile = $request->input('mobile');
         $flag = $request->input('flag');
 

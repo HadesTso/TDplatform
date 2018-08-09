@@ -36,7 +36,7 @@ class UserController extends Controller
 
     /**
      *
-     * 绑定支付宝
+     * 绑定修改支付宝
      *
      * @param User $userModel
      * @param Request $request
@@ -57,9 +57,9 @@ class UserController extends Controller
         $b = $user->save();
 
         if ($b){
-            return response(Response::Success('绑定提现账号成功'));
+            return response(Response::Success('操作成功'));
         }
-        return response(Response::Error('绑定提现账号失败'));
+        return response(Response::Error('操作失败'));
     }
 
     public function amWiki()

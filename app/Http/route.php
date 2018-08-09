@@ -25,10 +25,13 @@ Route::get('personal/info','UserController@personalCenter');
 // 绑定支付宝账号
 Route::post('binding/alipay','UserController@bindingAliPay');
 
-// 获取手机验证码
-Route::post('send/message','Message\MessageController@bindingAliPayCode');
-// 检验验证码及绑定手机
+// 获取验证码
+Route::post('send/message','Message\MessageController@getCode');
+// 检验验证码
 Route::post('check/code','Message\MessageController@checkCode');
+
+// 应用列表
+Route::get('app/list','ApplyController@appList');
 
 Route::get('amWiki','UserController@amWiki');
 

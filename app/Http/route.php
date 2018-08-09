@@ -20,14 +20,14 @@ Route::any('wechat', 'WechatController@serve');
 Route::any('wechat/login','LoginController@wechatLogin');
 Route::get('wechat/oauth/callback','WechatController@OauthCallback');
 
-Route::get('user/info','UserController@index');
+// 用户信息
 Route::get('personal/info','UserController@personalCenter');
-//绑定支付宝账号
+// 绑定支付宝账号
 Route::post('binding/alipay','UserController@bindingAliPay');
 
-//获取短信
+// 获取短信
 Route::post('send/message','Message\MessageController@bindingAliPayCode');
-//检验验证码及绑定手机
+// 检验验证码及绑定手机
 Route::post('check/code','Message\MessageController@checkCode');
 
 Route::group(['middleware' => ['wechat.oauth']], function () {

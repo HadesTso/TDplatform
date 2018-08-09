@@ -17,24 +17,6 @@ class UserController extends Controller
 {
     /**
      *
-     * 进入页信息
-     *
-     * @param User $userModel
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
-     */
-    public function index(User $userModel)
-    {
-        $userInfo = $userModel->where([
-            'user_id' => 1
-        ])
-            ->select('nickname','head_img','money')
-            ->first();
-
-        return response(Response::Success($userInfo));
-    }
-
-    /**
-     *
      * 个人中心
      *
      * @param User $userModel

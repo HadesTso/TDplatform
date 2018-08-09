@@ -26,9 +26,12 @@ Route::get('personal/info','UserController@personalCenter');
 Route::post('binding/alipay','UserController@bindingAliPay');
 
 // 获取手机验证码
-Route::post('send/message','Message\MessageController@bindingAliPayCode');
-// 检验验证码及绑定手机
+Route::post('send/message','Message\MessageController@getCode');
+// 检验手机验证码
 Route::post('check/code','Message\MessageController@checkCode');
+
+// 应用列表
+Route::get('app/list','AppController@appList');
 
 Route::get('amWiki','UserController@amWiki');
 

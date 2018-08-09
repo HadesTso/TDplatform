@@ -30,6 +30,8 @@ Route::post('send/message','Message\MessageController@bindingAliPayCode');
 // 检验验证码及绑定手机
 Route::post('check/code','Message\MessageController@checkCode');
 
+Route::get('amWiki','UserController@amWiki');
+
 Route::group(['middleware' => ['wechat.oauth']], function () {
   Route::get('/auth','LoginController@wechatAuth');
 });

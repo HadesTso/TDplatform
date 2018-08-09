@@ -61,4 +61,9 @@ class UserController extends Controller
         }
         return response(Response::Error('绑定提现账号失败'));
     }
+
+    public function amWiki()
+    {
+        return view(public_path('amWiki/index.html'));
+    }
 }

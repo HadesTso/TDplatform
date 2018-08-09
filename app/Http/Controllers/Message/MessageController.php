@@ -92,12 +92,12 @@ class MessageController extends Controller
             $m->save();
             return response(Response::Error('验证码错误'));
         }
+        $flag = $userModel->where(['phone' => $mobile])->first();
         DB::beginTransaction();
         try{
             $m->status = 1;
             $b = $m->save();
-            $flag = $userModel->where(['phone' => $mobile])->first();
-            if (!$flag) {
+            if (!$flag){
                 if ($b) {
                     $userModel->where([
                         'user_id' => 1
@@ -105,10 +105,12 @@ class MessageController extends Controller
                         'mobile' => $mobile
                     ]);
                 }
-                DB::commit();
+                $flag = false;
+            }
+            DB::commit();
+            if (!$flag){
                 return response(Response::Success('绑定手机成功'));
             }else{
-                DB::commit();
                 return response(Response::Success('验证手机成功'));
             }
         }catch (\Exception $exception){

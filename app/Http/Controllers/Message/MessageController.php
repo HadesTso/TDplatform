@@ -69,7 +69,7 @@ class MessageController extends Controller
         $m = Message::where([
             'phone'     => $mobile,
             'type'      => 1,
-            'user_id'   => 1
+            'user_id'   => 1,
         ])->orderBy('id', 'DESC')->first();
          if (empty($m)) {
             return response(Response::Error('验证码不存在'));
@@ -96,20 +96,21 @@ class MessageController extends Controller
         try{
             $m->status = 1;
             $b = $m->save();
-            if (!$userModel->where('phone',$mobile)->count()) {
+            $flag = $userModel->where('phone',$mobile)->count();
+            if (!$flag) {
                 if ($b) {
-                    $userModel = new User();
                     $userModel->where([
                         'user_id' => 1
                     ])->update([
                         'mobile' => $mobile
                     ]);
                 }
-                return response(Response::Success('绑定认证手机成功'));
+                DB::commit();
+                return response(Response::Success('绑定手机成功'));
             }else{
+                DB::commit();
                 return response(Response::Success('验证手机成功'));
             }
-            DB::commit();
         }catch (\Exception $exception){
             DB::rollBack();
             return response(Response::Error(trans("ResponseMsg.User.binding.Fail")));

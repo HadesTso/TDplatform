@@ -29,6 +29,7 @@ Route::get('app/list','ApplyController@appList');
 
 Route::post('withdraw','WithdrawController@withdraw');
 Route::get('withdraw/list','WithdrawController@withdrawList');
+Route::get('income/list','WithdrawController@incomeList');
 
 Route::get('amWiki','UserController@amWiki');
 

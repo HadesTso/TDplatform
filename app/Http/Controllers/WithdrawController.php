@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Libray\Response;
+use App\Model\Income;
 use App\Model\Withdraw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -49,8 +50,22 @@ class WithdrawController extends Controller
         $withdrawlist = $withdrawModel->where([
             'user_id' => 1
         ])->select('withdraw_id','user_id','money','status','note')
-          ->get();
+          ->paginate(10)->toArray();
 
         return response(Response::Success($withdrawlist));
+    }
+
+    /**
+     * 收入明细
+     * @param Request $request
+     * @param User $userModel
+     * @param Income $incomeModel
+     */
+    public function incomeList(Request $request, User $userModel, Income $incomeModel){
+        $user_id = 1;
+        $list = $incomeModel->where('user_id', $user_id)->paginate(10)->toArray();
+        $user_info = $userModel->where('user_id', $user_id)->first(['cumulative_amount']);
+        $list['cumulative_amount'] = $user_info;
+        return response(Response::Success($list));
     }
 }

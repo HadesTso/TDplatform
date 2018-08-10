@@ -26,7 +26,7 @@ class MessageController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function bindingAliPayCode(Request $request) {
+    public function getCode(Request $request) {
         $mobile = $request->input('mobile');
         $flag = $request->input('flag');
 
@@ -54,14 +54,14 @@ class MessageController extends Controller
         return response(Response::Error('验证码发送失败，请重试！'));
     }
 
+
     /**
      *
-     * 检测验证码是否正确
+     * 检验手机验证码
      *
-     * @param $phone string
-     * @param $use_type integer
-     *
-     * @return bool
+     * @param Request $request
+     * @param User $userModel
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function checkCode(Request $request,User $userModel) {
         $mobile = $request->input('mobile');

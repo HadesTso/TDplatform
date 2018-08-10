@@ -12,6 +12,7 @@ class ApplyController extends Controller
     public function appList(Apply $applyModel, Income $incomeModel, Request $request)
     {
         $app_id = $request->input('app_id');
+        $type = $request->input('type',1);
 
         $incomelist = $incomeModel->where([
             'user_id' => 1,
@@ -24,10 +25,11 @@ class ApplyController extends Controller
 
 
         $apply = $applyModel->where([
-            'status' => 1
+            'status' => 1,
+            'type'  => $type,
         ])->where('num','>',0)
           ->whereNotIn('app_id',$incomeArray)
-          ->selet();
+          ->select('app_id','name','logo','type','money','num');
 
         if($app_id){
             $apply->where('app_id',$app_id);

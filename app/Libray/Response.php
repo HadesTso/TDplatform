@@ -6,6 +6,7 @@ class Response
 {
     const ErrorType = 10900;
     const SuccessType = 200;
+    const NotLoginType = 20001;
     const TokenErrorType = 2;
 
     static public function Success($Data = [])
@@ -13,6 +14,17 @@ class Response
         $Res = [
             'code' => self::SuccessType,
             'msg'   => trans("ResponseMsg.Success"),
+            'data'  => $Data
+        ];
+
+        return json_encode($Res);
+    }
+
+    static public function NotLogin($Data = [])
+    {
+        $Res = [
+            'code' => self::NotLoginType,
+            'msg'   => trans("ResponseMsg.NotLogin"),
             'data'  => $Data
         ];
 

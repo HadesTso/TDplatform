@@ -27,6 +27,9 @@ Route::post('check/code','Message\MessageController@checkCode');
 // 应用列表
 Route::get('app/list','ApplyController@appList');
 
+Route::post('withdraw','WithdrawController@withdraw');
+Route::get('withdraw/list','WithdrawController@withdrawList');
+
 Route::get('amWiki','UserController@amWiki');
 
 Route::group(['middleware' => ['wechat.oauth']], function () {

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: cao
+ * Date: 7/8/2018
+ * Time: 2:26 PM
+ */
 
 namespace App\Libray\Message;
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cao
- * Date: 8/8/2018
- * Time: 12:10 AM
- */
 
 namespace App\Http\Controllers;
 
@@ -36,7 +30,7 @@ class UserController extends Controller
 
     /**
      *
-     * 绑定支付宝
+     * 绑定修改支付宝
      *
      * @param User $userModel
      * @param Request $request

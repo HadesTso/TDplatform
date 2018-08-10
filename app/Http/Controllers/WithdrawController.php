@@ -63,9 +63,12 @@ class WithdrawController extends Controller
      */
     public function incomeList(Request $request, User $userModel, Income $incomeModel){
         $user_id = 1;
-        $list = $incomeModel->where('user_id', $user_id)->paginate(10)->toArray();
+        $list = $incomeModel
+            ->where(['user_id' => $user_id])
+            ->select('income_id', 'app_name', 'money', 'created_at')
+            ->paginate(10)->toArray();
         $user_info = $userModel->where('user_id', $user_id)->first(['cumulative_amount']);
-        $list['cumulative_amount'] = $user_info;
+        $list['cumulative_amount'] = $user_info['cumulative_amount'];
         return response(Response::Success($list));
     }
 }

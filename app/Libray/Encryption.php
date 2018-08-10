@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cao
- * Date: 4/8/2018
- * Time: 3:53 PM
- */
-
 namespace App\Libray;
 
 class Encryption

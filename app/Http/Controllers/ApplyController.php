@@ -29,12 +29,12 @@ class ApplyController extends Controller
             'type'  => $type,
         ])->where('num','>',0)
           ->whereNotIn('app_id',$incomeArray)
-          ->select('app_id','name','logo','type','money','num');
+          ->select('app_id','name','logo','type','money','num', 'note', 'rank');
 
         if($app_id){
-            $apply->where('app_id',$app_id);
+            $info = $apply->where('app_id',$app_id)->first();
+            return Response::Success($info);
         }
-
 
         $applist = $apply->paginate(20)->toArray();
 

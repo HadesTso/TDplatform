@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cao
- * Date: 4/8/2018
- * Time: 3:45 PM
- */
 
 namespace App\Libray;
 
@@ -17,9 +11,9 @@ class Response
     static public function Success($Data = [])
     {
         $Res = [
-            'Code' => self::SuccessType,
-            'Msg'   => trans("ResponseMsg.Success"),
-            'Data'  => $Data
+            'code' => self::SuccessType,
+            'msg'   => trans("ResponseMsg.Success"),
+            'data'  => $Data
         ];
 
         return json_encode($Res);
@@ -29,9 +23,9 @@ class Response
     static public function Error($Msg = '',$Data = [])
     {
         $Res = [
-            'Code' => self::ErrorType,
-            'Msg'   => $Msg?$Msg:trans("ResponseMsg.Error"),
-            'Data'  => $Data
+            'code' => self::ErrorType,
+            'msg'   => $Msg?$Msg:trans("ResponseMsg.Error"),
+            'data'  => $Data
         ];
 
         return json_encode($Res);
@@ -41,9 +35,9 @@ class Response
     static public function TokenError($Msg = '',$Data = [])
     {
         $Res = [
-            'Code' => self::TokenErrorType,
-            'Msg'   => $Msg?$Msg:trans("ResponseMsg.Error"),
-            'Data'  => $Data
+            'code' => self::TokenErrorType,
+            'msg'   => $Msg?$Msg:trans("ResponseMsg.Error"),
+            'data'  => $Data
         ];
 
         return json_encode($Res);

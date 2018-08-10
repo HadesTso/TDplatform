@@ -35,7 +35,8 @@ class ApplyController extends Controller
             $apply->where('app_id',$app_id);
         }
 
-        $applist = $apply->get();
+
+        $applist = $apply->paginate(20)->toArray();
 
         return response(Response::Success($applist));
     }

@@ -37,3 +37,11 @@ Route::group(['middleware' => ['wechat.oauth']], function () {
 Route::group(['middleware' => 'AuthToken','prefix' => 'auth'],function(){
 
 });
+//后台接口
+Route::group(
+    ['prefix' => 'admin', 'namespace'=>'Admin'], function(){
+    Route::group(['prefix' => 'app'], function(){
+        Route::get('list', 'ApplyController@index');
+        Route::get('info', 'ApplyController@index');
+    });
+});

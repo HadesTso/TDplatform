@@ -9,6 +9,7 @@
 return [
     "Success" => "请求成功",
     "Error" => "请求失败",
+    "NotLogin" => "未登录",
     "AccessDenied" => '无访问权限',
     "Order" => [
         "SaveError" => "记录订单失败",

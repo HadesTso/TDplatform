@@ -54,14 +54,14 @@ class MessageController extends Controller
         return response(Response::Error('验证码发送失败，请重试！'));
     }
 
+
     /**
      *
-     * 检测验证码是否正确
+     * 检验手机验证码
      *
-     * @param $phone string
-     * @param $use_type integer
-     *
-     * @return bool
+     * @param Request $request
+     * @param User $userModel
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function checkCode(Request $request,User $userModel) {
         $mobile = $request->input('mobile');

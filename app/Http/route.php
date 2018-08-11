@@ -46,6 +46,9 @@ Route::group(
     ['prefix' => 'admin', 'namespace'=>'Admin'], function(){
     Route::group(['prefix' => 'app'], function(){
         Route::get('list', 'ApplyController@index');
-        Route::get('info', 'ApplyController@index');
+        Route::get('add', 'ApplyController@add');
+    });
+    Route::group(['prefix' => 'user'], function(){
+        Route::get('list', 'UserController@index');
     });
 });

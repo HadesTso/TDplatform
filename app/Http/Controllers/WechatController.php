@@ -1,7 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cao
- * Date: 11/8/2018
- * Time: 9:39 AM
- */
+
+
+namespace App\Http\Controllers;
+
+
+class WechatController extends Controller
+{
+    public function wechatLogin()
+    {
+
+    }
+}

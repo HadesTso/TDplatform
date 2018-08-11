@@ -49,7 +49,7 @@ class WithdrawController extends Controller
     {
         $withdrawlist = $withdrawModel->where([
             'user_id' => 1
-        ])->select('withdraw_id','user_id','money','status','note')
+        ])->select('withdraw_id','user_id','money','status','note', 'created_at')
           ->paginate(10)->toArray();
 
         return response(Response::Success($withdrawlist));
@@ -65,7 +65,7 @@ class WithdrawController extends Controller
         $user_id = 1;
         $list = $incomeModel
             ->where(['user_id' => $user_id])
-            ->select('income_id', 'app_name', 'money', 'created_at')
+            ->select('income_id', 'app_name', 'app_logo', 'money', 'created_at')
             ->paginate(10)->toArray();
         $user_info = $userModel->where('user_id', $user_id)->first(['cumulative_amount']);
         $list['cumulative_amount'] = $user_info['cumulative_amount'];

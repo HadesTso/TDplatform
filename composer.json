@@ -9,6 +9,7 @@
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": " ~2.3",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "rap2hpoutre/laravel-log-viewer": "^0.19.1"

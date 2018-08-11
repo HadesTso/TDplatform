@@ -39,6 +39,7 @@ class UserController extends Controller
         }
         $list = $model->paginate(20)->toArray();
         $try_num = (new Income())->select('user_id')->groupby('user_id')->count();
+        $list['try_num'] = $try_num;
         $android_total = (new User())->where('type', '=', 0)->count('user_id'); //安卓用户总数
         $ios_total = (new User())->where('type', '=', 1)->count(['user_id']); //苹果用户总数
         $list['total_count'] = $android_total + $ios_total; //用户总数

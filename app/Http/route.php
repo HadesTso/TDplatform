@@ -11,7 +11,7 @@ Route::get('logs','\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::any('wechat', 'WechatController@serve');
 
-Route::any('wechat/login','LoginController@wechatLogin');
+Route::any('wechat/login','WechatController@wechatLogin');
 Route::get('wechat/oauth/callback','WechatController@OauthCallback');
 
 // 用户信息

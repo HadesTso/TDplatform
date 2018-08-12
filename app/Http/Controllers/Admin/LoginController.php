@@ -16,7 +16,7 @@ class LoginController extends Controller
 
         $admin= Admin::where([
             'admin_name' => $admin_name,
-            'password' => $password
+            'password' => md5($password)
         ])->first();
 
         if (empty($admin)) {
@@ -24,7 +24,12 @@ class LoginController extends Controller
         }
 
         $Token = $this->setLoginInfo($admin);
-        return response(Response::Success($Token));
+        $data = [
+            'token' => $Token,
+            'admin_name' => $admin->admin_name,
+            'admin_id' => $admin->admin_id,
+        ];
+        return response(Response::Success($data));
 
     }
 

@@ -28,6 +28,10 @@ class WechatController extends Controller
 
         $res = json_decode($result,true);
 
+        if(!$res['openid']){
+            return response(Response::Error('授权失败'));
+        }
+
         $userInfo = $userModel->where([
             'openid' => $res['openid'],
             'type'  => $type

@@ -70,7 +70,7 @@ class UserController extends Controller
         $mobile = Input::get('mobile', ''); //用户手机号码
         $alipay = Input::get('alipay', ''); //提现账号
         $where = [];
-        $where[] = ['withdraw.ststus', '=', $status];
+        $where[] = ['withdraw.status', '=', $status];
         if ($nickname){
             $where[] = ['user.nickname', 'like', '%'.$nickname.'%'];
         }

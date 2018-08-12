@@ -16,9 +16,9 @@ class WechatController extends Controller
         $appid = $request->input('appid');
         $type = $request->input('type');
 
-        $secret = config('app'.$appid);
+        $secret = config('app.'.$appid);
 
-        if (!empty($secret)){
+        if (empty($secret)){
             return response(Response::Error('appid错误'));
         }
 
@@ -27,6 +27,8 @@ class WechatController extends Controller
         $result = self::curl($getToken_url);
 
         $res = json_decode($result,true);
+
+        dump($res);exit;
 
         if(!$res){
             return response(Response::Error('授权失败'));

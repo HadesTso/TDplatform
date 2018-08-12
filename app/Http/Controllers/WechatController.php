@@ -28,7 +28,7 @@ class WechatController extends Controller
 
         $res = json_decode($result,true);
 
-        if(!$res['openid']){
+        if(!$res){
             return response(Response::Error('授权失败'));
         }
 

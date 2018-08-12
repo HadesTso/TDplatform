@@ -51,4 +51,5 @@ Route::group(
     Route::group(['prefix' => 'user'], function(){
         Route::get('list', 'UserController@index');
     });
+    Route::get('withdraw/list', 'UserController@withdrawList');
 });

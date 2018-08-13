@@ -51,7 +51,7 @@ class UserController extends Controller
         $b = $user->save();
 
         if ($b){
-            return response(Response::Success('操作成功'));
+            return response(Response::Success_No_Data('操作成功'));
         }
         return response(Response::Error('操作失败'));
     }

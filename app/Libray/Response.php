@@ -6,6 +6,7 @@ class Response
 {
     const ErrorType = 10900;
     const SuccessType = 200;
+    const Success_No_Data = 10205;
     const NotLoginType = 20001;
     const TokenErrorType = 2;
 
@@ -15,6 +16,16 @@ class Response
             'code' => self::SuccessType,
             'msg'   => trans("ResponseMsg.Success"),
             'data'  => $Data
+        ];
+
+        return json_encode($Res);
+    }
+
+    static public function Success_No_Data($msg)
+    {
+        $Res = [
+            'code' => self::Success_No_Data,
+            'msg'   => $msg?$msg:trans("ResponseMsg.Success"),
         ];
 
         return json_encode($Res);

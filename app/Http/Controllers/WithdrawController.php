@@ -95,11 +95,16 @@ class WithdrawController extends Controller
 
             $incomeModel->save();
 
-            $user = User::find(1);
-            $user->money += $apply->money;
-            $user->cumulative_amount += $apply->money;
+            $user = $userModel->where('user_id',1)->first();
+            $money = $apply->money + $user->money;
+            $cumulative_amount = $apply->money + $user->cumulative_amount;
 
-            $user->save();
+            $userModel->where([
+                'user_id' => 1
+            ])->update([
+                'money' => $money,
+                'cumulative_amount' => $cumulative_amount,
+            ]);
             DB::commit();
             return response(Response::Success_No_Data('领取奖励成功'));
         }catch (\Exception $exception){

@@ -95,7 +95,7 @@ class WithdrawController extends Controller
 
             $incomeModel->save();
 
-            $user = $userModel->where('user_id',1)->first();
+            $user = User::find(1);
             $user->money += $apply->money;
             $user->cumulative_amount += $apply->money;
 

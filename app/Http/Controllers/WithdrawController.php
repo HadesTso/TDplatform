@@ -74,7 +74,7 @@ class WithdrawController extends Controller
     }
 
 
-    public function incomeReceive(Request $request, Income $incomeModel, Apply $applyModel)
+    public function incomeReceive(Request $request, Income $incomeModel, Apply $applyModel, User $userModel)
     {
         $app_id = $request->input('app_id');
 
@@ -95,10 +95,10 @@ class WithdrawController extends Controller
 
             $incomeModel->save();
 
-            $userModel = new User();
             $user = $userModel->where('user_id',1)->first();
             $user->money += $apply->money;
             $user->cumulative_amount += $apply->money;
+
             $user->save();
             DB::commit();
             return response(Response::Success_No_Data('领取奖励成功'));

@@ -7,6 +7,7 @@ use App\Libray\Response;
 use App\User;
 use Illuminate\Http\Request;
 use App\Libray\Encryption;
+use Illuminate\Support\Facades\Input;
 
 class WechatController extends Controller
 {

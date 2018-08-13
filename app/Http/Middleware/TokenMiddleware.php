@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Libray\Response;
+use App\User;
 use Closure;
 use App\Libray\Encryption;
 class TokenMiddleware
@@ -25,6 +26,11 @@ class TokenMiddleware
         $Encryption = new Encryption();
         $TokenData = $Encryption->decode($token);
         $TokenData = json_decode($TokenData,true);
+        $userModel = new User();
+        $user = $userModel->where('user_id',$TokenData['user_id'])->first();
+        if ($user->status == 0){
+            return response(Response::Error('账户已被禁禁用'));
+        }
         $TokenTime = session()->get($token);
         if(!$TokenTime){
             return response(Response::NotLogin('token不存在'));

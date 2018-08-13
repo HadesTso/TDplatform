@@ -28,18 +28,19 @@ class WechatController extends Controller
 
         $res = json_decode($result,true);
 
-        dump($res);exit;
-
         if(!$res){
             return response(Response::Error('授权失败'));
         }
 
         $userInfo = $userModel->where([
             'openid' => $res['openid'],
-            'type'  => $type
+            'type'   => $type,
         ])->first();
 
         if ($userInfo){
+            if ($userInfo->status == 0){
+                return response(Response::Error('账户已被禁禁用'));
+            }
             $Token = $this->setLoginInfo($userInfo);
             $data = [
                     'token' => $Token,

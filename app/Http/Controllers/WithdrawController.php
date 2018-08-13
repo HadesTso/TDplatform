@@ -8,6 +8,7 @@ use App\Model\Withdraw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\User;
+use App\Model\Apply;
 
 class WithdrawController extends Controller
 {
@@ -38,7 +39,7 @@ class WithdrawController extends Controller
                 'money' => ($userInfo->money - $money)
             ]);
             DB::commit();
-            return response(Response::Success('提现申请成功'));
+            return response(Response::Success_No_Data('提现申请成功'));
         }catch (\Exception $exception){
             DB::rollBack();
             return response(Response::Error('提现申请失败'));
@@ -70,5 +71,40 @@ class WithdrawController extends Controller
         $user_info = $userModel->where('user_id', $user_id)->first(['cumulative_amount']);
         $list['cumulative_amount'] = $user_info['cumulative_amount'];
         return response(Response::Success($list));
+    }
+
+
+    public function incomeReceive(Request $request, Income $incomeModel, Apply $applyModel)
+    {
+        $app_id = $request->input('app_id');
+
+        $apply = $applyModel->where('app_id',$app_id)->first();
+
+        if (!$apply){
+            return response(Response::Error('该应用不存在'));
+        }
+        DB::beginTransaction();
+        try{
+            $incomeModel->user_id = 1;
+            $incomeModel->money = $apply->money;
+            $incomeModel->app_id = $app_id;
+            $incomeModel->app_logo = $apply->app_logo;
+            $incomeModel->app_name = $apply->app_name;
+            $incomeModel->created_at = date('Y-m-d H:i:s',time());
+            $incomeModel->updated_at = date('Y-m-d H:i:s',time());
+
+            $incomeModel->save();
+
+            $userModel = new User();
+            $user = $userModel->where('user_id',1)->first();
+            $user->money += $apply->money;
+            $user->cumulative_amount += $apply->money;
+            DB::commit();
+            return response(Response::Success_No_Data('领取奖励成功'));
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return response(Response::Error('领取奖励失败'));
+        }
+
     }
 }

@@ -43,7 +43,7 @@ class WechatController extends Controller
             }
             $Token = $this->setLoginInfo($userInfo);
             $data = [
-                    'token' => $Token,
+                    'token' => $userInfo->token,
                     'user_id' => $userInfo->user_id,
                     'head_img' => $userInfo->head_img,
                     'nickname' => $userInfo->nickname,
@@ -58,6 +58,7 @@ class WechatController extends Controller
             $User->nickname = $wechatInfo['nickname'];
             $User->openid = $wechatInfo['openid'];
             $User->type = $type;
+            $User->token = strtolower(str_random(10));
             $b = $User->save();
 
             if ($b){

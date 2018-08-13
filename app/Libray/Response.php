@@ -24,7 +24,7 @@ class Response
     static public function Success_No_Data($msg)
     {
         $Res = [
-            'code' => self::Success_No_Data,
+            'code' => self::SuccessType,
             'msg'   => $msg?$msg:trans("ResponseMsg.Success"),
         ];
 

@@ -28,8 +28,6 @@ class WechatController extends Controller
 
         $res = json_decode($result,true);
 
-        dump($res);exit;
-
         if(!$res){
             return response(Response::Error('授权失败'));
         }
@@ -69,7 +67,7 @@ class WechatController extends Controller
                 ];
                 return response(Response::Success($data));
             }
-            return response(Response::Success('登录失败'));
+            return response(Response::Error('登录失败'));
         }
     }
 
@@ -123,9 +121,50 @@ class WechatController extends Controller
 
         $Encryption = new Encryption();
         $Token = $Encryption->encode(json_encode($Token));
-
+        session()->put('uid', $user->user_id);
+        session()->put('nickname', $user->nickname);
         session()->put($Token,time(),86400);
         return ['Token' => $Token];
+    }
+
+    /**
+     * 自动登陆接口
+     */
+    public function AutoLogin()
+    {
+        $token     = Input::get('token');
+        $user_id    = Input::get('user_id');
+        $signature = Input::get('signature', '');
+        $timestamp = Input::get('timestamp', '');
+
+
+//        //获取是否有该登陆人员
+        $user_row = (new User())->where('user_id','=',$user_id)->first();
+        if(empty($user_row)) {
+            return Response::Error('不存在该账号');
+        }
+//
+        //验证token是否正确
+        if($token != $user_row['token']) {
+            return Response::Error('token错误');
+        }
+        if(empty($user_row['status']))
+        {
+            return Response::Error('该用户已被禁用');
+        }
+        //验证签名是否正确
+        $sign['auto_login_token'] = $token;
+        $sign['user_id']           = $user_id;
+        $sign['timestamp']        = $timestamp;
+        ksort($sign);
+        $sign_str = implode($sign, '');
+        if(sha1($sign_str) != $signature) {
+            return Response::Error('签名错误');
+        }
+        //存session
+        session()->put('uid', $user_row->user_id);
+        session()->put('nickname', $user_row->nickname);
+        return Response::Success('自动登录成功');
     }
 
 

@@ -42,7 +42,7 @@ class MessageController extends Controller
         $a = new sendSMS();
         $b = $a->bindingAliPay($mobile);
         if ($b) {
-            return response(Response::Success('验证码发送成功'));
+            return response(Response::Success_No_Data('验证码发送成功'));
         }
 
         return response(Response::Error('验证码发送失败，请重试！'));
@@ -103,9 +103,9 @@ class MessageController extends Controller
             }
             DB::commit();
             if (!$flag){
-                return response(Response::Success('绑定手机成功'));
+                return response(Response::Success_No_Data('绑定手机成功'));
             }else{
-                return response(Response::Success('验证手机成功'));
+                return response(Response::Success_No_Data('验证手机成功'));
             }
         }catch (\Exception $exception){
             DB::rollBack();

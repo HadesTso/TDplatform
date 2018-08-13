@@ -34,10 +34,13 @@ class WechatController extends Controller
 
         $userInfo = $userModel->where([
             'openid' => $res['openid'],
-            'type'  => $type
+            'type'   => $type,
         ])->first();
 
         if ($userInfo){
+            if ($userInfo->status == 0){
+                return response(Response::Error('账户已被禁禁用'));
+            }
             $Token = $this->setLoginInfo($userInfo);
             $data = [
                     'token' => $Token,

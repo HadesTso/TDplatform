@@ -31,6 +31,7 @@ Route::get('app/list','ApplyController@appList');
 Route::post('withdraw','WithdrawController@withdraw');
 Route::get('withdraw/list','WithdrawController@withdrawList');
 Route::get('income/list','WithdrawController@incomeList');
+Route::post('income/receive','WithdrawController@incomeReceive');
 
 Route::get('amWiki','UserController@amWiki');
 
@@ -38,8 +39,8 @@ Route::group(['middleware' => ['wechat.oauth']], function () {
   Route::get('/auth','LoginController@wechatAuth');
 });
 
-/*需要登录的接口*/
-Route::group(['middleware' => 'AuthToken','prefix' => 'auth'],function(){
+/*需要微信登录的接口*/
+Route::group(['middleware' => 'WeChatToken','prefix' => 'auth'],function(){
 
 });
 //后台接口

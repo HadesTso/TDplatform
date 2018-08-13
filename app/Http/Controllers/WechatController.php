@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Libray\Response;
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 use App\Libray\Encryption;
 use Illuminate\Support\Facades\Input;
@@ -65,7 +65,7 @@ class WechatController extends Controller
             if ($b){
                 $Token = $this->setLoginInfo($User);
                 $data = [
-                    'token' => $Token,
+                    'token' => $User->token,
                     'user_id' => $User->user_id,
                     'head_img' => $User->head_img,
                     'nickname' => $User->nickname,

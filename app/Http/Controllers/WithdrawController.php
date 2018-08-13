@@ -99,6 +99,7 @@ class WithdrawController extends Controller
             $user = $userModel->where('user_id',1)->first();
             $user->money += $apply->money;
             $user->cumulative_amount += $apply->money;
+            $user->save();
             DB::commit();
             return response(Response::Success_No_Data('领取奖励成功'));
         }catch (\Exception $exception){

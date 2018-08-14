@@ -44,7 +44,7 @@ class AdminController
         $model = new Admin();
 
         $model->admin_name = $name;
-        $model->mobile = $mobile;
+        $model->admin_mobile = $mobile;
         $model->password = md5($password);
         $model->created_at = date('Y-m-d H:i:s');
         $model->updated_at = date('Y-m-d H:i:s');

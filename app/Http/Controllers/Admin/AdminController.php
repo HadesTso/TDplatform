@@ -35,7 +35,6 @@ class AdminController
      * 添加后台用户
      */
     public function add(){
-        dd(md5('admin'));
         $name = Input::get('name','');
         $mobile = Input::get('mobile','');
         $password = Input::get('password', '');

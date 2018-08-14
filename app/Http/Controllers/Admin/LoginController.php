@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Libray\Encryption;
+use App\Libray\Response;
+use App\Model\Admin;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller

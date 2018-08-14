@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>送单单后台管理中心</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="backman/backman.min.css"></head>
+
+<body>
+    <div>
+        
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <form class="form-signin" id="formLogin" action="">
+                        <h2 class="form-signin-heading text-center">全民卖房后台管理中心</h2>
+                        <div class="form-group">
+                            <label for="name" class="sr-only">用户名</label>
+                            <input type="text" class="form-control" placeholder="请输入用户名" required autofocus id="loginMobile">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="sr-only">密码</label>
+                            <input type="password" class="form-control" placeholder="请输入密码" required id="loginPassword">
+                        </div>
+                        <button class="btn btn-primary btn-block" type="submit" id="loginBtn">登录</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/jquery/jquery-2.1.4.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="libs/bootstrap/js/bootstrap-3.3.0.min.js"></script>
+    <!-- app-login -->
+    <script src="app/controllers/app-login.js"></script>
+</body>
+
+</html>

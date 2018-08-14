@@ -1,0 +1,445 @@
+{
+    "state": {
+        "code": 10200,
+        "msg": "ok"
+    },
+    "data": 
+    [
+        {
+            "order": 1,
+            "text": "基础配置",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "所有楼盘",
+                    "state": "building-all",
+                    "hash": "/building-all"
+                }, 
+                {
+                    "order": 2,
+                    "text": "设置筛选标签",
+                    "state": "filterlabel-list",
+                    "hash": "/filterlabel-list"
+                },  
+                {
+                    "order": 3,
+                    "text": "设置排序标签",
+                    "state": "sortlabel-list",
+                    "hash": "/sortlabel-list"
+                },
+                {
+                    "order": 4,
+                    "text": "询价楼盘",
+                    "state": "building-inquiried",
+                    "hash": "/building-inquiried"
+                },
+                {
+                    "order": 5,
+                    "text": "发单宝设置",
+                    "state": "send-tool",
+                    "hash": "/send-tool"
+                },
+                {
+                    "order": 6,
+                    "text": "开发商管理",
+                    "state": "developer",
+                    "hash": "/developer"
+                },
+                {
+                    "order": 7,
+                    "text": "楼盘提供人",
+                    "state": "building-provier",
+                    "hash": "/building-provier"
+                },
+                {
+                    "order": 8,
+                    "text": "询价用户须知",
+                    "state": "user-notice",
+                    "hash": "/user-notice"
+                },
+                {
+                    "order": 9,
+                    "text": "微云图监控中心配置",
+                    "state": "we-spread-setting",
+                    "hash": "/we-spread-setting"
+                },
+                {
+                    "order": 10,
+                    "text": "路由配置管理",
+                    "state": "router-setting",
+                    "hash": "/router-setting"
+                }
+            ]
+        }, 
+        {
+            "order": 2,
+            "text": "派单中心",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "待派单",
+                    "state": "list-ready",
+                    "hash": "/list-ready"
+                }, {
+                    "order": 2,
+                    "text": "已派单",
+                    "state": "list-assigned",
+                    "hash": "/list-assigned"
+                }, {
+                    "order": 3,
+                    "text": "改派订单",
+                    "state": "list-reassignment",
+                    "hash": "/list-reassignment"
+                }
+            ]
+        }, 
+        {
+            "order": 3,
+            "text": "订单管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "订单管理",
+                    "state": "order-management",
+                    "hash": "/order-management"
+                },
+                {
+                    "order": 2,
+                    "text": "到访审核",
+                    "state": "order-visitcheck",
+                    "hash": "/order-visitcheck"
+                },
+                {
+                    "order": 3,
+                    "text": "系统发单",
+                    "state": "billing-system",
+                    "hash": "/billing-system"
+                }
+            ]
+        },
+        {
+            "order": 4,
+            "text": "FP管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "挂盘订单",
+                    "state": "mount-building-order",
+                    "hash": "/mount-building-order"
+                }
+            ]
+        },
+        {
+            "order": 5,
+            "text": "客户管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "客户列表",
+                    "state": "customer-list",
+                    "hash": "/customer-list"
+                }
+            ]
+        },
+        {
+            "order": 6,
+            "text": "账号管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "账号管理",
+                    "state": "account",
+                    "hash": "/account"
+                },
+                {
+                    "order": 2,
+                    "text": "奖励设置",
+                    "state": "reward-list",
+                    "hash": "/reward-list"
+                },
+                {
+                    "order": 3,
+                    "text": "奖励类型管理",
+                    "state": "reward-type-list",
+                    "hash": "/reward-type-list"
+                },
+                {
+                    "order": 4,
+                    "text": "提现设置",
+                    "state": "withdraw-setting",
+                    "hash": "/withdraw-setting"
+                },
+                {
+                    "order":5,
+                    "text": "白名单设置",
+                    "state": "white-list",
+                    "hash": "/white-list"
+                },
+                {
+                    "order":6,
+                    "text": "权限管理",
+                    "state": "permission-management",
+                    "hash": "/permission-management"
+                },
+                {
+                    "order": 7,
+                    "text": "小二管理",
+                    "state": "waiter",
+                    "hash": "/waiter"
+                },
+                {
+                    "order": 8,
+                    "text": "账号定位管理",
+                    "state": "account-position",
+                    "hash": "/account-position"
+                }
+            ]
+        },
+        {
+            "order": 7,
+            "text": "战队管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "所有战队",
+                    "state": "team",
+                    "hash": "/team"
+                },
+                {
+                    "order": 2,
+                    "text": "提成比例设置",
+                    "state": "commission-setting",
+                    "hash": "/commission-setting"
+                },
+                {
+                    "order": 3,
+                    "text": "战队区域管理",
+                    "state": "team-area",
+                    "hash": "/team-area"
+                },
+                {
+                    "order": 4,
+                    "text": "联盟管理",
+                    "state": "alliance",
+                    "hash": "/alliance"
+                },
+                {
+                    "order": 5,
+                    "text": "师徒关系说明",
+                    "state": "mentoring",
+                    "hash": "/mentoring"
+                }
+            ]
+        },
+        {
+            "order": 8,
+            "text": "信用评价管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "积分查看",
+                    "state": "credit-score",
+                    "hash": "/credit-score"
+                },
+                {
+                    "order": 2,
+                    "text": "所有评论",
+                    "state": "credit-comment",
+                    "hash": "/credit-comment"
+                },
+                {
+                    "order": 3,
+                    "text": "账户信用列表",
+                    "state": "credit-list",
+                    "hash": "/credit-list"
+                },
+                {
+                    "order": 4,
+                    "text": "个人等级管理",
+                    "state": "credit-grade-setting",
+                    "hash": "/credit-grade-setting"
+                }
+            ]
+        },
+        {
+            "order": 9,
+            "text": "佣金&奖金申请",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "佣金申请",
+                    "state": "applybb-brokerage",
+                    "hash": "/applybb-brokerage"
+                },
+                {
+                    "order": 2,
+                    "text": "奖金申请",
+                    "state": "applybb-bonus",
+                    "hash": "/applybb-bonus"
+                }
+            ]
+        },
+        {
+            "order": 10,
+            "text": "结佣宝",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "预结佣金申请",
+                    "state": "applybb-prebrokerage",
+                    "hash": "/applybb-prebrokerage"
+                },
+                {
+                    "order": 2,
+                    "text": "结佣宝年收益",
+                    "state": "commission-income",
+                    "hash": "/commission-income"
+                },
+                {
+                    "order": 3,
+                    "text": "结佣宝年收益利率",
+                    "state": "jieyong-tool",
+                    "hash": "/jieyong-tool"
+                }
+            ]
+        },
+        {
+            "order": 11,
+            "text": "财务审核",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "佣金审核",
+                    "state": "finance-brokerage",
+                    "hash": "/finance-brokerage"
+                },
+                {
+                    "order": 2,
+                    "text": "预结佣金审核",
+                    "state": "finance-prebrokerage",
+                    "hash": "/finance-prebrokerage"
+                },
+                {
+                    "order": 3,
+                    "text": "奖金审核",
+                    "state": "finance-bonus",
+                    "hash": "/finance-bonus"
+                },
+                {
+                    "order": 4,
+                    "text": "提现审核",
+                    "state": "finance-withdraw",
+                    "hash": "/finance-withdraw"
+                }
+            ]
+        }, 
+        {
+            "order": 12,
+            "text": "消息中心",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "模板消息",
+                    "state": "msg-template",
+                    "hash": "/msg-template"
+                },
+                {
+                    "order": 2,
+                    "text": "群发消息列表",
+                    "state": "massmsg-list",
+                    "hash": "/massmsg-list"
+                }
+            ]
+        }, 
+        {
+            "order": 13,
+            "text": "资源管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "首页轮播图",
+                    "state": "all-index-list",
+                    "hash": "/all-index-list"
+                },
+                {
+                    "order": 2,
+                    "text": "登录后弹窗",
+                    "state": "all-ad-list",
+                    "hash": "/all-ad-list"
+                },
+                {
+                    "order": 3,
+                    "text": "介绍页列表",
+                    "state": "qmmf-introduce",
+                    "hash": "/qmmf-introduce"
+                },
+                {
+                    "order": 4,
+                    "text": "新手指引图片列表",
+                    "state": "qmmf-guide-img",
+                    "hash": "/qmmf-guide-img"
+                },
+                {
+                    "order": 5,
+                    "text": "首页跑马灯",
+                    "state": "qmmf-roll-subtitle",
+                    "hash": "/qmmf-roll-subtitle"
+                },
+                {
+                    "order": 6,
+                    "text": "邀请好友跑马灯",
+                    "state": "qmmf-invite-roll",
+                    "hash": "/qmmf-invite-roll"
+                },
+                {
+                    "order": 7,
+                    "text": "活动管理",
+                    "state": "activity",
+                    "hash": "/activity"
+                },
+                {
+                    "order": 8,
+                    "text": "文案管理",
+                    "state": "text-managment",
+                    "hash": "/text-managment"
+                },
+                {
+                    "order": 9,
+                    "text": "敏感词管理",
+                    "state": "sensitive-word",
+                    "hash": "/sensitive-word"
+                }
+            ]
+        }, 
+        {
+            "order": 14,
+            "text": "意见反馈",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "意见反馈列表",
+                    "state": "feedback-list",
+                    "hash": "/ad-index"
+                },
+                {
+                    "order": 2,
+                    "text": "联系我们",
+                    "state": "contact",
+                    "hash": "/contact"
+                },
+                {
+                    "order": 3,
+                    "text": "楼盘咨询列表",
+                    "state": "building-consult",
+                    "hash": "/building-consult"
+                },
+                {
+                    "order": 4,
+                    "text": "小二投诉",
+                    "state": "koji-complain",
+                    "hash": "/koji-complain"
+                }
+            ]
+        }
+    ]
+}

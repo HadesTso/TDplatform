@@ -1,0 +1,225 @@
+<style>
+    .textKey{width: 140px;text-align: right;}
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>房屋租赁</li>
+            <li>存房订单</li>
+            <li>详情</li>
+        </ol>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-6">
+        <a href="javascript:void(0)" class="btn active">存房信息</a>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+    	<div class="bm-form-group col-sm-12">
+            <label  class="textKey">存房客户姓名：</label>
+            <label  ng-bind="page.realName || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12">
+            <label  class="textKey">存房客户电话：</label>
+            <label  ng-bind="page.mobile || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12">
+            <label  class="textKey">存房网点名称：</label>
+            <label  ng-bind="page.branchBankName || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12" ng-if="state.isBaobei == false">
+            <label  class="textKey">业主身份证号码：</label>
+            <label  ng-bind="page.idCard || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12">
+            <label  class="textKey">转介人姓名：</label>
+            <label  ng-bind="page.managerRealName || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12">
+            <label  class="textKey">转介人电话：</label>
+            <label  ng-bind="page.managerMobile || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12">
+            <label  class="textKey">转介人所属公司：</label>
+            <label  ng-bind="page.managerCoName || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12">
+            <label  class="textKey">报备时间：</label>
+            <label  ng-bind="page.createdAt || '-'"></label>
+        </div>
+        <!--<div class="bm-form-group col-sm-12">-->
+            <!--<label  class="textKey">预计到访时间：</label>-->
+            <!--<label  ng-bind="page.arriveTime || '-'"></label>-->
+        <!--</div>-->
+    	<div class="bm-form-group col-sm-12" ng-if="state.isBaobei == false">
+            <label  class="textKey">到访时间：</label>
+            <label  ng-bind="page.arriveTime || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12" ng-if="state.isBaobei == false">
+            <label  class="textKey">拟存房物业地址：</label>
+            <label  ng-bind="page.houseAddress || '-'"></label>
+        </div>
+    	<div class="bm-form-group col-sm-12" ng-if="state.isBaobei == false">
+            <label  class="textKey">客户确认到访单：</label>
+            <!--<a href="javascript:;" class="btn btn-primary btn-small" ng-click="act.uploadImg()">添加图片</a>-->
+            <div class="bm-form-group col-sm-12" ng-if="page.arriveImgs != ''">
+                <div class="bm-form-group" style="width: 113px;"></div>
+                <div class="addhouses-banner" ng-repeat="item in page.arriveImgs" style="float: none;display: inline-block;vertical-align: top;margin: 0 20px 0 0;">
+                    <div class="addhouses-banner-box">
+                        <img ng-src="{{item}}" ng-click="act.rotateImg(item)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="addhouses-banner" ng-repeat="item in state.uploadImgFigure" style="float: none;display: inline-block;vertical-align: top;margin: 0 25px 25px 0;">
+                <div class="addhouses-banner-box">
+                    <img ng-src="{{item.url}}" ng-click="act.rotateImg(item.url)">
+                    <a class="addhouses-banner-del" href="javascript:;" ng-click="act.delUploadImg(item);"></a>
+                </div>
+            </div>
+
+        </div>
+        <!--<hr/>-->
+    </form>
+</div>
+<hr>
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+    	<div class="bm-form-group col-sm-12" ng-if="state.isPinggu == true || state.isQianyue == true">
+            <label  class="textKey">评估表照片：</label>
+        </div>
+    	<div class="bm-form-group col-sm-12" ng-if="(state.isPinggu == true || state.isQianyue == true) && page.pingguImgs != ''">
+            <div class="bm-form-group" style="width: 113px;"></div>
+            <div class="addhouses-banner" ng-repeat="item in page.pingguImgs" style="float: none;display: inline-block;vertical-align: top;margin: 0 20px 0 0;">
+                <div class="addhouses-banner-box">
+                    <img ng-src="{{item}}" ng-click="act.rotateImg(item)">
+                </div>
+            </div>
+        </div>
+    	<div class="bm-form-group col-sm-12" ng-if="state.isPinggu == true || state.isQianyue == true">
+            <label  class="textKey">备注：</label>
+            <label  ng-bind="page.pingguNote || '-'" style="width: 500px;max-height: 80px;overflow: auto"></label>
+        </div>
+
+
+    </form>
+</div>
+<hr/>
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+        <div class="bm-form-group col-sm-12" ng-if="state.isQianyue == true">
+            <label  class="textKey">签约凭证：</label>
+        </div>
+        <div class="bm-form-group col-sm-12" ng-if="state.isQianyue == true &&  page.signImgs!=''">
+            <div class="bm-form-group" style="width: 113px;"></div>
+            <div class="addhouses-banner" ng-repeat="item in page.signImgs" style="float: none;display: inline-block;vertical-align: top;margin: 0 20px 0 0;">
+                <div class="addhouses-banner-box">
+                    <img ng-src="{{item}}" ng-click="act.rotateImg(item)">
+                </div>
+            </div>
+        </div>
+        <div class="bm-form-group col-sm-12" ng-if="state.isShixiao == true">
+            <label  class="textKey">评估不通过原因：</label>
+            <label  ng-bind="page.remark || '-'" style="width: 500px;max-height: 80px;overflow: auto"></label>
+        </div>
+    </form>
+</div>
+
+
+<section class="layer-section">
+	<div ng-show="state.showUploadImg" id="uploadImg" style="height: auto;overflow:auto;padding-bottom: 15px;">
+		<div>
+			<h4 class="layer-title">
+				<span>上传图片</span>
+			</h4>
+			<div style="margin:0 15px;">
+	            <label for="" style="display: inline-block;float: left;padding-left: 10px;">选择图片：</label>
+	            <label class="doorLabel btn btn-primary">
+	                <input class="doorfile btn" type="file" name="" id="" ysf:imgbase accept="image/*" cb="cb.uploadImgBanner" > 选择文件
+	            </label>
+			</div>
+			<div style="margin: 10px 0 0 25px;">
+				<div class="addhouses-banner" ng-repeat="item in state.uploadImgFigure" style="float: none;display: inline-block;vertical-align: top;margin: 20px 30px 0 0;">
+	                <div class="addhouses-banner-box">
+	                    <img ng-src="{{item.url}}" ng-click="act.rotateImg(item.url)">
+	                    <a class="addhouses-banner-del" href="javascript:;" ng-click="act.delUploadImg(item);"></a>
+	                </div>
+	            </div>
+			</div>
+			<div style="margin:25px 15px 0 15px;">
+	            <label for="" style="display: inline-block;float: left;padding-left: 10px;">&emsp;&emsp;备注：</label>
+	            <textarea name="note" rows="3" style="width: 210px;"  ng-model="state.note" placeholder="请输入备注"></textarea>
+			</div>
+		</div>
+	</div>
+</section>
+<br/>
+<div class="form-group">
+    <label for="" class="col-sm-2 control-label"></label>
+    <div class="col-sm-4">
+        <a ng-if = "state.isBaobei == true || state.isDaofang == true || state.isPinggu == true" href="" class="btn btn-primary" ng-click="act.doWuxiao();">判断为无效房</a>
+        <a ng-if = "state.isDaofang == true" href="" class="btn btn-primary" ng-click="act.doPassPinggu();">评估通过</a>
+        <a ng-if = "state.isPinggu == true" href="" class="btn btn-primary" ng-click="act.doSureQianyue();">确认签约</a>
+    </div>
+</div>
+
+<!--判断为无效房弹-->
+<section class="layer-section" ng-show="state.isShowWuxiao">
+    <div id="isShowWuxiao" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span>判断为无效房</span>
+            </h4>
+            <div style="margin:0 15px;">
+                <div class="bm-form-group col-sm-12">
+                    <label  class="textKey">评估不通过原因：</label>
+                    <textarea name="" cols="30" rows="10" ng-model="wuxiao.note"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--评估通过-->
+<section class="layer-section" ng-show="state.isShowPinggu">
+    <div id="isShowPinggu" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span ng-if="state.isPinggu">确认签约</span>
+                <span ng-if="state.isDaofang">评估通过</span>
+            </h4>
+            <div style="margin:0 15px;">
+                <div style="margin:0 15px;">
+                    <label for="city" ng-if="state.isPinggu"><i class="required">*</i>上传签约凭证：</label>
+                    <label for="city" ng-if="state.isDaofang"><i class="required">*</i>上传评估表照片：</label>
+                    <div style="display: inline-block;width: 236px;">
+                        <!--首次录入显示-->
+                        <label class="doorLabel btn btn-primary" ng-if="state.canAdd">
+                            <input class="doorfile btn" type="file" name="" id="" ysf:imgbase accept="image/*" cb="cb.uploadImgBanner"> 选择文件
+                        </label>
+                        <!--<label class="upload-msg" style="cursor: default">默认第一张为缩略图</label>-->
+                    </div>
+                </div>
+                <div class="form-group" ng-if="state.shufflingFigure.length!=0" style="max-height: 220px;overflow: auto;">
+                    <!--<label for="" class="col-sm-2 control-label text-right"></label>-->
+                    <div class="col-sm-12">
+                        <div class="addhouses-banner" ng-repeat="item in state.shufflingFigure" style="float: none;display: inline-block;vertical-align: top;margin: 0 20px 0 0;">
+                            <div class="addhouses-banner-box" style="margin-top: 10px;">
+                                <img ng-src="{{item.url}}" ng-click="act.rotateImg(item.url)">
+                                <a class="addhouses-banner-del" href="javascript:;" ng-click="act.delBannerItem(item);"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bm-form-group col-sm-12" style="margin-top: 20px;" ng-if="state.isPinggu != true">
+                    <textarea name="" cols="50" rows="5" placeholder="请填写备注" ng-model="passPinggu.note"></textarea>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

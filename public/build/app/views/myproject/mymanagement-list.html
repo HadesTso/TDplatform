@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>我的楼盘</li>
+            <li>我管理的楼盘</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+        <div>
+            <div class="bm-form-group">
+                <label for="city">楼盘名称</label>
+                <input type="text" size="15" class="form-control" ng-model="search.projectName">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">城市</label>
+                <input type="text" size="8" class="form-control" ng-model="search.city">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">区域</label>
+                <input type="text" size="8" class="form-control" ng-model="search.district">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">状态</label>
+                <select style=" min-width: 80px" ng-model="search.status">
+                    <option value="-1">全部</option>
+                    <option value="0">待审核</option>
+                    <option value="10">审核不通过</option>
+                    <option value="20">已上架</option>
+                    <option value="30">已过期</option>
+                </select>
+            </div>
+            <div class="bm-form-group">
+                <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+                <a ui-sref="mymanagement-info({id:'0'})" class="btn btn-primary">添加新楼盘</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>楼盘名称</th>
+                <th>城市</th>
+                <th>区域</th>
+                <th>楼盘价格范围</th>
+                <th>合作开始时间</th>
+                <th>合作结束时间</th>
+                <th>佣金政策</th>
+                <th>状态</th>
+                <th>最新状态时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in list">
+	        <tr>
+	            <td ng-bind="$index + 1"></td>
+	            <td ng-bind="item.projectName || '-'"></td>
+	            <td ng-bind="item.city || '-'"></td>
+	            <td ng-bind="item.district || '-'"></td>
+	            <td ng-bind="item.priceScope || '-'"></td>
+	            <td ng-bind="item.startTime|datepre"></td>
+	            <td ng-bind="item.endTime|datepre"></td>  
+	            <td>
+                    <div grouponer:binghtml bind-data="item.projectCommission"></div>   
+                </td> 
+                <td ng-bind="item.status  | filtstatus"></td>
+	            <td ng-bind="item.statusUpdatedAt"></td>
+	            <td style="width: 105px;">
+	                <a ui-sref="mymanagement-info({id:item.id,status:item.status})">查看</a>
+	                <a ng-show="item.status == 20 && item.canEdit == 1" ui-sref="mymanagement-info({id:item.id,status:'-2'})">修改佣金</a>
+	            </td>
+	        </tr>
+        </tbody>
+	    <tfoot ng-if="state.dataNone" class="ng-scope">
+	    	<tr>
+	    		<td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+	    	</tr>
+	    </tfoot>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-10 text-right">
+        <div class="pagin">
+            <ul class="pagin-page">
+                <li>
+                    <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+                </li>
+                <li>
+                    <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+                </li>
+            </ul>
+            <div class="pagin-input-page">
+                跳至
+                <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+            </div> 
+            <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+            <span>
+                第<em ng-bind="state.currentPage"></em>页 / 
+                共<em ng-bind="state.lastPage"></em>页&emsp;
+	    	 总记录：<em ng-bind="state.total"></em>条
+            </span>
+        </div>
+    </div>
+</div>

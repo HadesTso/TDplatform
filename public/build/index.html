@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="zh-cn">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>房者荣耀后台管理中心</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="renderer" content="webkit" />
+        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="backman/backman.min.css">
+        <link rel="stylesheet" href="app/css/common.css">
+    </head>
+
+    <body class="skin-blue" ng-controller="backmanFramework">
+
+        <div class="backman" ng-class="{'sidebar-open': sidebarOpen}">
+            <!-- Header -->
+            <header class="backman-header">
+                <a class="logo" ui-sref="home">
+                    <b>房者荣耀后台管理中心</b>
+                </a>
+                <nav class="navbar">
+                    <a class="sidebar-toggle" ng-click="act.toggleSidebar()" href="javascript:;"></a>
+                    <div class="navbar-right">欢迎您！<strong ng-bind="adminName"></strong> |
+                        <a class="btn-default" ng-href="">退出</a>
+                    </div>
+                </nav>
+            </header>
+            <!-- Sidebar -->
+            <aside class="backman-sidebar" ng-controller="backmanNavigation">
+                <ul bm:sidebar class="sidebar-menu" data-nav="navData">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <!-- Level-1 -->
+                    <li class="treeview" ng-repeat="itemLv1 in navData | orderBy:'order'">
+                        <!-- Level-1 title -->
+                        <a class="treeview-title" href="javascript:;">
+                            <i class="fa fa-angle-left pull-right"></i>
+                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
+                            <span ng-bind="itemLv1.text"></span>
+                        </a>
+                        <!-- Level-1 menu -->
+                        <ul class="treeview-menu" ng-if="itemLv1.children.length">
+                            <!-- Level-2 -->
+                            <li class="treeview" ng-repeat="itemLv2 in itemLv1.children" >
+                                <!-- Level-2 link -->
+                                <a class="treeview-link" ui-sref="{{itemLv2.state}}" ui-sref-active="cur" ng-if="!itemLv2.children.length">
+                                    <i class="fa fa-caret-right"></i>
+                                    <i class="fa fa-chevron-right"></i>
+                                    <span ng-bind="itemLv2.text"></span>
+                                </a>
+                                <!-- Level-2 title -->
+                                <a class="treeview-title" ng-if="itemLv2.children.length" href="javascript:;">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                    <i class="fa fa-folder-o"></i>
+                                    <i class="fa fa-folder-open-o"></i>
+                                    <span ng-bind="itemLv2.text"></span>
+                                </a>
+                                <!-- Level-2 menu -->
+                                <ul class="treeview-menu" ng-if="itemLv2.children.length">
+                                    <!-- Level-3 -->
+                                    <li class="treeview" ng-repeat="itemLv3 in itemLv2.children">
+                                        <!-- Level-3 link -->
+                                        <a class="treeview-link" ui-sref="{{itemLv3.state}}" ui-sref-active="cur" ng-if="itemLv2.children.length">
+                                            <i class="fa fa-caret-right"></i>
+                                            <i class="fa fa-chevron-right"></i>
+                                            <span ng-bind="itemLv3.text"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+            <div class="backman-content">
+                <!-- 主内容区 -->
+                <section class="container-fluid" ui-view="content">
+                    <!-- 视图 -->
+                    <br>
+                </section>
+            </div>
+        </div>
+
+        <script src="libs/jquery/jquery-2.1.4.min.js"></script>
+        <script src="libs/jquery/ajaxfileupload.js"></script>
+        <!-- Bootstrap -->
+        <script src="libs/bootstrap/js/bootstrap-3.3.0.min.js"></script>
+        <!-- Angular 生产先不用angular-1.4.10.min.js版，方便调试 -->
+        <script src="libs/angular/angular-1.4.10.js"></script>
+        <script src="libs/angular/angular-ui-router.min.js"></script>
+        <!-- js加载器 -->
+        <script src="libs/loader/script-2.5.8.min.js"></script>
+        <!-- KindEditor富文本编辑器 -->
+        <script src="libs/kindeditor/kindeditor-4.1.10.min.js"></script>
+        <script src="libs/kindeditor/lang/zh_CN.js"></script>
+        <!-- 弹窗、日期 -->
+        <script src="libs/layer/layer-3.0.1.min.js"></script>
+        <script src="libs/laydate/laydate-1.1.min.js"></script>
+        <!-- Backman -->
+        <script src="backman/backman.js"></script>
+        <!-- app -->
+        <script src="app/router.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/js/services.js"></script>
+        <script src="app/js/directives.js"></script>
+        <script src="app/js/filters.js"></script>
+
+    </body>
+
+</html>

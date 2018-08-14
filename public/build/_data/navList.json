@@ -1,0 +1,45 @@
+{
+    "state": {
+        "code": 10200,
+        "msg": "ok"
+    },
+    "data": 
+    [
+        {
+            "order": 1,
+            "text": "房屋租赁",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "所有房源",
+                    "state": "rent-house-list",
+                    "hash": "/rent-house-list"
+                },
+                {
+                    "order": 2,
+                    "text": "存房订单",
+                    "state": "save-house-order-list",
+                    "hash": "/save-house-order-list"
+                },
+                {
+                    "order":3,
+                    "text": "小区管理",
+                    "state": "area-management",
+                    "hash": "/area-management"
+                },
+                {
+                    "order":4,
+                    "text": "开锁二维码管理",
+                    "state": "code-management",
+                    "hash": "/code-management"
+                },
+                {
+                    "order":5,
+                    "text": "基本信息",
+                    "state": "base",
+                    "hash": "/base"
+                }
+            ]
+        }
+    ]
+}

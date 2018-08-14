@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>长租房 </li>
+            <li>所有房源 </li>
+            <li>看房列表 </li>
+        </ol>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-6">
+        <a href="javascript:void(0)" class="btn active">看房列表</a>
+    </div>
+</div>
+<hr>
+<div class="table-responsive" style="padding-bottom: 20px;">
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>ID</th>
+                <th>预约看房时间</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in list">
+            <tr>
+                <th ng-bind="$index + 1"></th>
+                <td ng-bind="item.id || '-'"></td>
+                <td ng-bind="item.yuArriveTime || '-'"></td>
+                <td ng-bind="item.status | rentOrderType"></td>
+            </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone" class="ng-scope">
+	    	<tr>
+	    		<td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+	    	</tr>
+	    </tfoot>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <div class="pagin">
+	        <ul class="pagin-page">
+	            <li>
+	                <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+	            </li>
+	            <li>
+	                <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+	            </li>
+	        </ul>
+	        <div class="pagin-input-page">
+	            跳至
+	            <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+	        </div>
+	        <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+	        <span>
+	            第<em ng-bind="state.currentPage"></em>页 /
+	            共<em ng-bind="state.lastPage"></em>页&emsp;
+	    	 总记录：<em ng-bind="state.total"></em>条
+	        </span>
+	    </div>
+    </div>
+</div>

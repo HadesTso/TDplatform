@@ -1,0 +1,59 @@
+<style type="text/css">
+    .houseTab{
+        display: inline-block;
+        position: relative;
+        width:auto;
+        min-width: 74px;
+        text-align: center;
+        padding: 5px 8px;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+    }
+    .houseTab > input{
+        position: absolute;
+        opacity: 0;
+    }
+    .houseTab.active{
+        color: #fff;
+        background: #3c8dbc;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>基本信息</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label text-right">提示回答：</label>
+            <div class="col-sm-3">
+                <textarea name="" id="" cols="100" rows="10" ng-model="state.questions"></textarea>
+            </div>
+        </div>
+        
+    </form>
+</div>
+<div class="form-group">
+    <label for="" class="col-sm-2 control-label"></label>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-4">
+        <a href="" class="btn btn-primary" ng-click="act.doSave();">保存</a>
+    </div>
+</div>
+
+<section class="layer-section" ng-show="state.isShowChangeType2">
+    <div id="changeType2" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span>更改房屋状态</span>
+            </h4>
+            <div style="margin:0 15px;">
+                <label for="city">&emsp;<i class="required">*</i>您确认将该房状态更改为未出租吗？</label>
+            </div>
+        </div>
+    </div>
+</section>

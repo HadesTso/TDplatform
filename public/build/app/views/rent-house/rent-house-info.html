@@ -1,0 +1,335 @@
+<style type="text/css">
+.houseTab{
+	display: inline-block;
+	position: relative;
+	width:auto;
+	min-width: 74px;
+	text-align: center;
+	padding: 5px 8px;
+	border: 1px solid #bbb;
+	border-radius: 5px;
+}
+.houseTab > input{
+	position: absolute;
+	opacity: 0;
+}
+.houseTab.active{
+	color: #fff;
+	background: #3c8dbc;
+}
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>房屋租赁</li>
+            <li>所有房源</li>
+        </ol>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px;">
+    <div class="col-md-6">
+        <a ng-if="!editStatus" href="javascript:void(0)" class="btn">长租房信息</a>
+        <a ng-if="editStatus" ui-sref="rent-order-list({id:state.pageId})" class="btn active">房源信息</a>
+        <a ng-if="editStatus" ui-sref="rent-user-list({id:state.pageId})" class="btn">租客列表</a>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <form class="form-horizontal" role="form">
+		<div class="form-group" ng-if="editStatus">
+	        <label for="" class="col-sm-2 control-label text-right">长租房ID：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.id" disabled="disabled" />
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房东姓名：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.ownerName" />
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房东手机号：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.ownerMobile" />
+	        </div>
+	    </div>
+		<!--<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">关联存房订单：</label>
+	        <div class="col-sm-3" ng-show="editStatus">
+	            <input type="text" class="form-control"  ng-model="send.orderSn" ng-disabled="editStatus" />
+	        </div>
+	        <div class="col-sm-3" ng-show="!editStatus">
+	        	<select class="form-control" ng-model="send.qmmfSaveHouseOrderId" ng-change="rentOrderGetId();" ng-disabled="editStatus">
+	        		<option value="">请选择关联存房订单</option>
+					<option ng-repeat="item in rentOrderDownList" value="{{item.id}}" ng-bind="item.orderSn"></option>
+				</select>
+	        </div>
+	    </div>-->
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">小区名称：</label>
+	        <div class="col-sm-3">
+	        	<select class="form-control" ng-model="send.qmmfRentEstateId" ng-change="rentEstateGetId();" ng-disabled="editStatus">
+	        		<option value="">请选择小区</option>
+					<option ng-repeat="item in rentEstateDownList" value="{{item.id}}" ng-bind="item.name"></option>
+				</select>
+	        </div>
+	    </div>
+	    <div class="form-group" style="position:relative;">
+	        <label for="" class="col-sm-2 control-label text-right">省市区：</label>
+            <div bm:distpicker region="region" selectedplace="selectedPlace" disabled-select="1" style="display:inline-block;padding-left:15px;"></div>
+        </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">详细地址：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.estateAddress" placeholder="请输入详细地址"/>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房屋标题：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.title" placeholder="请输入房屋栋室"/>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房屋栋室：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.buildingRoom" placeholder="请输入房屋栋室"/>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">月租价(元)：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.monthMoney" placeholder="请输入月租价"/>
+	        </div>
+	    </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">长租开始时间：</label>
+            <div class="col-sm-3">
+            	<input type="text" id="openTime" class="form-control" ng-model="send.jianfangStartTime" placeholder="" bm:datepick date-formate='YYYY-MM-DD' bind-date="send.jianfangStartTime">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">长租结束时间：</label>
+            <div class="col-sm-3">
+            	<input type="text" id="dealHouseTime" ng-model="send.jianfangEndTime" class="form-control" placeholder="" bm:datepick date-formate='YYYY-MM-DD' bind-date="send.jianfangEndTime">
+            </div>
+        </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">装修程度：</label>
+	        <div class="col-sm-7">
+                <label class="houseTab mt8" ng-class="{'active':send.decoration=='豪华装修'}">
+                    <input type="radio" ng-model="send.decoration" class="flat-red"  value="豪华装修">豪华装修
+                </label>
+                <label class="houseTab mt8" ng-class="{'active':send.decoration=='简单装修'}">
+                    <input type="radio" ng-model="send.decoration" class="flat-red"  value="简单装修">简单装修
+                </label>
+                <label class="houseTab mt8" ng-class="{'active':send.decoration=='中等装修'}">
+                    <input type="radio" ng-model="send.decoration" class="flat-red"  value="中等装修">中等装修
+                </label>
+                <label class="houseTab mt8" ng-class="{'active':send.decoration=='精装修'}">
+                    <input type="radio" ng-model="send.decoration" class="flat-red"  value="精装修">精装修
+                </label>
+            </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">朝向：</label>
+	        <div class="col-sm-3">
+				<select class="form-control" ng-model="send.orientation" >
+	        		<option value="">请选择装朝向</option>
+	        		<option value="南">南</option>
+	        		<option value="北">北</option>
+	        		<option value="南北">南北</option>
+	        		<option value="东西">东西</option>
+	        		<option value="其他">其他</option>
+				</select>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">年代：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.decade" placeholder="请输入年代"/>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">楼层：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.floor" placeholder="请输入楼层"/>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">租金类型：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.moneyType" placeholder="请输入租金类型"/>
+	        </div>
+	    </div>
+		<div class="form-group">
+			<label for="" class="col-sm-2 control-label text-right">户型：</label>
+			<div class="col-sm-7">
+				<label class="houseTab mt8" ng-class="{'active':send.houseDool=='一室'}">
+					<input type="radio" ng-model="send.houseDool" class="flat-red"  value="一室">一室
+				</label>
+				<label class="houseTab mt8" ng-class="{'active':send.houseDool=='二室'}">
+					<input type="radio" ng-model="send.houseDool" class="flat-red"  value="二室">二室
+				</label>
+				<label class="houseTab mt8" ng-class="{'active':send.houseDool=='三室'}">
+					<input type="radio" ng-model="send.houseDool" class="flat-red"  value="三室">三室
+				</label>
+				<label class="houseTab mt8" ng-class="{'active':send.houseDool=='四室'}">
+					<input type="radio" ng-model="send.houseDool" class="flat-red"  value="四室">四室
+				</label>
+				<label class="houseTab mt8" ng-class="{'active':send.houseDool=='五室及以上'}">
+					<input type="radio" ng-model="send.houseDool" class="flat-red"  value="五室及以上">五室及以上
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-sm-2 control-label text-right">房屋类型：</label>
+			<div class="col-sm-7">
+				<label class="houseTab mt8" ng-class="{'active':send.type=='1'}">
+					<input type="radio" ng-model="send.type" class="flat-red"  value="1">普通住宅
+				</label>
+				<label class="houseTab mt8" ng-class="{'active':send.type=='2'}">
+					<input type="radio" ng-model="send.type" class="flat-red"  value="2">别墅
+				</label>
+				<label class="houseTab mt8" ng-class="{'active':send.type=='3'}">
+					<input type="radio" ng-model="send.type" class="flat-red"  value="3">公寓
+				</label>
+				<label class="houseTab mt8" ng-class="{'active':send.type=='0'}">
+					<input type="radio" ng-model="send.type" class="flat-red"  value="0">其他
+				</label>
+			</div>
+		</div>
+		<!--<div class="form-group">-->
+	        <!--<label for="" class="col-sm-2 control-label text-right">房屋类型：</label>-->
+	        <!--<div class="col-sm-3">-->
+	            <!--<input type="text" class="form-control"  ng-model="send.houseDool" placeholder="请输入房屋类型"/>-->
+	        <!--</div>-->
+	    <!--</div>-->
+
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房屋面积：</label>
+	        <div class="col-sm-3">
+	            <input type="text" class="form-control"  ng-model="send.area" placeholder="请输入房屋面积"/>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">备注：</label>
+	        <div class="col-sm-3">
+	            <textarea name="note" rows="5" style="width: 100%;"  ng-model="send.note" placeholder="请输入备注"></textarea>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房屋配置：</label>
+	        <div class="col-sm-7">
+                <label ng-repeat="item in houseTypeList" class="houseTab mt8" ng-class="{'active':item.checked}">
+                    <input type="checkbox" ng-model="item.checked" class="flat-red" >{{item.name}}
+                </label>
+            </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房屋详情图：</label>
+	        <div class="col-sm-9">
+	            <!--首次录入显示-->
+	            <label class="doorLabel btn btn-primary">
+	                <input class="doorfile btn" type="file" name="" id="" ysf:imgbase accept="image/*" cb="cb.uploadImgBanner" > 选择文件
+	            </label>
+	            <label class="upload-msg" style="cursor: default">默认第一张为缩略图</label>
+	    	</div>
+	    </div>
+		<div class="form-group" ng-if="state.shufflingFigure.length!=0">
+	        <label for="" class="col-sm-2 control-label text-right"></label>
+	        <div class="col-sm-9">
+	            <div class="addhouses-banner" ng-repeat="item in state.shufflingFigure" style="float: none;display: inline-block;vertical-align: top;margin: 0 20px 0 0;">
+	                <div class="addhouses-banner-box">
+	                    <img ng-src="{{item.url}}" ng-click="act.rotateImg(item.url)">
+	                    <a class="addhouses-banner-del" href="javascript:;" ng-click="act.delBannerItem(item);"></a>
+	                </div>
+	            </div>
+	    	</div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房屋概况：</label>
+	        <div class="col-sm-4">
+	            <textarea name="note" rows="5" style="width: 100%;"  ng-model="send.houseSituation" placeholder="请输入房屋概况"></textarea>
+	        </div>
+	    </div>
+		<div class="form-group">
+	        <label for="" class="col-sm-2 control-label text-right">房源状态：</label>
+	        <div class="col-sm-3">
+	            <label class="mt8" ng-bind="send.rentStatus | rentStatusType"></label>
+	        </div>
+	    </div>
+	    <div class="form-group">
+            <label for="" class="col-sm-2 control-label"></label>
+            <div class="col-sm-4">
+				<a href="" class="btn btn-primary" ng-click="act.doSave();">保存</a>
+				<button ng-if="urlId != ''"  ng-click = "act.changeType(send.rentStatus,send.id);" class="btn btn-primary">更改房源状态</button>
+            </div>
+        </div>
+	</form>
+</div>
+
+<section class="layer-section" ng-show="state.isShowChangeType">
+	<div id="changeType" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+		<div>
+			<h4 class="layer-title">
+				<span>更为为已出租</span>
+			</h4>
+			<div style="margin:0 15px;">
+				<label for="city">&emsp;<i class="required">*</i>租客姓名：</label>
+				<input type="text"class="form-control" style="width: 250px;" ng-model="postData.rentName">
+			</div>
+			<div style="margin:0 15px;">
+				<label for="city"><i class="required">*</i>租客手机号：</label>
+				<input type="text"class="form-control" style="width: 250px;" ng-model="postData.rentMobile">
+			</div>
+			<div style="margin:0 15px;">
+				<label for="city"><i class="required">*</i>出租开始时间：</label>
+				<div style="display: inline-block;width: 236px;">
+					<input type="text" id="rentStartTime" class="form-control" ng-model="postData.startTime" placeholder="" bm:datepick date-formate='YYYY-MM-DD' bind-date="postData.startTime">
+				</div>
+			</div>
+			<div style="margin:0 15px;">
+				<label for="city"><i class="required">*</i>出租结束时间：</label>
+				<div style="display: inline-block;width: 236px;">
+					<input type="text" id="rentEndTime" ng-model="postData.endTime" class="form-control" placeholder="" bm:datepick date-formate='YYYY-MM-DD' bind-date="postData.endTime">
+				</div>
+			</div>
+			<div style="margin:0 15px;">
+				<label for="city"><i class="required">*</i>上传租赁凭证：</label>
+				<div style="display: inline-block;width: 236px;">
+					<!--首次录入显示-->
+					<label class="doorLabel btn btn-primary">
+						<input class="doorfile btn" type="file" name="" id="" ysf:imgbase accept="image/*" cb="cb.uploadImgBanner2" > 选择文件
+					</label>
+					<!--<label class="upload-msg" style="cursor: default">默认第一张为缩略图</label>-->
+				</div>
+			</div>
+			<div class="form-group" ng-if="state.shufflingFigure2.length!=0">
+				<label for="" class="col-sm-2 control-label text-right"></label>
+				<div class="col-sm-9"style="max-height: 210px;overflow: auto;">
+					<div class="addhouses-banner" ng-repeat="item in state.shufflingFigure2" style="float: none;display: inline-block;vertical-align: top;margin: 0 20px 0 0;">
+						<div class="addhouses-banner-box">
+							<img ng-src="{{item.url}}" ng-click="act.rotateImg(item.url)">
+							<a class="addhouses-banner-del" href="javascript:;" ng-click="act.delBannerItem2(item);"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="layer-section" ng-show="state.isShowChangeType2">
+	<div id="changeType2" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+		<div>
+			<h4 class="layer-title">
+				<span>更改房屋状态</span>
+			</h4>
+			<div style="margin:0 15px;">
+				<label for="city">&emsp;<i class="required">*</i>您确认将该房状态更改为未出租吗？</label>
+			</div>
+		</div>
+	</div>
+</section>

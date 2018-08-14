@@ -1,0 +1,653 @@
+/**
+ * desc:css was writen by gxc, file commons.css was add by tank.
+ * date:2016-11-3
+ * mainly for: component styles
+ */
+/* used in view addcode.html codemanager.html bonusmanager.html*/
+.channel-outer{
+    position: relative;
+    width: 100%;
+    height: 34px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+.channel-outer:after{
+    content: "";
+    z-index: 99;
+    position: absolute;
+    bottom: 12px;
+    left: 100%;
+    margin-left: -18px;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 6px solid #555;
+}
+.channel{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.channelbox{
+    display: none;
+    position: absolute;
+    z-index: 200;
+    top: 100.2%;
+    left: -1px;
+    width: 100.8%;
+    height: auto;
+    max-height: 200px;
+    background: #fff;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow-y: auto;
+}
+.channelbox.active{
+    display: block;
+}
+.channelbox li{
+    padding:7px 15px;
+}
+.channelbox li > input.ckbox{
+    vertical-align: text-bottom;
+}
+.channelbox li:hover{
+    background: #66afe9;
+    color:#fff;
+}
+
+.agency{
+    position: relative;
+    height: auto;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    cursor: pointer;
+}
+.agencybox{
+    padding: 15px 0;
+    height: auto;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    overflow: auto;
+}
+.agencybox:first-child{
+    border-top: none;
+}
+.agencylabel{
+    position: relative;
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.agencylabel i{
+    position: absolute;
+    z-index: 5;
+    top: -10px;
+    right: -10px;
+    height: 20px;
+    line-height: 17px;
+    width: 20px;
+    text-align: center;
+    color: #888;
+    border-radius: 50%;
+    border:1px solid #888;
+    font-style: normal;
+    background: #fff;
+}
+
+.agencylabel i:hover{
+    color: #fff;
+    background: #da4f49;
+    border-color: #da4f49;
+    -webkit-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    -moz-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    -ms-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    -o-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    box-shadow: rgba(128,79,73,.5) 0 0 4px;
+}
+
+
+.shop{
+    position: relative;
+    padding: 15px;
+    height: auto;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    cursor: pointer;
+}
+
+.shopbox{
+    height: auto;
+    width: 100%;
+}
+.shopbox > label{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 18px;
+}
+
+/* agencydetail view */
+.update-data,
+.add-data{display: none;}
+.update-data.active,
+.add-data.active{display: block;}
+
+/* addhouses */
+.addhouses-tab{}
+
+.addhouses-doormodel{display: inline-block;position: relative;}
+.addhouses-banner{float: left;margin: 15px 20px 20px 0;padding: 0;}
+.addhouses-banner-box{position: relative;display: inline-block;}
+.addhouses-banner-box>img{width: 100px;height: 100px;}
+.addhouses-banner-del{position: absolute;width: 20px;height: 20px;right: -10px;top: -10px;background:url(../images/close-btn.png) no-repeat center;
+-webkit-background-size: cover;
+background-size: cover;}
+.addhouses-banner-left,
+.addhouses-banner-right{display: none;position: absolute;width: 30px;height: 30px;top: 50%;-webkit-transform: translate(0,-50%);
+-ms-transform: translate(0,-50%);
+-o-transform: translate(0,-50%);
+transform: translate(0,-50%);}
+.addhouses-banner-left{left: 0;background:url(../images/addhouses-banner-left.png) no-repeat center;}
+.addhouses-banner-right{right: 0;background:url(../images/addhouses-banner-right.png) no-repeat center;}
+.addhouses-banner-box:hover .addhouses-banner-left,
+.addhouses-banner-box:hover .addhouses-banner-right{display: block;}
+
+.mapbox{z-index: 101;display: none;position: fixed;width: 935px;height: 612px;top: 50%;left: 50%;
+    background-color: #fff;border-radius: 10px;
+    border:1px solid #e5e5e5;
+-webkit-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+-o-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);}
+.mapbox.active{display: block;}
+.mapbox>a{position: absolute;width: 20px;height: 20px;right: -10px;top: -10px;background:url(../images/close-btn.png) no-repeat center;
+-webkit-background-size: cover;
+background-size: cover;}
+.map{display: block;height:100%;width: 100%;background-color: #f1f1f1;overflow: hidden;}
+
+/*add by gaoxiaochong 2016-11-21*/
+textarea.form-control{
+    width: 100%;
+}
+
+.bm-form-group {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.typeAdd{
+    z-index: 999;position: absolute;right: -30px;top: 50%;height: 30px;width: 30px;margin-top: -20px;
+    border: 1px solid #bbb;line-height: 30px;text-align: center;font-size: 18px;color: #bbb;cursor: pointer;
+}
+.upload-box{
+	float:left;
+	width: 100px;
+	margin:0 15px;
+}
+
+label.upload-msg{
+    margin:0 0 0 5px;height: 34px;line-height: 32px;color: #f40;border: 1px solid #f40;padding: 0 8px;border-radius: 4px;
+}
+
+label.doorLabel{
+    position:relative;top:0;margin: 0;height: 30px;line-height: 1;width: auto;text-align: center;color:#fff;
+    overflow: hidden;cursor: pointer;background: #3c8dbc;border-color: #367fa9;
+}
+label.doorLabel:hover{
+    background: #367fa9;border-color: #204d74;color:#fff;
+}
+input[type=file].doorfile{
+    position: absolute;top:0;left: 0;
+    opacity: 0;font-size: 100px;
+    height: 100%;width: 100%;
+    cursor: pointer;
+}
+
+/* 户型 */
+.addhouses-doormodel-item{position: relative;padding-top: 20px;border:1px solid #e5e5e5;border-radius: 5px;}
+.addhouses-doormodel-close{position: absolute;z-index: 1;width: 20px;height: 20px;right: -10px;top:-10px;background:url(../images/close-btn.png) no-repeat center;
+-webkit-background-size: cover;
+background-size: cover;}
+.addhouses-img{margin:0 auto;}
+
+/*用户信息设置*/
+.backman select.tb-select{
+    display:inline-block;
+    min-width: 65px;
+    width: 65px;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+/*按钮*/
+.btn{min-width: 82px;}
+.Bbtn{height:34.2px; line-height:1;min-width: 120px; width:auto;font-size:16px;letter-spacing: 2px;}
+.Sbtn{height:35px; line-height:1;min-width: 120px; width:auto;font-size:16px;letter-spacing: 2px;}
+
+.form-search.form-inline input,
+.form-search.form-inline select,
+.form-search.form-inline label{margin-bottom: 0;}
+
+.bm-pagination.pagination{margin: 0;}
+
+.input-force-mb0{margin-bottom: 0 !important;}
+.force-text-right{text-align: right !important;}
+
+.caret.caret-down{-webkit-transform: rotate(180deg);
+-ms-transform: rotate(180deg);
+-o-transform: rotate(180deg);
+transform: rotate(180deg);}
+
+.backman .table-responsive thead{background-color: #eaf4f7;}
+
+/* loading */
+.loading{display: none;position: fixed;z-index: 10;width: 100%;height: 100%;top: 0;left: 0;background-color:rgba(0,0,0,.3);}
+.loading.on{display: block;}
+.loading>img{position: absolute;top: 50%;left: 50%;border-radius:10px;background-color: rgba(255,255,255,.1);
+-webkit-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+-o-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);}
+
+/* pagin */
+.pagin{text-align: right;}
+.pagin>*{display: inline-block;vertical-align: middle;}
+.pagin>span{margin-left: 20px;color:#999;}
+.pagin>span>em{font-style: normal;}
+
+.pagin-page{font-size: 0;}
+.pagin-page>li{float: left;width: 37px;height: 38px;border:1px solid #e5e5e5;border-radius:3px;}
+.pagin-page>li+li{margin-left: 20px;}
+.pagin-page>li>a{position: relative;display: block;width: 100%;height: 100%;text-align: center;line-height: 38px;font-size: 16px;color:#999;}
+.pagin-prev:before,
+.pagin-next:before{content: "";position: absolute;top: 50%;border:8px solid transparent;}
+.pagin-prev:before{left:40%;border-right: 8px solid #999;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);}
+.pagin-next:before{right:40%;border-left: 8px solid #999;
+    -webkit-transform: translate(50%,-50%);
+    -ms-transform: translate(50%,-50%);
+    -o-transform: translate(50%,-50%);
+    transform: translate(50%,-50%);}
+
+.pagin-select-page{margin-left: 49px;width: 138px;height: 38px;color:#999;border-radius:3px;border:1px solid #e5e5e5;}
+
+.pagin-input-page{margin-left: 50px;font-size: 16px;color:#999;}
+.pagin-input-page>input{margin: 0 10px;width: 78px;height: 38px;text-align: center;border:1px solid #e5e5e5;border-radius:3px;}
+
+.pagin-go{color:#00aa90;margin-left: 28px;}
+.pagin-go:hover{text-decoration: underline;}
+
+/* 姓名搜索框 */ 
+.search-user{display: inline-block;position: relative;}
+.search-user>span{display: inline-block;}
+.search-user-input{display: inline-block;position: relative;}
+.search-user-input>ul{display: none;list-style: none;z-index: 1;position: absolute;right: 0;top: 100%;width: 130%;max-height:150px;overflow-y:auto;padding-left: 0;background-color: #fff;border-radius: 5px;box-shadow: 0 0 3px rgba(0,0,0,.3);}
+.search-user-input>ul.active{display: block;}
+.search-user-input>ul>li{padding-left: 0;height: 30px;line-height: 30px;text-align: center;cursor: pointer;white-space: nowrap;overflow: hidden;text-overflow:ellipsis;}
+.search-user-input>ul>li:hover{background-color: #eaf4f7;}
+.search-user-input>ul>li + li{border-top:1px solid #f5f5f5;}
+
+/* 原子累 */
+.ptb5{padding-top: 5px;padding-bottom: 5px;}
+
+/*佣金&奖金&财务*/
+.btnReview{height:42px; line-height:1; width: 120px;}
+.fe{color:#f40;}.mt5{margin-top: 5px;}.mt10{margin-top: 10px;}.mt15{margin-top: 15px;}.m15{margin: 25px;}.marginEdit{margin:0 25px;}
+.mb0{margin-bottom: 0;}
+.udlabel{width: 120px;text-align: right;}
+.btnReview{height:42px; line-height:1; width: 140px;font-size:16px;letter-spacing: 2px;}
+.btnEdit{height:35px; line-height:1; width: 120px;font-size:16px;letter-spacing: 2px;}
+.backman button.btn-search{height:30px;width: 70px; line-height:15px;margin: 5px 0 0 12.5px;}
+.form-group.active{margin: 0;overflow: auto;}
+.required{font-size: 20px;font-style: normal;color: #f40;vertical-align: middle;padding-right: 5px;}
+/*订单列表战队弹窗*/
+.relative{position: relative;}
+.sendteam-box{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: auto;
+    width: 160px;
+    line-height: 1.5;
+    padding: 15px;
+    text-align: left;
+    background: #fff;
+    box-sizing: border-box;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgba(204, 204, 204, 1);
+	border-radius: 0px;
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349019607843137);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349019607843137);
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349019607843137);
+}
+.receive-box{
+    display: none;
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    height: auto;
+    width: 160px;
+    line-height: 1.5;
+    padding: 15px;
+    text-align: left;
+    background: #fff;
+    box-sizing: border-box;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgba(204, 204, 204, 1);
+	border-radius: 0px;
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349019607843137);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349019607843137);
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.349019607843137);
+}
+.sendteam-box.active{display: block;}
+.receive-box.active{display: block;}
+/*列表的下拉框*/
+.select.tb-select {
+    display: inline-block;
+    min-width: 65px;
+    width: 65px;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+.backman a.btn-default.active{
+	color: #fff;
+    background-color: #367fa9;
+    border-color: #204d74;
+}
+
+/*银行卡长度*/
+.card{min-width: 195px;width: 195px;}
+/*表单红色提示*/
+.font-msg{
+	color: red;
+	padding-top: 8px;
+}
+/*移动端样式兼容*/
+@media only screen and (min-width: 320px) and (max-width: 1024px){
+	.mt15{margin: 0;}
+	.marginEdit{margin: 0;}
+	.backman label.group-label{width: 130px !important;}
+}
+/*表格颜色加深*/
+.bg-head{ background-color: #eaf4f7;}
+/*战队logo选择*/
+.team-logo{
+	display: inline-block;
+	height: 100px;
+	width:100px;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	margin-left: 10px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+.team-logo.active{
+	border: 4px solid #ff0066;
+}
+/*列表显示图片*/
+#logo-box{position:relative;}
+#logo-box img:hover ~ #hover-logo{display: block;}
+#hover-logo{
+	display: none;
+	z-index: 999;
+	position: absolute;
+	top: 50%;left: 100%;
+	height: auto;width: 150px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+/*弹框样式*/
+.layer-section{
+	position: absolute;
+	top: -300%;
+	height: auto;
+	width: 100%;
+	overflow: auto;
+}
+.layer-title{
+	height:35px;
+	line-height:35px;
+	margin:0 0 20px 0;
+	padding-left:15px;
+	font-size:15px;
+	color:#fff;
+	background:rgba(22, 155, 213, 1);
+}
+/*到访弹框样式*/
+.show-box{
+	height: auto;
+	padding-bottom: 15px;
+	overflow: auto;
+}
+.order-box{
+	margin:0 20px;
+	padding:15px 0;
+	background: rgba(250, 250, 250, 1);
+	overflow: auto;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: 1px solid rgba(228, 228, 228, 1);
+    box-sizing: border-box;
+}
+.send-box{
+	float:left;
+	width: 47%;
+	margin-left: 5%;
+	margin-bottom: 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.customer-box{
+	float:left;
+	width: 45%;
+	margin-left: 3%;
+	margin-bottom: 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+/*战队多选样式*/
+.team-center{
+    margin: 15px;
+    max-height: 200px;
+    padding: 15px;
+	border: 1px solid #e6e6e6;
+    overflow-y: auto;
+}
+/*label-redioBtn*/
+label.mt8{
+	margin-top: 8px;
+}
+
+/*广告模块  奖励itemBox*/
+.ad-reward-box{
+	position: relative;
+    height: 95px;
+    width: auto;
+    margin-bottom: 15px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.ad-reward-content{
+	z-index: 100;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    height: auto;
+    width: 100%;
+}
+.ad-reward-border{
+	z-index: 90;
+	position: absolute;
+	top:0;left:0;
+	height: 100%;
+	width: 50%;
+	border: 1px solid #e6e6e6;
+}
+/*战队佣金比例样式*/
+.form-horizontal .form-group.rateBox{
+	position: relative;
+	height: 50px;
+	overflow: auto;
+	padding-top: 5px;
+	margin-bottom: 0;
+	box-sizing: border-box;
+}
+.form-horizontal .form-group.rateBox >div,input,label{
+	z-index: 99;
+	position: relative;
+}
+.form-horizontal .form-group.rateBox > div.rateBg{
+	z-index: 9;
+	position: absolute;
+	top:0;left: 30px;
+	height: 50px;
+	width:41.66666667%;
+	padding-top: 5px;
+	background: rgba(251, 251, 251, 1);
+	box-sizing: border-box;
+	border-left: 1px solid rgba(228, 228, 228, 1);
+	border-right: 1px solid rgba(228, 228, 228, 1);
+}
+.form-horizontal .form-group.rateBox > div.rateBg.rateBorderTop{
+	border-top: 1px solid rgba(228, 228, 228, 1);
+	border-bottom: 1px solid rgba(228, 228, 228, 1);
+	border-radius: 4px;
+}
+.form-horizontal .form-group.rateBox > div.rateBg.rateBorderbottom{
+	border-bottom: 1px solid rgba(228, 228, 228, 1);
+	border-radius: 4px;
+}
+/*接收消息用户列表*/
+.th-title{
+	height: 50%;width: 100%;padding:8px;border-bottom: 1px solid #ddd;
+}
+.th-title:last-child{
+	border-bottom: none;
+}
+.th-content{
+	float:left;height: 50%;width: 50%;padding:8px;
+}
+.th-third{
+	float:left;height: 50%;width: 33.33%;padding:8px;
+}
+.th-border-bottom{
+	border-bottom: 1px solid #ddd;
+}
+.th-border-right{
+	border-right: 1px solid #ddd;
+}
+
+/*星星评价*/
+.serviseP{
+	width: 90%;
+	margin-left: 10%;
+	text-align: left;
+}
+.serviceStar{
+	display: inline-block;
+	position: relative;
+	top: 5px;
+	height:20px;
+	background:url(../images/star_on.png);
+	background-size:contain;
+}
+
+/*更多价格*/
+.more-house-box{
+	position: relative;
+	float:left;
+	width: 305px;
+	padding: 15px;
+	background: rgba(250, 250, 250, 1);
+	margin-bottom:15px;
+	margin-right:15px;
+	border-radius: 5px;
+	border: 1px solid rgba(228, 228, 228, 1);
+}
+.more-house-item{
+	width: 275px;
+}
+.house-price-label{
+	position: absolute;
+	right: -9px;
+	top: 0px;
+}
+.house-price-label i {
+    position: absolute;
+    z-index: 5;
+    top: -10px;
+    right: -10px;
+    height: 20px;
+    line-height: 17px;
+    width: 20px;
+    text-align: center;
+    color: #888;
+    border-radius: 50%;
+    border: 1px solid #888;
+    font-style: normal;
+    background: #fff;
+}
+.house-price-label i:hover {
+    color: #fff;
+    background: #da4f49;
+    border-color: #da4f49;
+    -webkit-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    -moz-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    -ms-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    -o-box-shadow: rgba(128,79,73,.5) 0 0 4px;
+    box-shadow: rgba(128,79,73,.5) 0 0 4px;
+}

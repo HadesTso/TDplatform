@@ -1,0 +1,257 @@
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>我的楼盘</li>
+            <li>我管理的楼盘</li>
+            <li ng-if="!state.isUpdate">添加新楼盘</li>
+            <li ng-if="state.isUpdate">楼盘详情</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><i class="required">*</i>楼盘名称:</label>
+            <div class="col-sm-4">
+                <div>
+                    <input type="text" class="form-control" ng-model="send.projectName" ng-readonly="state.isDisabledAll || (pageData && pageData.status!='10')">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label"><i class="required">*</i>楼盘类型:</label>
+            <div class="col-sm-9">
+                <label ng-repeat="item in projectTypeList">
+                    <input type="checkbox" ng-model="item.checked" class="flat-red" ng-disabled="state.isDisabledAll || send.canEdit == 0">{{item.name}}
+                </label>   
+            </div>
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label"><i class="required">*</i>省市区:</label>
+            <div class="col-sm-9" bm:distpicker region="region" selectedplace="selectedPlace" ng-show="pageData.status!='0'"></div>
+            <div class="col-sm-9" ng-if="pageData.status=='0'" ng-bind="pageData.province+pageData.city+pageData.district"></div>
+        </div>
+
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label"><i class="required">*</i>楼盘价格范围:</label>
+            <div class="col-sm-4">
+                <input type="datetime" class="form-control" ng-disabled="send.canEdit == 0" ng-model="send.priceScope" ng-readonly="state.isDisabledAll">
+            </div>
+        </div>
+
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label">优惠政策:</label>
+            <div class="col-sm-4">
+                <input type="datetime" class="form-control" ng-disabled="state.isDisabledAll || send.canEdit == 0" ng-model="send.preferentialPolicy">
+            </div>
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label">楼盘简介:</label>
+            <div class="col-sm-8">
+                <div bm:editor bind-content="send.projectIntro" data-image-upload-url=""></div>
+            </div>
+            <!--<div class="col-sm-8">-->
+            <!--<div grouponer:binghtml bind-data="send.projectIntro"></div>-->
+            <!--</div>-->
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label">项目轮播图:</label>
+            <div class="col-sm-8" ng-show="state.id ==0 || state.status == 10|| state.status == 20|| state.status == 30">
+                <label class="doorLabel btn btn-primary">
+                    <input class="doorfile" type="file" name="" id="" ysf:imgbase accept="image/*" cb="cb.uploadImgBanner" >
+                    选择文件
+                </label>
+                <label class="upload-msg">建议上传尺寸 : 720*430</label>
+            </div>
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label"></label>
+            <div class="col-sm-9">
+                <div class="addhouses-banner" ng-repeat="item in send.shufflingFigure">
+                    <div class="addhouses-banner-box">
+                        <img ng-src="{{item.url}}">
+                        <a class="addhouses-banner-del" href="javascript:;" ng-click="act.delBannerItem(item);"></a>
+                        <a href="javascript:;" class="addhouses-banner-left" title="左移" ng-click="act.bannerMove('left', item, $index)"></a>
+                        <a href="javascript:;" class="addhouses-banner-right" title="右移" ng-click="act.bannerMove('right', item, $index)"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">分销级别:</label>-->
+            <!--<div class="col-sm-4">-->
+                <!--<div>-->
+                    <!--<input type="text" class="form-control" ng-model="send.saleLevel" ng-readonly="true">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label">分销级别:</label>
+            <div class="col-sm-9">
+                <label>
+                    <input type="radio" ng-model="send.saleLevel" ng-disabled="state.status == 0 || send.canEdit == 0" value="1">一级
+                </label>
+                <label>
+                    <input type="radio" ng-model="send.saleLevel" ng-disabled="state.status == 0 || send.canEdit == 0" value="2">二级
+                </label>
+                <label>
+                    <input type="radio" ng-model="send.saleLevel" ng-disabled="state.status == 0 || send.canEdit == 0" value="3">独家
+                </label>
+            </div>
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label class="col-sm-2 control-label">分销公司:</label>
+            <div class="col-sm-4">
+                <div>
+                    <input type="text" class="form-control" ng-model="send.saleCompany" ng-readonly="state.status == 0 || send.canEdit == 0">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"><i class="required">*</i>合作开始时间:</label>
+            <div class="col-sm-4">
+                <input type="text" id="startTime" class="form-control" ng-model="send.startTime" ng-readonly="state.isDisabledAll  || send.canEdit == 0" bm:datepick date-formate="YYYY-MM-DD" bind-date="send.startTime">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"><i class="required">*</i>合作结束时间:</label>
+            <div class="col-sm-4">
+                <input type="text" id="endTime" ng-model="send.endTime" class="form-control" ng-readonly="state.isDisabledAll || send.canEdit == 0" bm:datepick date-formate="YYYY-MM-DD" bind-date="send.endTime">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">楼盘佣金:</label>
+            <div class="col-sm-4">
+                <a href="javascript:;" class="btn-primary" ng-click="btnAddType();">添加楼盘佣金</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"></label>
+            <div class="col-sm-9">
+                <div class="more-house-box" ng-repeat="item in send.projectCommissionArr" style="width: 750px;">
+                    <div class="more-house-item">
+                        <span>&emsp;&emsp;<i class="required">*</i>房型：</span>
+                        <span>
+                            <select class="mt15 text-center" ng-model="item.projectType" ng-disabled="state.isDisabledAll || send.canEdit == 0">
+                                <option value="住宅">住宅</option>
+                                <option value="别墅">别墅</option>
+                                <option value="公寓">公寓</option>
+                                <option value="写字楼">写字楼</option>
+                                <option value="商铺">商铺</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="more-house-item">
+                        <span><i class="required">*</i>佣金分类：</span>
+                        <span>
+                            <select class="mt15 text-center" ng-model="item.commissionType" ng-disabled="state.isDisabledAll || send.canEdit == 0">
+                                <option value="11">前佣，无跳点</option>
+                                <option value="12">前佣，有跳点</option>
+                                <option value="21">后佣，无跳点</option>
+                                <option value="22">后佣，有跳点</option>
+                                <option value="31">前佣+后佣，无跳点</option>
+                                <option value="32">前佣+后佣，有跳点</option>
+                                <option value="0">其他</option>
+                            </select>
+                        </span>
+                    </div>
+                    <section ng-repeat="item2 in item.commissionContent track by $index">
+                        <div class="more-house-item" style="width:450px;" ng-if="item.commissionType != '11' && item.commissionType != '21' && item.commissionType != '31' && item.commissionType != '0'">
+                            <span><i class="required">*</i>跳点条件：</span>
+                            <span style="position: relative;">
+                                <input type="text" id="" placeholder="" ng-model="item2.title"  style="margin-top: 12px;width: 320px;" ng-readonly="state.isDisabledAll || send.canEdit == 0">
+                                <div ng-if="$index == 0" ng-hide="state.isDisabledAll || send.canEdit == 0" ng-click="btnAddJump(item)" style="margin-top: -12px;" class="typeAdd">+</div>
+                                <div ng-if="$index > 0" ng-hide="state.isDisabledAll || send.canEdit == 0" ng-click="btnDeleteJump(item,$index)" style="margin-top: -12px;" class="typeAdd">-</div>
+                            </span>
+                        </div>
+                        <section ng-if="item.commissionType != '21' && item.commissionType != '22' && item.commissionType != '0'">
+                            <div class="more-house-item" style="width:700px;">
+                                <span>&emsp;&emsp;<i class="required">*</i>前佣：</span>
+                                <span><input type="text" id="" placeholder="" ng-model="item2.beforeNum"  style="margin-top: 12px;" ng-readonly="state.isDisabledAll || send.canEdit == 0"></span>
+                                <span>
+                                    <select class="mt15 text-center" ng-model="item2.beforeNumType" style="min-width: 70px;width: 70px;" ng-disabled="state.isDisabledAll || send.canEdit == 0">
+                                        <option value="%/套">%/套</option>
+                                        <option value="元/套">元/套</option>
+                                    </select>
+                                </span>
+                                <span ng-if="!item2.beforeCashStatus" ng-hide="state.isDisabledAll || send.canEdit == 0" ng-init="item2.beforeCashStatus = false;" ng-click="item2.beforeCashStatus = !item2.beforeCashStatus" style="color: #0066FF;cursor: pointer;">添加现金奖</span>
+                                <span ng-if="item2.beforeCashStatus">
+                                    <span><i class="required">*</i>现金奖：</span>
+                                    <span><input type="text" id="" placeholder="" ng-model="item2.beforeCashPrize" size="12"  style="margin-top: 12px;"  ng-readonly="state.isDisabledAll || send.canEdit == 0"></span>
+                                    <span>元&emsp;</span>
+                                </span><span ng-if="item2.beforeCashStatus"  ng-hide="state.isDisabledAll || send.canEdit == 0" ng-init="item2.beforeCashStatus=true;" ng-click="item2.beforeCashStatus = !item2.beforeCashStatus;item2.beforeCashPrize='';" style="color: #0066FF;cursor: pointer;">删除现金奖</span>
+                            </div>
+                        </section>
+                        <section ng-if="item.commissionType != '11' && item.commissionType != '12' && item.commissionType != '0'">
+                            <div class="more-house-item" style="width:700px;">
+                                <span>&emsp;&emsp;<i class="required">*</i>后佣：</span>
+                                <span><input type="text" id="" placeholder="" ng-model="item2.afterNum"  style="margin-top: 12px;"  ng-readonly="state.isDisabledAll || send.canEdit == 0"></span>
+                                <span>
+                                    <select class="mt15 text-center" ng-model="item2.afterNumType" style="min-width: 70px;width: 70px;" ng-disabled="state.isDisabledAll || send.canEdit == 0">
+                                        <option value="%/套">%/套</option>
+                                        <option value="元/套">元/套</option>
+                                    </select>
+                                </span>
+                                <span ng-if="!item2.afterCashStatus" ng-hide="state.isDisabledAll || send.canEdit == 0" ng-init="item2.afterCashStatus = false;" ng-click="item2.afterCashStatus = !item2.afterCashStatus" style="color: #0066FF;cursor: pointer;">添加现金奖</span>
+                                <span ng-if="item2.afterCashStatus">
+                                    <span><i class="required">*</i>现金奖：</span>
+                                    <span><input type="text" id="" placeholder="" ng-model="item2.afterCashPrize" size="12" style="margin-top: 12px;"  ng-readonly="state.isDisabledAll || send.canEdit == 0"></span>
+                                    <span>元&emsp;</span>
+                                </span>
+                                <span ng-if="item2.afterCashStatus" ng-hide="state.isDisabledAll || send.canEdit == 0" ng-init="item2.afterCashStatus = true;" ng-click="item2.afterCashStatus = !item2.afterCashStatus;item2.afterCashPrize='';" style="color: #0066FF;cursor: pointer;">删除现金奖</span>
+                                
+                            </div>
+                        </section>
+                    </section>
+                    <div class="more-house-item" style="width:600px;" ng-if="item.commissionType == '0'">
+                        <span style="position: relative;top:-40px;"><i class="required">*</i>佣金信息：</span>
+                        <span>
+                            <textarea name="commissionNote" rows="5" style="margin-top:15px;width: 400px;"  placeholder=""  ng-model="item.commissionText" ng-readonly="state.isDisabledAll || send.canEdit == 0"></textarea>
+                        </span>
+                    </div>
+                    <label class="house-price-label"  ng-hide="state.isDisabledAll || send.canEdit == 0">
+                            <i class="fa fa-times" ng-click="btnDeleteType($index)"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label class="col-sm-2 control-label">备注说明:</label>
+            <div class="col-sm-4">
+                <div>
+                    <textarea class="form-control" ng-model="send.commissionExplain" ng-readonly="state.status == 0 || send.canEdit == 0" style="height:80px;"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-show="state.status != -2">
+            <label for="" class="col-sm-2 control-label">楼盘资源包:</label>
+            <div class="col-sm-8">
+                <label class="doorLabel btn" style="margin-bottom: 10px;line-height: 17px;" ng-show="pageData.status!='0' || send.canEdit == 0">
+                    <input type="file" onchange="angular.element(this).scope().fileChange()" ng-model="fileTemp" class="doorfile" name="project_files" id="report" value="" accept=".word,.xls,.xlsx,.ppt,.pdf,.jpg,.jpeg,.png,.wps"/>
+                    选择文件
+                </label><br>
+                <div ng-repeat="item in fileList" class="file-group" style="padding: 8px 0;">
+                    <span style="display:inline-block;width: auto;" ng-bind="item.fileName"></span>&emsp;
+                    <a href="javascript:void(0);" ng-click="act.dowmloadFile(item)" ng-if="send.canEdit == 0">查看</a>&ensp;
+                    <a href="javascript:void(0);" ng-click="act.doFileDelete(item)" ng-if="pageData.status!='0' && send.canEdit == 0">删除</a>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"></label>
+            <div class="col-sm-4">
+                <button class="btn btn-primary" ng-click="act.goBack()">返回</button>
+                <button class="btn btn-primary" ng-click="act.doSubmit()" ng-if="(pageData.status!='0' && send.canEdit == 1) || state.id == 0">保 存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="mapbox" ng-class="{active:state.showMap}">
+    <iframe ysf:map class="map" lng="send.lng" lat="send.lat" address="send.address" src="/kojiadmin/build/libs/getpoint/getpoint.html" frameborder="0"></iframe> 
+    <a href="javascript:;" ng-click="state.showMap=false;"></a>
+</div>

@@ -1,0 +1,183 @@
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>房屋租赁 </li>
+            <li>长租房订单 </li>
+        </ol>
+    </div>
+</div>
+<!--<div class="row">
+    <form class="form-search form-inline col-md-12">
+    	<div>
+	        <div class="bm-form-group">
+	            <label for="city">转介人姓名</label>
+	            <input type="text" class="form-control" ng-model="search.showOrderSn">
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">转介人电话</label>
+	            <input type="text" class="form-control" ng-model="search.projectName" maxlength="11">
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">转介人所属公司</label>
+	            <input type="text" style="width: 100px" class="form-control" ng-model="search.customerName">
+	        </div>
+    	</div>
+    	<div>
+	        <div class="bm-form-group">
+	            <label for="city">存房客户姓名</label>
+	            <input type="tel" class="form-control" ng-model="search.customerMobile" >
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">存房客户电话</label>
+	            <input type="text" style="width: 100px" class="form-control" ng-model="search.sendQmmfUserName" maxlength="11">
+	        </div>
+    	</div>
+    	<div>
+	        <div class="bm-form-group">
+	            <label for="city">存房建设银行网点名称</label>
+	            <input type="tel" class="form-control" ng-model="search.sendQmmfUserMobile" >
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">存房建设银行网点经办人</label>
+	            <input type="text" style="width: 100px" class="form-control" ng-model="search.receiveQmmfUserName">
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">建方经办人姓名</label>
+	            <input type="tel" class="form-control" ng-model="search.receiveQmmfUserMobile" >
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">建方经办人电话</label>
+	            <input type="tel" class="form-control" ng-model="search.receiveQmmfUserMobile" maxlength="11" >
+	        </div>
+	        <div class="bm-form-group">
+	            <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+	        </div>
+			<div class="bm-form-group">
+				<button class="btn btn-primary" ng-click="act.doExport();">导出</button>
+			</div>
+	    </div>
+    </form>
+</div>-->
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+    	<div>
+	        <div class="bm-form-group">
+	            <label for="city">小区名称</label>
+	        	<select class="form-control" ng-model="search.qmmfRentEstateId" >
+	        		<option value="">全部</option>
+					<option ng-repeat="item in rentEstateDownList" value="{{item.id}}" ng-bind="item.name"></option>
+				</select>
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">小区地址</label>
+	            <input type="text" class="form-control" ng-model="search.estateAddress">
+	        </div>
+	        <div class="bm-form-group">
+	            <label for="city">状态</label>
+	        	<select class="form-control" ng-model="search.rentStatus" ng-init="">
+	        		<option value="">全部</option>
+	        		<option value="0">待出租</option>
+	        		<option value="1">已出租</option>
+				</select>
+	        </div>
+	        <div class="bm-form-group">
+                <label for="city">租房起始时间</label>
+                <input type="text" ng-model="search.jianfangStartTime" id="jianfangStartTime" class="form-control" placeholder="" bm:datepick date-formate="YYYY-MM-DD" bind-date="search.jianfangStartTime">
+                <label>-</label>
+                <input type="text" ng-model="search.jianfangEndTime" id="jianfangEndTime" class="form-control" placeholder="" bm:datepick date-formate="YYYY-MM-DD" bind-date="search.jianfangEndTime">
+            </div>
+	        <div class="bm-form-group">
+	            <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+	        </div>
+	        <div class="bm-form-group">
+				<a class="btn btn-primary"  href="javascript:void(0);" ui-sref="rent-house-info({id:''})">添加</a>
+			</div>
+	    </div>
+    </form>
+</div>
+<div class="table-responsive" style="padding-bottom: 20px;">
+    <table>
+        <thead>
+            <tr>
+                <th width="45">序号</th>
+                <th>ID</th>
+                <th>小区名称</th>
+                <th>小区地址</th>
+                <th>房屋栋室</th>
+                <th>租金/月</th>
+                <th>长租起始时间</th>
+                <th>租客出租截至时间</th>
+                <th>存房支行</th>
+                <th>状态</th>
+                <th>开锁二维码地址</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in list">
+            <tr>
+                <th ng-bind="$index + 1"></th>
+                <td ng-bind="item.id || '-'"></td>
+                <td ng-bind="item.estateName || '-'"></td>
+                <td ng-bind="item.estateAddress || '-'"></td>
+                <td ng-bind="item.buildingRoom || '-'"></td>
+                <td ng-bind="item.monthMoney || '-'"></td>
+                <td ng-bind="item.jianfangStartTime || '-'"></td>
+                <td ng-bind="item.rentEndTime || '-'"></td>
+                <td ng-bind="item.branchBankName || '-'"></td>
+                <td ng-bind="item.rentStatus | rentStatusType"></td>
+                <td ng-bind="item.ewmCode || '-'"></td>
+                <td>
+                    <a href="javascript:void(0);" ui-sref="rent-house-info({id:item.id})">详情</a>&ensp;
+                    <a href="javascript:void(0);" ui-sref="look-house-list({id:item.id})">查看房源</a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone" class="ng-scope">
+	    	<tr>
+	    		<td colspan="14" class="dataTables_empty">抱歉， 暂无数据</td>
+	    	</tr>
+	    </tfoot>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <div class="pagin">
+	        <ul class="pagin-page">
+	            <li>
+	                <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+	            </li>
+	            <li>
+	                <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+	            </li>
+	        </ul>
+	        <div class="pagin-input-page">
+	            跳至
+	            <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+	        </div>
+	        <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+	        <span>
+	            第<em ng-bind="state.currentPage"></em>页 /
+	            共<em ng-bind="state.lastPage"></em>页&emsp;
+	    	 总记录：<em ng-bind="state.total"></em>条
+	        </span>
+	    </div>
+    </div>
+</div>
+
+<!--弹框提示是否有新的订单-->
+<section class="layer-section" ng-show="state.isShowNewOrder">
+	<div id="isShowNewOrder" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+		<div>
+			<h4 class="layer-title">
+				<span>消息通知</span>
+			</h4>
+			<div style="margin:0 15px;">
+				<div class="bm-form-group col-sm-12">
+					<div  class="textKey" style="text-align: center">您有新的存房订单汇入，请在15分钟内查看审核；</div>
+					<div  class="textKey" style="text-align: center">超时默认报备成功!</div>
+					<br/>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

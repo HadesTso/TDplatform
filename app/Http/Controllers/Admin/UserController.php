@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Input;
  */
 class UserController extends Controller
 {
+    /**
+     * 用户列表
+     * @return string
+     */
     public function index()
     {
         $nickname = Input::get('nickname', '');
@@ -59,6 +63,16 @@ class UserController extends Controller
         $list['ios_count'] = $ios_total ;
         return Response::Success($list);
 
+    }
+
+    /**
+     * 修改用户状态
+     */
+    public function updateStatus(){
+        $user_id = Input::get('user_id', 0);
+        $status = Input::get('status', 0);
+        (new User())->where('user_id', '=', $user_id)->update(['status' => $status]);
+        return Response::Success('操作成功');
     }
 
     /**

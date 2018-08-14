@@ -47,11 +47,14 @@ Route::group(['middleware' => 'WeChatToken','prefix' => 'auth'],function(){
 Route::group(
     ['prefix' => 'admin', 'namespace'=>'Admin'], function(){
     Route::group(['prefix' => 'app'], function(){
-        Route::get('list', 'ApplyController@index');
-        Route::get('add', 'ApplyController@add');
+        Route::get('list', 'ApplyController@index'); //应用列表
+        Route::get('add', 'ApplyController@add'); //添加应用
     });
     Route::group(['prefix' => 'user'], function(){
-        Route::get('list', 'UserController@index');
+        Route::get('list', 'UserController@index'); //用户列表
+        Route::get('update-status', 'UserController@updateStatus'); //更改用户状态
     });
-    Route::get('withdraw/list', 'UserController@withdrawList');
+    Route::get('withdraw/list', 'UserController@withdrawList'); //提现明细
+    Route::get('list', 'AdminController@index'); //管理员列表
+    Route::post('add', 'AdminController@add'); //管理员添加
 });

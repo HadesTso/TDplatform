@@ -25,7 +25,9 @@ class AdminController
         if ($name){
             $model->where('admin_name', 'like', '%'.$name.'%');
         }
-        $list = $model->paginate(20)->toArray();
+        $list = $model->select('admin_name', 'admin_mobile', 'created_at','operator_name')->paginate(20)->toArray();
+        $admin_user_count = (new Admin())->count();
+        $list['admin_user_count'] = $admin_user_count;
         return Response::Success($list);
     }
 
@@ -50,6 +52,20 @@ class AdminController
           'operator_name' => \Session::get('admin_name'),
         ];
         $res = (new Admin())->save($data);
+        if ($res){
+            return Response::Success('添加成功');
+        }
+        return Response::Error('添加失败');
+    }
+
+    /**
+     * 修改用户状态
+     */
+    public function updateStatus(){
+        $user_id = Input::get('admin_id', 0);
+        $status = Input::get('status', 0);
+        (new Admin())->where('admin_id', '=', $user_id)->update(['status' => $status]);
+        return Response::Success('操作成功');
     }
 
 }

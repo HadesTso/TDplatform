@@ -41,16 +41,17 @@ class AdminController
         if (empty($name)){
             return Response::Error('用户账号不能为空');
         }
-        $data = [
-          'admin_name' => $name,
-          'mobile' => $mobile,
-          'password' => md5($password),
-          'created_at' => date('Y-m-d H:i:s'),
-          'updated_at' => date('Y-m-d H:i:s'),
-          'operator_id' => \Session::get('admin_id'),
-          'operator_name' => \Session::get('admin_name'),
-        ];
-        $res = (new Admin())->save($data);
+        $model = new Admin();
+
+        $model->admin_name = $name;
+        $model->mobile = $mobile;
+        $model->password = md5($password);
+        $model->created_at = date('Y-m-d H:i:s');
+        $model->updated_at = date('Y-m-d H:i:s');
+        $model->operator_id = \Session::get('admin_id');
+        $model->operator_name = \Session::get('admin_name');
+
+        $res = $model->save();
         if ($res){
             return Response::Success('添加成功');
         }

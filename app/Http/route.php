@@ -61,5 +61,5 @@ Route::group(
     Route::post('update', 'AdminController@updateStatus'); //更改账户状态
 });
 
-Route::post('session/test','UserController@test')->middleware(['web']);;
-Route::get('session/check','UserController@check')->middleware(['web']);;
+Route::post('session/test','UserController@test');
+Route::get('session/check','UserController@check');

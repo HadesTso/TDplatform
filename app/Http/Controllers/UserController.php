@@ -61,12 +61,12 @@ class UserController extends Controller
 
     public function test(Request $request){
         $info = $request->input('num','sduhfuffjdsijf');
-        $request->session()->put('hades',$info);
+        $_SESSION['hades'] = $info;
     }
 
     public function check(Request $request)
     {
-        $info = $request->session()->get('hades');
+        $info = $_SESSION['hades'];
 
         return response(Response::Success($info));
     }

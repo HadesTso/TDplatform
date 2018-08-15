@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Libray\Response;
 use App\Model\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 
@@ -60,12 +61,12 @@ class UserController extends Controller
 
     public function test(Request $request){
         $info = $request->input('num','sduhfuffjdsijf');
-        $request->session()->put('hades',$info);
+        Session::put('hades',$info);
     }
 
-    public function check(Request $request)
+    public function check()
     {
-        $info = $request->session()->get('hades');
+        $info = Session::get('hades');
 
         return response(Response::Success($info));
     }

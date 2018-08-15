@@ -7,10 +7,6 @@ class Encryption
      * 简单对称加密算法之加密
      * @param String $string 需要加密的字串
      * @param String $skey 加密EKY
-     * @author Anyon Zou <zoujingli@qq.com>
-     * @date 2013-08-13 19:30
-     * @update 2014-10-10 10:10
-     * @return String
      */
     public function encode($string = '', $skey = 'tdplatform')
     {
@@ -25,10 +21,6 @@ class Encryption
      * 简单对称加密算法之解密
      * @param String $string 需要解密的字串
      * @param String $skey 解密KEY
-     * @author Anyon Zou <zoujingli@qq.com>
-     * @date 2013-08-13 19:30
-     * @update 2014-10-10 10:10
-     * @return String
      */
     public function decode($string = '', $skey = 'tdplatform') {
         $strArr = str_split(str_replace(array('O0O0O', 'o000o', 'oo00o'), array('=', '+', '/'), $string), 2);

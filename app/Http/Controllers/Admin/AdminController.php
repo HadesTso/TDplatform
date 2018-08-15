@@ -48,8 +48,8 @@ class AdminController
         $model->password = md5($password);
         $model->created_at = date('Y-m-d H:i:s');
         $model->updated_at = date('Y-m-d H:i:s');
-        $model->operator_id = \Session::get('admin_id');
-        $model->operator_name = \Session::get('admin_name');
+        $model->operator_id = session('admin_id');
+        $model->operator_name = session('admin_name');
 
         $res = $model->save();
         if ($res){

@@ -60,6 +60,7 @@ Route::group(
     Route::post('add', 'AdminController@add'); //管理员添加
     Route::post('update', 'AdminController@updateStatus'); //更改账户状态
 });
-
-Route::post('session/test','UserController@test');
-Route::get('session/check','UserController@check');
+Route::group(['middleware' => 'web'],function(){
+    Route::post('session/test','UserController@test');
+    Route::get('session/check','UserController@check');
+});

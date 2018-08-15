@@ -61,8 +61,10 @@ class UserController extends Controller
 
     public function test(Request $request){
         $info = $request->input('num','sduhfuffjdsijf');
-        session()->put('hades',$info);
-        session()->save();
+        $request->session()->put('hades',$info);
+        $data = $request->session()->get('hades');
+
+        return response(Response::Success($data));
     }
 
     public function check(Request $request)

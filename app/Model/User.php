@@ -8,5 +8,5 @@ class User extends Model
 {
     protected $table = 'user';
     public  $timestamps = false;
-    protected $fillable = array('user_id','openid', 'head_img','nickname','money','alipay','alipay_name','cumulative_amount','mobile','type');
+    protected $fillable = array('openid', 'head_img','nickname','money','alipay','alipay_name','cumulative_amount','mobile','type');
 }

@@ -33,8 +33,8 @@ class LoginController extends Controller
             'admin_id' => $admin->admin_id,
         ];
         //存session
-        \Session::put('admin_id', $admin->admin_id);
-        \Session::put('admin_name', $admin->admin_name);
+        session(['admin_id' => $admin->admin_id]);
+        session(['admin_name' => $admin->admin_name]);
         return response(Response::Success($data));
 
     }

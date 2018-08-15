@@ -28,7 +28,7 @@ class LoginController extends Controller
 
         $Token = $this->setLoginInfo($admin);
         $data = [
-            'token' => $Token,
+            'token' => $Token['Token'],
             'admin_name' => $admin->admin_name,
             'admin_id' => $admin->admin_id,
         ];

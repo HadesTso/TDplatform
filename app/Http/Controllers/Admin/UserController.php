@@ -104,4 +104,45 @@ class UserController extends Controller
         $list['people_count'] = $people_count;
         return Response::Success($list);
     }
+
+    /**
+     * 操作打款成功或者打款失败
+     * @return string
+     */
+    public function DealPay(){
+        $withdraw_id = Input::get('withdraw_id', 0);
+        $status = Input::get('status',1);
+        if (empty($withdraw_id)){
+            return Response::Error('提现明细id不能为空');
+        }
+        $model = new Withdraw();
+        $info = $model->where('withdraw_id', '=', $withdraw_id)->first()->toArray();
+        if (empty($info)){
+            return Response::Error('提现信息不存在');
+        }
+        try{
+            \DB::beginTransaction();
+            session_start();
+            if ($status == 2){
+                //付款成功
+                //修改用户的可提现金额
+                $user_model = new User();
+                $user_info = $user_model->where('user_id', $info['user_id'])->first()->toArray();
+                if ($user_info['money'] < $info['money']){
+                    return Response::Error('打款金额超过用户的可提现金额');
+                }
+                $user_model->where('user_id', $info['user_id'])->update(['money' => $user_info['money'] - $info['money']]);
+                $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => $_SESSION['admin_id'],'admin_name' => $_SESSION['admin_name'],'updated_at' => date('Y-m-d H:i:s')]);
+            }
+            if ($status == 3){
+                //打款失败
+                $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => $_SESSION['admin_id'],'admin_name' => $_SESSION['admin_name'], 'updated_at' => date('Y-m-d H:i:s')]);
+            }
+            \DB::commit();
+            return Response::Success('操作成功');
+        }catch (\Exception $e){
+            \DB::rollBack();
+            return Response::Error('操作失败');
+        }
+    }
 }

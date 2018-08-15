@@ -56,6 +56,7 @@ Route::group(
         Route::get('update-status', 'UserController@updateStatus'); //更改用户状态
     });
     Route::get('withdraw/list', 'UserController@withdrawList'); //提现明细
+    Route::get('deal/pay', 'UserController@DealPay'); //提现明细
     Route::get('list', 'AdminController@index'); //管理员列表
     Route::post('add', 'AdminController@add'); //管理员添加
     Route::post('update', 'AdminController@updateStatus'); //更改账户状态

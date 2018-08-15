@@ -36,7 +36,7 @@ class AdminController
      */
     public function add(){
         $name = Input::get('name','');
-        $mobile = Input::get('mobile','');
+        $mobile = Input::get('mobile',0);
         $password = Input::get('password', '');
         if (empty($name)){
             return Response::Error('用户账号不能为空');
@@ -62,9 +62,9 @@ class AdminController
      * 修改用户状态
      */
     public function updateStatus(){
-        $user_id = Input::get('admin_id', 0);
+        $admin_id = Input::get('admin_id', 0);
         $status = Input::get('status', 0);
-        (new Admin())->where('admin_id', '=', $user_id)->update(['status' => $status]);
+        (new Admin())->where('admin_id', '=', $admin_id)->update(['status' => $status]);
         return Response::Success('操作成功');
     }
 

@@ -42,14 +42,14 @@ class AdminController
             return Response::Error('用户账号不能为空');
         }
         $model = new Admin();
-
+        session_start();
         $model->admin_name = $name;
         $model->admin_mobile = $mobile;
         $model->password = md5($password);
         $model->created_at = date('Y-m-d H:i:s');
         $model->updated_at = date('Y-m-d H:i:s');
-        $model->operator_id = \Session::get('admin_id');
-        $model->operator_name = \Session::get('admin_name');
+        $model->operator_id = $_SESSION['admin_id'];
+        $model->operator_name = $_SESSION['admin_name'];
 
         $res = $model->save();
         if ($res){

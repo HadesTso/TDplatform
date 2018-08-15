@@ -15,7 +15,7 @@ class MessageController extends Controller
 {
     /**
      *
-     * 获取手机验证码
+     * 获取验证码
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
@@ -50,7 +50,7 @@ class MessageController extends Controller
 
     /**
      *
-     * 检测验证码是否正确
+     * 验证验证码
      *
      * @param $phone string
      * @param $use_type integer

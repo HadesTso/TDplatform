@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     *
      * 个人中心
-     *
      * @param User $userModel
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
@@ -29,9 +27,7 @@ class UserController extends Controller
 
 
     /**
-     *
      * 绑定修改支付宝
-     *
      * @param User $userModel
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
@@ -59,5 +55,21 @@ class UserController extends Controller
     public function amWiki()
     {
         return view(public_path('amWiki/index.html'));
+    }
+
+
+    public function test(Request $request){
+        $info = $request->input('num','sduhfuffjdsijf');
+        session()->put('hades',$info,86400);
+        $data = $request->session()->get('hades');
+
+        return response(Response::Success($data));
+    }
+
+    public function check(Request $request)
+    {
+        $info = session()->get('hades');
+
+        return response(Response::Success($info));
     }
 }

@@ -12,6 +12,13 @@ use App\Model\Apply;
 
 class WithdrawController extends Controller
 {
+    /**
+     * 提现功能
+     * @param Request $request
+     * @param User $userModel
+     * @param Withdraw $withdrawModel
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function withdraw(Request $request, User $userModel, Withdraw $withdrawModel)
     {
         $money = $request->input('money');
@@ -46,6 +53,11 @@ class WithdrawController extends Controller
         }
     }
 
+    /**
+     * 提现列表
+     * @param Withdraw $withdrawModel
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function withdrawList(Withdraw $withdrawModel)
     {
         $withdrawlist = $withdrawModel->where([
@@ -74,6 +86,14 @@ class WithdrawController extends Controller
     }
 
 
+    /**
+     * 领取奖励功能
+     * @param Request $request
+     * @param Income $incomeModel
+     * @param Apply $applyModel
+     * @param User $userModel
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function incomeReceive(Request $request, Income $incomeModel, Apply $applyModel, User $userModel)
     {
         $app_id = $request->input('app_id');
@@ -82,6 +102,11 @@ class WithdrawController extends Controller
 
         if (!$apply){
             return response(Response::Error('该应用不存在'));
+        }
+
+        $user = $userModel->where('user_id',1)->first();
+        if ($user->type != $apply->type){
+            return response(Response::Error('该用户类型不符合'));
         }
         DB::beginTransaction();
         try{
@@ -95,7 +120,6 @@ class WithdrawController extends Controller
 
             $incomeModel->save();
 
-            $user = $userModel->where('user_id',1)->first();
             $money = $apply->money + $user->money;
             $cumulative_amount = $apply->money + $user->cumulative_amount;
 

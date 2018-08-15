@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class ApplyController extends Controller
 {
+    /**
+     * 应用列表
+     * @param Apply $applyModel
+     * @param Income $incomeModel
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|string|\Symfony\Component\HttpFoundation\Response
+     */
     public function appList(Apply $applyModel, Income $incomeModel, Request $request)
     {
         $app_id = $request->input('app_id');

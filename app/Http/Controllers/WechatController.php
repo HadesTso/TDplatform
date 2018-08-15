@@ -116,7 +116,6 @@ class WechatController extends Controller
         return $response;
     }
 
-
     protected function setLoginInfo($user){
         $Token = [
             'openid'  => $user->openid,
@@ -138,7 +137,7 @@ class WechatController extends Controller
     public function AutoLogin()
     {
         $token     = Input::get('token');
-        $user_id    = Input::get('user_id');
+        $user_id   = Input::get('user_id');
         $signature = Input::get('signature', '');
         $timestamp = Input::get('timestamp', '');
 
@@ -158,11 +157,11 @@ class WechatController extends Controller
             return Response::Error('该用户已被禁用');
         }
         //验证签名是否正确
-        $sign['auto_login_token'] = $token;
+        $sign['token']             = $token;
         $sign['user_id']           = $user_id;
-        $sign['timestamp']        = $timestamp;
+        $sign['timestamp']         = $timestamp;
         ksort($sign);
-        $sign_str = implode($sign, '');
+        $sign_str = implode('', $sign);
         if(sha1($sign_str) != $signature) {
             return Response::Error('签名错误');
         }

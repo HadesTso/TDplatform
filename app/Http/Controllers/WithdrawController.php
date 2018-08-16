@@ -104,6 +104,10 @@ class WithdrawController extends Controller
             return response(Response::Error('该应用不存在'));
         }
 
+        if ($apply->num > 0){
+            return response(Response::Error('该应用数量不足'));
+        }
+
         $user = $userModel->where('user_id',1)->first();
         if ($user->type != $apply->type){
             return response(Response::Error('该用户类型不符合'));
@@ -128,6 +132,12 @@ class WithdrawController extends Controller
             ])->update([
                 'money' => $money,
                 'cumulative_amount' => $cumulative_amount,
+            ]);
+
+            $applyModel->where([
+                'app_id' => $app_id
+            ])->where('num','>',0)->update([
+                'num' => ($apply->num - 1)
             ]);
             DB::commit();
             return response(Response::Success_No_Data('领取奖励成功'));

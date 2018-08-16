@@ -41,15 +41,20 @@ class AdminController
         if (empty($name)){
             return Response::Error('用户账号不能为空');
         }
+
         $model = new Admin();
+        $adminInfo = $model->where('admin_name',$name)->first();
+        if ($adminInfo){
+            return Response::Error('用户名已存在');
+        }
         session_start();
         $model->admin_name = $name;
         $model->admin_mobile = $mobile;
         $model->password = md5($password);
         $model->created_at = date('Y-m-d H:i:s');
         $model->updated_at = date('Y-m-d H:i:s');
-        $model->operator_id = $_SESSION['admin_id'];
-        $model->operator_name = $_SESSION['admin_name'];
+        $model->operator_id = session()->get('admin_id');
+        $model->operator_name = session()->get('admin_name');
 
         $res = $model->save();
         if ($res){

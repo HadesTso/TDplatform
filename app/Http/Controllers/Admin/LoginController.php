@@ -26,21 +26,20 @@ class LoginController extends Controller
             return response(Response::Error('帐号或密码错误'));
         }
 
-        $Token = $this->setLoginInfo($admin);
-        $data = [
-            'token' => $Token['Token'],
-            'admin_name' => $admin->admin_name,
-            'admin_id' => $admin->admin_id,
-        ];
+            /*$Token = $this->setLoginInfo($admin);
+              $data = [
+                  'token' => $Token['Token'],
+                  'admin_name' => $admin->admin_name,
+                  'admin_id' => $admin->admin_id,
+               ];*/
         //存session
-        session_start();
-        $_SESSION['admin_id'] = $admin->admin_id;
-        $_SESSION['admin_name'] = $admin->admin_name;
-        return response(Response::Success($data));
+        session()->put('admin_id',$admin->admin_id,86400);
+        session()->put('admin_name',$admin->admin_name,86400);
+        return response(Response::Success());
 
     }
 
-    protected function setLoginInfo($admin){
+    /*protected function setLoginInfo($admin){
         $Token = [
             'admin_id'  => $admin->admin_id,
             'admin_mobile' => $admin->admin_mobile,
@@ -52,5 +51,5 @@ class LoginController extends Controller
 
         session()->put($Token,time(),86400);
         return ['Token' => $Token];
-    }
+    }*/
 }

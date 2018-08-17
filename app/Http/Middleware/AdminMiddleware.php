@@ -13,7 +13,7 @@ class AdminMiddleware
         if (empty($admin_id)){
             return Response::NotLogin('no_login');
         }
-        return true;
+        return '';
 //        $token = $request->header('token');
 //        $token = $token?$token:$request->input('token','');
 //        if(!$token){

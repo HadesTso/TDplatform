@@ -9,7 +9,7 @@ class AdminMiddleware
 {
     public function handle($request, Closure $next)
     {
-        $admin_id = \Session::get('admin_id');
+        $admin_id = session()->get('admin_id');
         if (empty($admin_id)){
             return Response::NotLogin('no_login');
         }
@@ -29,6 +29,6 @@ class AdminMiddleware
 //
 //        session()->put($token,time(),86400);
 //        define("UID",$TokenData["user_id"]);
-//        return $next($request);
+        return $next($request);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App\Libray\Response;
 use Closure;
 
-class AdminMiddleware extends Middleware
+class AdminMiddleware
 {
     public function handle($request, Closure $next)
     {

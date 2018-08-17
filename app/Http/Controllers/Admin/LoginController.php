@@ -26,16 +26,16 @@ class LoginController extends Controller
             return response(Response::Error('帐号或密码错误'));
         }
 
-            /*$Token = $this->setLoginInfo($admin);
+            /*$Token = $this->setLoginInfo($admin);*/
               $data = [
-                  'token' => $Token['Token'],
+                  //'token' => $Token['Token'],
                   'admin_name' => $admin->admin_name,
                   'admin_id' => $admin->admin_id,
-               ];*/
+               ];
         //存session
         session()->put('admin_id',$admin->admin_id,86400);
         session()->put('admin_name',$admin->admin_name,86400);
-        return response(Response::Success());
+        return response(Response::Success($data));
 
     }
 

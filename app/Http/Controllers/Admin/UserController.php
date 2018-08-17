@@ -43,14 +43,20 @@ class UserController extends Controller
             $model->where('user_id', '=', $user_id);
         }
         $list = $model->paginate(20)->toArray();
-        $try_num = (new Income())->select('user_id',\DB::raw('count(app_id) as try_num'))->groupby('user_id')->get();
+        $data = (new Income())->select('user_id',\DB::raw('count(app_id) as try_num'))->groupby('user_id')->get();
+
+        $try_num = json_encode($data);
+        $try_num = json_decode($try_num,true);
         if ($try_num){
-            $try_num = array_column($try_num, 'user_id');
+            $try_num = array_column($try_num,'try_num' , 'user_id');
         }
+        //dump($try_num);exit;
+
         if ($list['data']){
             foreach ($list['data'] as &$item){
                 if (isset($try_num[$item['user_id']])){
-                    $item['try_num'] = $try_num[$item['user_id']]['try_num'];
+                    //$item['try_num'] = $try_num[$item['user_id']]['try_num'];
+                    $item['try_num'] = $try_num[$item['user_id']];
                 }else{
                     $item['try_num'] = 0;
                 }

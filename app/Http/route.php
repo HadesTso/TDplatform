@@ -43,10 +43,18 @@ Route::group(['middleware' => ['wechat.oauth']], function () {
 Route::group(['middleware' => 'WeChatToken','prefix' => 'auth'],function(){
 
 });
+
+/*需要微信登录的接口*/
+Route::group(['middleware' => 'AdminMiddleware','prefix' => 'admin'],function(){
+
+});
+
+
+//后台登录
+Route::post('admin/auth', 'Admin\LoginController@login'); //登录接口
 //后台接口
 Route::group(
-    ['prefix' => 'admin', 'namespace'=>'Admin'], function(){
-    Route::post('auth', 'LoginController@login'); //登录接口
+    ['middleware' => 'AdminMiddleware','prefix' => 'admin', 'namespace'=>'Admin'], function(){
     Route::group(['prefix' => 'app'], function(){
         Route::get('list', 'ApplyController@index'); //应用列表
         Route::get('add', 'ApplyController@add'); //添加应用

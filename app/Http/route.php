@@ -44,12 +44,6 @@ Route::group(['middleware' => 'WeChatToken','prefix' => 'auth'],function(){
 
 });
 
-/*需要微信登录的接口*/
-Route::group(['middleware' => 'AdminMiddleware','prefix' => 'admin'],function(){
-
-});
-
-
 //后台登录
 Route::post('admin/auth', 'Admin\LoginController@login'); //登录接口
 //后台接口

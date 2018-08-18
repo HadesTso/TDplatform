@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>百度api测试</title>
+</head>
+<body>
+    <div id="content">{{msg}}</div>
+    
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=59chZIvc7b4wB3mIQ6ZnZgGkaioANb7q"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script src="tools/mytools.js"></script>
+    <script>
+        (function() {
+            var myGeo = new BMap.Geocoder();
+            // 地址解析
+            myGeo.getPoint("北京市海淀区上地10街", function(point){
+                if (point) {
+                    console.log(point);
+                }else{
+                    alert("您选择地址没有解析到结果!");
+                }
+            }, "北京市");
+
+            var vm = new Vue({
+                el:'#content',
+                data: {
+                    msg: '111111'
+                },
+                methods:{
+
+                },
+                mounted: function() {
+                    console.log(this.$setting);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

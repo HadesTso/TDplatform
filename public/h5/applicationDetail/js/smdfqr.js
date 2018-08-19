@@ -27,7 +27,7 @@
         methods:{
             getSmdfqrList: function(opt, cb, cberr) {
                 var that = this;
-                var url = '/jf/save-order/order-list';
+                var url = '/app/list';
                 that.$httpGet(url, opt)
                     .then(cb, cberr);
             },
@@ -105,26 +105,45 @@
                 });
             },
             testApp: function (rul) {
-                var timeout, t = 1000, hasApp = true;
-                setTimeout(function () {
-                    if (hasApp) {
-                        alert('安装了app');
-                    } else {
-                        alert('未安装app');
-                    }
-                    document.body.removeChild(ifr);
-                }, 2000)
-                var t1 = Date.now();
-                var ifr = document.createElement("iframe");
-                ifr.setAttribute('src', url);
-                ifr.setAttribute('style', 'display:none');
-                document.body.appendChild(ifr);
-                timeout = setTimeout(function () {
-                    var t2 = Date.now();
-                    if (!t1 || t2 - t1 < t + 100) {
-                        hasApp = false;
-                    }
-                }, t);
+                //判断时Android还时iOS
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+                function android(){
+                    window.location.href = "openwjtr://com.tyrbl.wjtr"; /***打开app的协议，有安卓同事提供***/
+                    window.setTimeout(function(){
+                        window.location.href = "http://www.wjtr.com/download/index.html"; /***打开app的协议，有安卓同事提供***/
+                    },2000);
+                };
+                function ios(){
+                    var ifr = document.createElement("iframe");
+                    //ifr.src = "openwjtr://com.tyrbl.wjtr"; /***打开app的协议，有ios同事提供***/
+                    //ifr.src = "openwjtr://com.from.CarServiceDemo"; /***打开app的协议，有ios同事提供***/
+                    ifr.src = "weixin://"; /***打开QQ app的协议，有ios同事提供***/
+                    ifr.style.display = "none";
+                    document.body.appendChild(ifr);
+                    window.setTimeout(function(){
+                        document.body.removeChild(ifr);
+                        window.location.href = "http:baidu.html"; /***下载app的地址***/
+                    },2000)
+                };
+                if(isAndroid){
+                    android()
+                }
+                if(isiOS){
+                    ios()
+                }
+        },
+        testApp: function () {
+            //判断时Android还时iOS
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+            if(isiOS){
+                //if ([[UIApplication sharedApplication] canOpenURL:[NSURL  URLWithString:@"mqq://"]]){
+                //    NSLog(@"install--");
+                //}else{
+                //    NSLog(@"no---");
+                //}
             }
         },
         mounted: function() {
@@ -133,6 +152,10 @@
             that.urlParams = that.$tools.getUrlParams();
             that.urlStatus = that.urlParams.status;
             that.ajaxParams.status = that.urlStatus;
+
+            //判断时Android还时iOS
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 
             //console.log($('body').height());
             // 下拉刷新

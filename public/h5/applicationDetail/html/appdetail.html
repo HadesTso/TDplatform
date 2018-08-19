@@ -31,7 +31,7 @@
                 </div>
                 <div class="li-part2">
                     <div class="li-part2-left">appstore搜索排名第<span>1</span>名</div>
-                    <a href="" class="li-part2-right">前往下载</a>
+                    <a href="" class="li-part2-right" @click="testApp()">前往下载</a>
                 </div>
             </li>
             <li>
@@ -51,34 +51,8 @@
     </div>
     <!--加载-->
     <!--<div class="loading" v-if="loading">-->
-        <!--<img src="../images/loading.gif" alt=""/>-->
+    <!--<img src="../images/loading.gif" alt=""/>-->
     <!--</div>-->
-    <!--确认签约弹框-->
-    <div class="layer">
-        <div class="layer-content">
-            <!--<div class="title">确认签约</div>-->
-            <div style="font-size: 1.19rem;margin-top: 1rem;padding-left: 1rem;">上传签约凭证：<span style="color: red">*</span></div>
-            <div class="imgs">
-                <ul>
-                    <li v-for="(item,index) in makeSureAjaxParams.imgurls">
-                        <a href="javascript:;" @click="bigPic(item,index,'2')">
-                            <img :src="item" alt=""/>
-                        </a>
-                        <!--<span @click=deletePic(index)></span>-->
-                    </li>
-                    <li v-if="makeSureAjaxParams.imgurls.length < 12">
-                        <a href="javascript:;" @click="addPic()">
-                            <img src="../images/addPic.png" alt=""/>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!--<div class="layerBtn">-->
-                <!--<button class="active" @click="cancle">取消</button>&nbsp;&nbsp;&nbsp;-->
-                <!--<button @click=submit()>提交</button>-->
-            <!--</div>-->
-        </div>
     </div>
 
     <!--放大图片弹框-->

@@ -18,7 +18,7 @@ class LoginController extends Controller
         $password = $request->input('password');
 
         $admin= Admin::where([
-            'admin_name' => $admin_name,
+            'admin_mobile' => $admin_name,
             'password' => md5($password)
         ])->first();
 
@@ -31,6 +31,7 @@ class LoginController extends Controller
                   //'token' => $Token['Token'],
                   'admin_name' => $admin->admin_name,
                   'admin_id' => $admin->admin_id,
+                  'admin_mobile' => $admin->admin_mobile,
                ];
         //存session
         session()->put('admin_id',$admin->admin_id,86400);

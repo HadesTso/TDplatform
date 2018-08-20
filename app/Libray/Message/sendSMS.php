@@ -123,7 +123,6 @@ class sendSMS
         $rest->setAppId($this->appId);
 
         // 发送模板短信
-        echo "Sending TemplateSMS to $to <br/>";
         $result = $rest->sendTemplateSMS($to, $datas, $tempId);
         if ($result == NULL) {
             echo "result error!";

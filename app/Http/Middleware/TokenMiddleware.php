@@ -44,6 +44,6 @@ class TokenMiddleware
 //
 //        session()->put($token,time(),86400);
 //        define("UID",$TokenData["user_id"]);
-//        return $next($request);
+        return $next($request);
     }
 }

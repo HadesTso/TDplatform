@@ -48,9 +48,8 @@ class UserController extends Controller
         $try_num = json_encode($data);
         $try_num = json_decode($try_num,true);
         if ($try_num){
-            $try_num = array_column($try_num,'try_num' , 'user_id');
+            $try_num = array_column($try_num, 'try_num', 'user_id');
         }
-        //dump($try_num);exit;
 
         if ($list['data']){
             foreach ($list['data'] as &$item){

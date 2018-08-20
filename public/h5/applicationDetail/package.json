@@ -1,0 +1,22 @@
+{
+  "name": "jianfang-app",
+  "version": "0.0.1",
+  "description": "webview project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jianfang"
+  ],
+  "author": "xy-webgroup",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "jquery": "^2.2.4",
+    "luxon": "^1.2.1",
+    "vue": "^2.5.16",
+    "vue-datetime": "^1.0.0-beta.3",
+    "weekstart": "^1.0.0"
+  }
+}

@@ -1,0 +1,396 @@
+html, body {height: 100%;}
+#sjfy{position: relative;height: 100%;margin: 0;}
+.titlebar .sjfy-back {
+	display: none;
+	z-index: 9999;
+    position: absolute;
+    left: 0.67rem;
+    top: 50%;
+    width: 1.33rem;
+    height: 1.33rem;
+    background: url(../images/titlebar-back.png) no-repeat center;
+    -webkit-background-size: 0.78rem 1.33rem;
+    background-size: 0.78rem 1.33rem;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+.titlebar .sjfy-code,.titlebar .sjfy-rentinfo {
+	display: none;
+	z-index: 9999;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: auto;
+    height: 1.33rem;
+    color: #fff;
+    transform: translate(0, -50%);
+}
+*{font-size:1.19rem;:-webkit-input-placeholder{ font-size:1.1rem;}}
+.titlebar .sjfy-code.active,.titlebar .sjfy-rentinfo.active,.titlebar .sjfy-back.active{display: block;}
+.tab{display: -ms-flexbox;display: flex;line-height: 40px;height: 40px;width: 100%;}
+.tab .tab-item{position: relative;-ms-flex: 1;flex: 1;text-align: center;color: #000;background:#fafafa;border-right: 1px solid #e3e3e3;box-sizing: border-box;}
+.tab .tab-item:last-child{border: none;}
+.tab .tab-item.active{background:#ececec;}
+.hr{height: 15px;background: #f8f8f8;}.form-label{text-align: center;}
+.line{position: relative;z-index:99;height: 1px;background: #e3e3e3;overflow: auto;}
+.first-tab{display:none;height: auto;width: 100%;overflow: auto;}
+.first-tab.active{display:block;}
+.second-tab{display:none;height: auto;width: 100%;overflow: auto;}
+.second-tab.active{display:block;}
+.third-tab{display:none;height: auto;width: 100%;overflow: auto;}
+.third-tab.active{display:block;}
+.form-input > span,.form-select > span{display:inline-block;z-index:9;position: absolute;top:0;height:42px;line-height:42px;color: #000;}
+.form-basis{height:auto;line-height:30px;background: #f8f8f8;padding: 10px 16px;}
+.form-basis > span{color: #999;}
+.form-base{height:auto;line-height:30px;background:#fff;padding: 10px 16px 0 16px;}
+.form-base > span{color: #999;}
+.form-group{padding: 20px 16px 5px 16px;line-height:1.4;font-weight:normal;color:#333333;}
+.form-group > span > span.small{color: #999;}
+.form-group:first-child{padding-top:0;}
+.required{margin-left: 5px;color: #f75522;}
+.form-label .houseTab{
+	display: inline-block;
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    width: 100%;
+    min-width: 55px;
+    padding: 0 40px;
+    text-align: left;
+    color: #333;
+    border-bottom: 1px solid #e3e3e3;
+    
+}
+.form-label .houseTab > i{
+	position: absolute;
+	left: 16px;top:11px;
+	height: 20px;width: 20px;
+	background-image: url("../images/check-off.png"); background-size: 100% 100%;}
+.form-label .houseTab.active > i{background-image: url("../images/check-on.png");}
+.form-label .houseTab > input{position: absolute;opacity: 0;}
+.form-input{position: relative;height:42px;line-height:42px;margin: 0 16px;}
+.form-input > input{position: relative;width: 100%;height: 100%;resize: none;text-indent:8em;
+color: #999;border:none;box-sizing: border-box;outline:none;font-size: 1.19rem;}
+.form-input > i.datetime{
+	position: absolute;
+	right: 0;top:15px;
+	height: 12px;width: 6px;
+	background-image: url("../images/select-icon.png"); background-size: 100% 100%;}
+.form-input > .search-ul{
+	display: none;
+	z-index: 9999;
+    position: absolute;
+    top: 101%;
+    width: 100%;
+    background: #fff;
+    box-sizing: border-box;
+    max-height: 290px;
+    border: 1px solid #999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.form-input > .search-ul.active{display: block;}
+.form-input > .search-ul>ul{
+	height: auto;
+    width: 100%;
+    background: #fff;
+    padding-bottom: 5px;
+    color: #00aaff;
+    box-sizing: border-box;
+    
+}
+.form-input > .search-ul>ul>li{
+    height: 32px;
+    line-height: 32px;
+    padding: 0 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.form-input > .search-ul>ul>li:hover {
+    background: #00aaff;
+    color: #fff;
+}
+.form-textarea{position: relative;height:auto;margin: 0 16px;overflow: auto;}
+.form-textarea > textarea{position: relative;width: 100%;height: auto;resize: none;padding: 10px 5px 5px 8em;line-height: 1.5;color: #999;border:none;box-sizing: border-box;border-radius: 6px;outline: none;    font-size: 1.19rem;}
+.form-textarea > span{display:inline-block;z-index:9;position: absolute;top:10px;color: #000;}
+.form-textarea > label.num{display:inline-block;z-index:9;position: absolute;bottom:10px;right:0px;color: #999;}
+.form-textarea > label.placeholder{
+	position: absolute;width: 100%;height: 100%;resize: none;padding: 10px 0 5px 8em;
+	color: #999;border:none;box-sizing: border-box;outline:none;
+}
+/*.form-textarea{position: relative;height:auto;margin: 0 16px;overflow: auto;}
+.form-textarea > textarea{position: relative;width: 100%;height: auto;resize: none;padding: 5px 0;line-height: 1.5;color: #999;border:none;box-sizing: border-box;border-radius: 6px;outline: none;}
+*/
+
+.form-select{position: relative;height:42px;line-height:42px;margin: 0 16px;overflow: auto;}
+
+.form-input > label,.form-select > label{position: absolute;width: 100%;height: 100%;resize: none;padding:0;text-indent: 8em;
+color: #999;border:none;box-sizing: border-box;outline:none;}
+.form-select > i{position: absolute;
+	right: 0;top:15px;
+	height: 12px;width: 6px;
+	background-image: url("../images/select-icon.png"); background-size: 100% 100%;}
+.form-select > select{z-index:999;position: relative;width:100%;opacity:0;text-indent:8em;height: auto;resize: none;padding: 5px 0;color: #999;border: 1px solid #999999;box-sizing: border-box;border-radius: 6px;outline: none;}
+.form-upload{height:auto;padding: 16px;overflow: auto;}
+.form-upload > .upload-box{float: left;height: 5rem;width: 5rem;background-image: url("../images/upload-icon.png"); background-size: 100% 100%;}
+.form-upload > .upload-box > .upload{width: 100%;height: 100%;opacity: 0;}
+.form-btn{position: relative;right: 0;width: 100%;}
+.form-btn > input{height: 40px;line-height: 40px;margin:0 16px;width:-webkit-calc(100% - 32px);color:#FFFFFF;background: #00aaff;font-size:1.25rem;border: none;resize: none;box-sizing: border-box;border: 0;border-radius:5px;outline: 0;}
+
+.review-img{position: relative;height: 5rem;width: 5rem;float: left;margin-right: 1.2rem;margin-bottom: 1.2rem;}
+.review-img:nth-child(4n+4){margin-right: 0;}
+.review-img img{height: 100%;width: 100%;margin: auto;border: none;border-radius: 4px;}
+.review-img a{position: absolute;width: 20px;height: 20px;right: -10px;top: -10px;background: red;background: url("../images/delete.png") no-repeat center;-webkit-background-size: cover;background-size: cover;}
+
+.vdatetime>input.vdatetime-input{position: relative;width: 100% !important; height: 100%;resize: none;padding: 5px 0;text-indent:8em;color: #999;
+    background-color: transparent !important;border: none;box-sizing: border-box;border-radius: 6px;outline: 0;    font-size: 1.19rem;}
+.vdatetime-popup .vdatetime-popup__header{
+	display: none;
+}
+.layer-msg{
+  	display: none;
+  	z-index: 99999;
+      position:fixed;
+      left:0;top:0;
+      height:100%;
+      width:100%;
+      background: rgba(0,0,0,0.3);
+  }
+
+  .layer-msg.active{
+  	display: block;
+  }
+  .msg-box{
+      position: fixed;
+      z-index: 99999;
+      width: 300px;
+      left: 50%;
+      top: 50%;
+      background: #fff;
+      text-align: center;
+      transform: translate(-50%,-50%);
+      -webkit-transform: translate(-50%,-50%);
+      border-radius: 12px;
+      overflow: hidden;
+  }
+  .msg-text{
+      padding:35px 0;
+      text-align: center;
+      color: #000;
+  }
+  .msg-btn{
+      display: inline-block;
+      height: 50;
+      width: 100%;
+      line-height: 50px;
+      font-size: 17px;
+      background: #fff;
+      color: #02a8f4;
+      border-radius: 4px;
+      border-top: 2px solid #f7f7f7;
+  }
+  
+.layer-estate{
+  	display: none;
+  	z-index: 99999;
+      position:fixed;
+      left:0;top:0;
+      height:100%;
+      width:100%;
+      background: rgba(0,0,0,0.3);
+  }
+
+  .layer-estate.active{
+  	display: block;
+  }
+  .msg-box{
+      position: fixed;
+      z-index: 99999;
+      width: 300px;
+      left: 50%;
+      top: 50%;
+      background: #fff;
+      text-align: center;
+      transform: translate(-50%,-50%);
+      -webkit-transform: translate(-50%,-50%);
+      border-radius: 12px;
+      overflow: hidden;
+  }
+  .msg-text{
+      padding:35px 0;
+      text-align: center;
+      color: #000;
+  }
+  .estate-btn{
+      display: inline-block;
+      float: left;
+      height: 50;
+      width: 50%;
+      line-height: 50px;
+      font-size: 17px;
+      background: #fff;
+      color: #02a8f4;
+      border-radius: 4px;
+      border-top: 2px solid #f7f7f7;
+  }
+  
+.layer-rentInfo{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 99999;
+}
+.layer-rentInfo.active{
+    display: block;
+}
+.layer-rentInfo .layer-content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    height: 170px;
+    padding: 25px;
+    background-color: #fff;
+    transform: translate(-50%,-50%);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.layer-rentInfo .layer-content label{
+    height: 2rem;
+    line-height: 2rem;
+}
+.layer-rentInfo .layer-content a{position: absolute;width: 20px;height: 20px;right: -10px;top: -10px;background: red;background: url("../images/delete.png") no-repeat center;-webkit-background-size: cover;background-size: cover;}
+*{outline:none;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input:disabled{
+	background-color:transparent;
+	color:#333;
+}
+
+textarea:disabled{
+	background-color:transparent;
+	color:#333;
+}
+
+
+
+
+.bigPic{
+	visibility: hidden;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+.bigPic.active{
+    visibility: inherit;
+    pointer-events: auto;
+}
+.bigPic .imgBox{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /*margin-left: 50%;*/
+    /*margin-top: 50%;*/
+    /*transform: translate(-50%,0%);*/
+}
+/*.bigPic .imgBox img{*/
+    /*width: 100%;*/
+    /*height: auto;*/
+    /*position: absolute;*/
+    /*margin-left: 50%;*/
+    /*margin-top: 50%;*/
+    /*transform: translate(-50%,-50%);*/
+/*}*/
+.bigPic .imgBox span{
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: url("../images/delete.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+/*��ʾ����*/
+.tip{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 10;
+}
+.tip .tip-content{
+    width: 60%;
+    /*height: 20rem;*/
+    /*margin-left: 10%;*/
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /*margin-left: -2.41rem;*/
+    /*margin-top: -10rem;*/
+    transform: translate(-50%,-50%);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+}
+.tip .tip-content .tip-title{
+    font-size: 1.3rem;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    text-align: center;
+    /*border-bottom: 1px solid gray;*/
+}
+.tip .tip-content .tip-msg{
+    text-align: center;
+    font-size: 1.1rem;
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 1px solid gray;
+}
+.tip .tip-content a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    /*padding: 0.5rem 1rem;*/
+    height: 2.3rem;
+    line-height: 2.3rem;
+    text-align: center;
+}
+
+.titlebar .deleteImg{
+	position: absolute;
+    right: 0.67rem;
+    top: 50%;
+    font-size: 1.26rem;
+    color: #fff;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    width: 1.8rem;
+    height: 1.8rem;
+    background-image: url("../images/deleteImg.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+/*iphone6*/
+@media only screen and (min-width: 0px) and (max-width: 350px){
+	.review-img{margin-right: 1.1rem;margin-bottom: 1rem;}
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="../css/base.css?v=6"/>
+    <script src="../libs/fontSize.js"></script>
+    <link rel="stylesheet" href="../css/appDetail.css?v=912321"/>
+    <!--<link rel="stylesheet" href="../css/common.css?v=81252"/>-->
+    <!--<link rel="stylesheet" href="../libs/swiper/css/swiper.min.css"/>-->
+</head>
+<body>
+<div id="smdfqr">
+    <img src="../images/background.png" alt="" class="background"/>
+    <div class="titlebar">
+        <span class="back"></span>
+        <div class="title">应用试玩详情</div>
+    </div>
+    <div class="app-list">
+        <ul>
+            <li>
+                <div class="li-part1">
+                    <div class="li-part1-left"></div>
+                    <div class="li-part1-right">
+                        <div>“微信”</div>
+                        <div>搜索关键字，长按应用名可复制</div>
+                    </div>
+                    <div class="firstStep"></div>
+                </div>
+                <div class="li-part2">
+                    <div class="li-part2-left">appstore搜索排名第<span>1</span>名</div>
+                    <a href="" class="li-part2-right" @click="testApp()">前往下载</a>
+                </div>
+            </li>
+            <li>
+                <div class="li2-top">
+                    <div class="secondStep"></div>
+                    <div class="li2Text">打开应用<span style="color: black;font-weight: 800;">进入主界面</span>即可领取奖励</div>
+                </div>
+                <div class="li-part2">
+                    <div class="li-part2-left">打开时请“允许”使用数据</div>
+                    <a href="" class="li-part2-right">打开应用</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="btn">
+        <a>领取奖励</a>
+    </div>
+    <!--加载-->
+    <!--<div class="loading" v-if="loading">-->
+    <!--<img src="../images/loading.gif" alt=""/>-->
+    <!--</div>-->
+    </div>
+
+    <!--放大图片弹框-->
+    <div class="bigPic">
+        <div class="titlebar">
+            <a class="back"></a>
+            <span class="back back2" @click="cancle()"></span>
+            <span class="cancel">取消</span>
+            <h3 id="titlebarText3" class="titlebar-text titlebarText3"></h3>
+            <span class="submit submit3" @click="submit()">提交</span>
+        </div>
+        <!--<div class="imgBox">-->
+
+        <!--<img :src="bigPicUrl" alt=""/>-->
+        <!--<span @click="closeBigPic()"></span>-->
+        <div class="swiper-container" style="margin-top: 3.26rem;">
+            <div class="swiper-wrapper">
+                <!--{{makeSureAjaxParams.imgurls}}-->
+                <div class="swiper-slide" v-for="imgurl in makeSureAjaxParams.imgurls">
+                    <!--<div>{{imgurl}}</div>-->
+                    <img :src="imgurl" alt=""/>
+                </div>
+                <!--<div class="swiper-slide"><img src="../images/rent1.png" alt=""/></div>-->
+                <!--<div class="swiper-slide"><img src="../images/rent1.png" alt=""/></div>-->
+            </div>
+            <!-- 如果需要分页器 -->
+            <!--<div class="swiper-pagination"></div>-->
+
+            <!-- 如果需要导航按钮 -->
+            <!--<div class="swiper-button-prev"></div>-->
+            <!--<div class="swiper-button-next"></div>-->
+
+            <!-- 如果需要滚动条 -->
+            <!--<div class="swiper-scrollbar"></div>-->
+        </div>
+        <!--</div>-->
+    </div>
+
+    <!--提示弹框-->
+    <div class="tip">
+        <div class="tip-content">
+            <div class="tip-title">标题</div>
+            <div class="tip-msg">内容审核成功</div>
+            <div class="ok">
+                <a>确认</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../libs/jquery/jquery.min.js"></script>
+<script src="../tools/Bridge.js"></script>
+<script src="../libs/swiper/js/swiper.min.js"></script>
+<script src="../libs/axios/axios.min.js"></script>
+<script src="../libs/vue/vue.min.js"></script>
+<script src="../tools/mytools.js"></script>
+<!--<script src="../js/smdfqr.js?v=681828232"></script>-->
+</body>
+</html>
+

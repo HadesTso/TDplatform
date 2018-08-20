@@ -1,4 +1,5 @@
 $(function(){
+    console.log("123")
     var $formLogin = $('#formLogin'),
         $loginBtn = $('#loginBtn'),
         $loginMobile = $('#loginMobile'),
@@ -20,18 +21,20 @@ $(function(){
     };
 
     var doLogin = function(cb, cberr){ //请求接口
-        var url = test() + '/acjl-admin/auth/login';
+        var url = test() + '/admin/auth';
         if(vd() && !isLoading) {
             toggleLoading(); // 开始loading
 
             $.post(url, {
-                'mobile': $loginMobile.val(),
+                'admin_name': $loginMobile.val(),
                 'password': $loginPassword.val()
             }).done(function(data) {
+                console.log("666")
                 if(typeof cb === 'function') {
                     cb(data);
                 }
             }).fail(function(data) {
+                console.log("666")
                 if(typeof cberr === 'function') {
                     cberr(data);
                 }
@@ -71,8 +74,10 @@ $(function(){
     };
     var loginHandler = function(e) {
         var successCb = function(data) {
-            var successUrl = test() + '/acjl-admin/index'; // 登录成功后跳转
-            
+                console.log("登录成功")
+            //var successUrl = test() + '/acjl-admin/index'; // 登录成功后跳转
+            var successUrl = 'www.baidu.com'; // 登录成功后跳转
+
             if(data.state && data.state.code && data.state.code === 10200) {
                 localStorage.setItem('kojiadmin-user', JSON.stringify(data));
                 window.location.href = successUrl;
@@ -83,6 +88,7 @@ $(function(){
             }
         },
         failureCb = function(data) {
+            console.log("登录失败")
             if(data && data.state && data.state.msg) {
                 alert(data.state.msg);
             }

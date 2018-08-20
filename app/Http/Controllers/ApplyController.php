@@ -30,7 +30,6 @@ class ApplyController extends Controller
             $incomeArray[] = $value->app_id;
         }
 
-
         $apply = $applyModel->where([
             'status' => 1,
             'type'  => $type,

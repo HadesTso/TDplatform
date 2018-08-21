@@ -19,7 +19,7 @@ class WechatController extends Controller
             'head_img' => '',
             'nickname' => '',
         ];
-        return Response::Success($data);
+        return response(Response::Success($data));
         $code = $request->input('code');
         $appid = $request->input('appid');
         $type = $request->input('type');

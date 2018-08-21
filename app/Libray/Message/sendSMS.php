@@ -8,14 +8,14 @@ use App\Model\Message;
 class sendSMS
 {
     //主帐号,对应开官网发者主账号下的 ACCOUNT SID
-    private $accountSid = '8aaf07085dcad420015ddfb6dde80581';
+    private $accountSid = '8aaf07086541761801655675c1150c44';
 
     //主帐号令牌,对应官网开发者主账号下的 AUTH TOKEN
-    private $accountToken = '42e5cc87d5ad4589acdb5a119d1bf3db';
+    private $accountToken = 'c73de0c7473d4d4b8e82526c5a25d5e5';
 
     //应用Id，在官网应用列表中点击应用，对应应用详情中的APP ID
     //在开发调试的时候，可以使用官网自动为您分配的测试Demo的APP ID
-    private $appId ='8aaf07085dcad420015ddfb6de340585';
+    private $appId ='8aaf07086541761801655675c1740c4b';
 
     //请求地址
     //沙盒环境（用于应用开发调试）：sandboxapp.cloopen.com
@@ -123,7 +123,6 @@ class sendSMS
         $rest->setAppId($this->appId);
 
         // 发送模板短信
-        echo "Sending TemplateSMS to $to <br/>";
         $result = $rest->sendTemplateSMS($to, $datas, $tempId);
         if ($result == NULL) {
             echo "result error!";

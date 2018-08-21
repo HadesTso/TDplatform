@@ -64,7 +64,6 @@ class WechatController extends Controller
 
             if ($b){
                 $Token = $this->setLoginInfo($User);
-                session_start();
                 $_SESSION['user_id'] = $User->user_id;
                 $_SESSION['user_name'] = $User->user_name;
                 $data = [

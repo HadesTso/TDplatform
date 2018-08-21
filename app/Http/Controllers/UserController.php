@@ -56,20 +56,4 @@ class UserController extends Controller
     {
         return view(public_path('amWiki/index.html'));
     }
-
-
-    public function test(Request $request){
-        $info = $request->input('num','sduhfuffjdsijf');
-        session()->put('hades',$info,86400);
-        $data = session()->get('hades');
-
-        return response(Response::Success($data));
-    }
-
-    public function check(Request $request)
-    {
-        $info = session()->get('hades');
-
-        return response(Response::Success($info));
-    }
 }

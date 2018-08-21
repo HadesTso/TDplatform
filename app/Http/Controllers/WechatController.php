@@ -13,13 +13,6 @@ class WechatController extends Controller
 {
     public function wechatLogin(Request $request,User $userModel)
     {
-        $data = [
-            'token' => '',
-            'user_id' => 1,
-            'head_img' => '',
-            'nickname' => '',
-        ];
-        return response(Response::Success($data));
         $code = $request->input('code');
         $appid = $request->input('appid');
         $type = $request->input('type');

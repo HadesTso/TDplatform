@@ -73,9 +73,9 @@ class WechatController extends Controller
                     'head_img' => $User->head_img,
                     'nickname' => $User->nickname,
                 ];
-                return response(Response::Success($data));
+                return Response::Success($data);
             }
-            return response(Response::Error('登录失败'));
+            return Response::Error('登录失败');
         }
     }
 

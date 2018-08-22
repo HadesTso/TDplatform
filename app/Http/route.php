@@ -13,6 +13,7 @@ Route::any('wechat', 'WechatController@serve');
 
 Route::any('wechat/login','WechatController@wechatLogin');
 Route::any('auto/login','WechatController@AutoLogin');
+Route::post('mobile/login','WechatController@MobileLogin');
 
 // 用户信息
 Route::get('personal/info','UserController@personalCenter');

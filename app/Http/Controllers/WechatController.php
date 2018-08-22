@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Libray\Response;
+use App\Model\Message;
 use App\Model\User;
 use Illuminate\Http\Request;
 use App\Libray\Encryption;
@@ -173,5 +174,62 @@ class WechatController extends Controller
         return Response::Success('自动登录成功');
     }
 
+    public function MobileLogin(Request $request,User $userModel)
+    {
+        $mobile = $request->input('mobile');
+        $code = $request->input('code');
 
+        $user = $userModel->where('mobile',$mobile)->first();
+
+        if (!$user) {
+            return Response::Error('该手机号码不存在');
+        }
+
+        $b = $this->checkCode($mobile,$code);
+
+        if ($b){
+            $data = [
+                    'user_id' => $user->user_id,
+                    'head_img' => $user->head_img,
+                    'nickname' => $user->nickname,
+                ];
+            session()->put('uid', $user->user_id);
+            session()->put('nickname', $user->nickname);
+            return Response::Success($data);
+        }
+        return Response::Error('登录失败');
+    }
+
+
+    public function checkCode($mobile,$code) {
+        $m = Message::where([
+            'phone'     => $mobile,
+            'type'      => 1,
+            'user_id'   => 1,
+        ])->orderBy('id', 'DESC')->first();
+         if (empty($m)) {
+            return response(Response::Error('验证码不存在'));
+        }
+         // 最后一条是验证成功过的数据
+        if ($m->status == 1) {
+            return response(Response::Error('验证码错误'));
+        }
+         // 判断验证码是否过期
+        if (strtotime($m->created_at) + $m->expire_minutes * 60 < time()) {
+            return response(Response::Error('验证码已过期'));
+        }
+         // 判断验证次数
+        if ($m->check_times >= config('app.max_check_times')) {
+            return response(Response::Error('已超过验证次数'));
+        }
+         // 验证码错误，验证次数+1
+        if ($m->code != $code) {
+            $m->check_times = $m->check_times + 1;
+            $m->save();
+            return response(Response::Error('验证码错误'));
+        }
+        $m->status = 1;
+        $b = $m->save();
+        return $b;
+    }
 }

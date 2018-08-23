@@ -28,7 +28,7 @@ class AdminController
         $list = $model->select('admin_name', 'admin_mobile', 'created_at','operator_name')->paginate(20)->toArray();
         $admin_user_count = (new Admin())->count();
         $list['admin_user_count'] = $admin_user_count;
-        return Response::Success($list);
+        return Response::Success($list, 1);
     }
 
     /**
@@ -39,13 +39,13 @@ class AdminController
         $mobile = Input::get('mobile',0);
         $password = Input::get('password', '');
         if (empty($name)){
-            return Response::Error('用户账号不能为空');
+            return Response::Error('用户账号不能为空',1);
         }
 
         $model = new Admin();
         $adminInfo = $model->where('admin_name',$name)->first();
         if ($adminInfo){
-            return Response::Error('用户名已存在');
+            return Response::Error('用户名已存在',1);
         }
         session_start();
         $model->admin_name = $name;
@@ -58,9 +58,9 @@ class AdminController
 
         $res = $model->save();
         if ($res){
-            return Response::Success('添加成功');
+            return Response::Success('添加成功',1);
         }
-        return Response::Error('添加失败');
+        return Response::Error('添加失败',1);
     }
 
     /**
@@ -70,7 +70,7 @@ class AdminController
         $admin_id = Input::get('admin_id', 0);
         $status = Input::get('status', 0);
         (new Admin())->where('admin_id', '=', $admin_id)->update(['status' => $status]);
-        return Response::Success('操作成功');
+        return Response::Success('操作成功',1);
     }
 
 }

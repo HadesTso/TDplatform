@@ -48,7 +48,7 @@ class ApplyController extends Controller
             $rewards += $value['money'] * $value['num'];
         }
         $list['rewards'] = $rewards;
-        return Response::Success($list);
+        return Response::Success($list,1);
     }
 
     /**
@@ -63,21 +63,28 @@ class ApplyController extends Controller
         $rank = Input::get('rank', 0);
         $note = Input::get('note', '');
         $pack_name = Input::get('pack_name', '');
+        $urlscheme = Input::get('urlscheme', '');
         if (empty($name)){
-            return Response::Error('应用名不能为空');
+            return Response::Error('应用名不能为空',1);
         }
         if (empty($logo)){
-            return Response::Error('应用logo不能为空');
+            return Response::Error('应用logo不能为空',1);
         }
         if (empty($num)){
-            return Response::Error('应用分数不能为空');
+            return Response::Error('应用分数不能为空',1);
+        }
+        $model = new Apply();
+        //包名不能重复
+        $is_exit = $model->where('pack_name','like', '%'.$pack_name.'%')->where('type', '=', $type)->first();
+        if ($is_exit){
+            return Response::Error('包名已经存在，请重新输入',1);
         }
         try{
             $logo = $this->uploadImg($logo);
             if (!$logo){
-                return Response::Error('上传logo失败');
+                return Response::Error('上传logo失败',1);
             }
-            $model = new Apply();
+
             $data = [
                 'name' => $name,
                 'rank' => $rank,
@@ -87,17 +94,18 @@ class ApplyController extends Controller
                 'logo' => $logo,
                 'type' => $type,
                 'status' => 1,
+                'urlscheme' => $urlscheme,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ];
             $res = $model->insert($data);
             if ($res){
-                return Response::Success('添加成功');
+                return Response::Success('添加成功',1);
             }else{
-                return Response::Error('保存失败');
+                return Response::Error('保存失败',1);
             }
         }catch (\Exception $exception){
-            return response(Response::Error('新增失败'));
+            return response(Response::Error('新增失败',1));
         }
     }
 

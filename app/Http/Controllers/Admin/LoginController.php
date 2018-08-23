@@ -24,7 +24,7 @@ class LoginController extends Controller
         ])->first();
 
         if (empty($admin)) {
-            return response(Response::Error('帐号或密码错误'));
+            return response(Response::Error('帐号或密码错误',1));
         }
 
             /*$Token = $this->setLoginInfo($admin);*/
@@ -37,7 +37,7 @@ class LoginController extends Controller
         //存session
         session()->put('admin_id',$admin->admin_id,86400);
         session()->put('admin_name',$admin->admin_name,86400);
-        return Response::Success($data);
+        return Response::Success($data,1);
 
     }
 

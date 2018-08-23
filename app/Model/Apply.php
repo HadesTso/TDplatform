@@ -8,5 +8,5 @@ class Apply extends Model
 {
     protected $table = 'apply';
     public  $timestamps = false;
-    protected $fillable = array('name','logo','type','mone','num','status');
+    protected $fillable = array('name','logo','type','mone','num','status','urlscheme');
 }

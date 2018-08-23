@@ -35,7 +35,7 @@ class ApplyController extends Controller
             'type'  => $type,
         ])->where('num','>',0)
           ->whereNotIn('app_id',$incomeArray)
-          ->select('app_id','name','logo','type','money','num', 'note', 'rank');
+          ->select('app_id','name','logo','type','money','num', 'note', 'rank','urlscheme');
 
         if($app_id){
             $info = $apply->where('app_id',$app_id)->first();

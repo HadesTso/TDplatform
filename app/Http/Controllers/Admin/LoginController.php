@@ -9,6 +9,7 @@ use App\Libray\Encryption;
 use App\Libray\Response;
 use App\Model\Admin;
 use Illuminate\Http\Request;
+use function PHPSTORM_META\type;
 
 class LoginController extends Controller
 {
@@ -36,6 +37,8 @@ class LoginController extends Controller
         //存session
         session()->put('admin_id',$admin->admin_id,86400);
         session()->put('admin_name',$admin->admin_name,86400);
+        var_dump(type(response(Response::Success($data))));
+        var_dump(type(Response::Success($data)));die;
         return response(Response::Success($data));
 
     }

@@ -16,7 +16,7 @@ class Response
             $Res = [
                 'state' => [
                     'code' => self::SuccessType,
-                    'msg' => 'trans("ResponseMsg.Success")'
+                    'msg' => trans("ResponseMsg.Success")
                 ],
                 'data' => $Data
             ];

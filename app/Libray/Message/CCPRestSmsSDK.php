@@ -3,12 +3,12 @@
 namespace App\Libray\Message;
 
 class CCPRestSmsSDK {
-	/*private $AccountSid = '8aaf07086541761801655675c1150c44';
+	private $AccountSid = '8aaf07086541761801655675c1150c44';
 	private $AccountToken = 'c73de0c7473d4d4b8e82526c5a25d5e5';
-	private $AppId = '8aaf07086541761801655675c1740c4b';*/
-	private $AccountSid = '8aaf07085dcad420015ddfb6dde80581';
+	private $AppId = '8aaf07086541761801655675c1740c4b';
+	/*private $AccountSid = '8aaf07085dcad420015ddfb6dde80581';
 	private $AccountToken = '42e5cc87d5ad4589acdb5a119d1bf3db';
-	private $AppId = '8aaf07085dcad420015ddfb6de340585';
+	private $AppId = '8aaf07085dcad420015ddfb6de340585';*/
 	private $ServerIP = 'app.cloopen.com';
 	private $ServerPort = '8883';
 	private $SoftVersion = '2013-12-26';

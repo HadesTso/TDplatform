@@ -42,7 +42,6 @@ class sendSMS
     public function checkCode($phone, $code) {
         $m = Message::where('phone', $phone)->where([
             'type' => 1,
-            'user_id' => 1
         ])->orderBy('id', 'DESC')->first();
 
         if (empty($m)) {
@@ -60,7 +59,7 @@ class sendSMS
         }
 
         // 判断验证次数
-        if ($m->check_times >= config('ali_message.max_check_times')) {
+        if ($m->check_times >= config('app.max_check_times')) {
             return false;
         }
 

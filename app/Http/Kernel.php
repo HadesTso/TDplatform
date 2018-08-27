@@ -63,6 +63,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'Reqeust' => RequestStartMiddleware::class,
         'Admin'   => \App\Http\Middleware\AdminMiddleware::class,
-        'WeChatToken'   => \App\Http\Middleware\TokenMiddleware::class,
+        'Token'   => \App\Http\Middleware\TokenMiddleware::class,
     ];
 }

@@ -77,7 +77,7 @@ class UserController extends Controller
         $user_id = Input::get('user_id', 0);
         $status = Input::get('status', 0);
         (new User())->where('user_id', '=', $user_id)->update(['status' => $status]);
-        return Response::Success('操作成功');
+        return Response::Success('操作成功',1);
     }
 
     /**

@@ -26,9 +26,10 @@ class MessageController extends Controller
 
         if ($flag == 'binding') {
             // 判断手机号是否已绑定
-            $count = User::where('mobile', $mobile)->count();
+            $count = User::where('mobile',$mobile)
+                ->where('openid','!=','')->count();
             if ($count > 0) {
-                return response(Response::Error('该手机号码已被绑定！'));
+                return response(Response::Error('该手机号码已被绑定,请解绑后重新绑定'));
             }
         }
 
@@ -63,50 +64,68 @@ class MessageController extends Controller
         $m = Message::where([
             'phone'     => $mobile,
             'type'      => 1,
-            'user_id'   => 1,
         ])->orderBy('id', 'DESC')->first();
-         if (empty($m)) {
+
+        if (empty($m)) {
             return response(Response::Error('验证码不存在'));
         }
-         // 最后一条是验证成功过的数据
+        // 最后一条是验证成功过的数据
         if ($m->status == 1) {
             return response(Response::Error('验证码错误'));
         }
-         // 判断验证码是否过期
+        // 判断验证码是否过期
         if (strtotime($m->created_at) + $m->expire_minutes * 60 < time()) {
             return response(Response::Error('验证码已过期'));
         }
-         // 判断验证次数
+        // 判断验证次数
         if ($m->check_times >= config('app.max_check_times')) {
             return response(Response::Error('已超过验证次数'));
         }
-         // 验证码错误，验证次数+1
+        // 验证码错误，验证次数+1
         if ($m->code != $code) {
             $m->check_times = $m->check_times + 1;
             $m->save();
             return response(Response::Error('验证码错误'));
         }
-        $flag = $userModel->where(['mobile' => $mobile])->first();
+
+
+        $flag = $userModel->where('mobile',$mobile)->where('openid','!=','')->first();
         DB::beginTransaction();
         try{
             $m->status = 1;
-            $b = $m->save();
-            if (!$flag){
-                if ($b) {
-                    $userModel->where([
-                        'user_id' => 1
-                    ])->update([
-                        'mobile' => $mobile
-                    ]);
-                }
-                $flag = false;
+            $m->save();
+
+            if ($flag) {
+                $data = $userModel->where([
+                    'user_id' => session()->get('uid')
+                ])->first();
+                $userModel->where([
+                    'user_id' => session()->get('uid')
+                ])->delete();
+                $userModel->where('mobile',$mobile)
+                          ->update([
+                            'head_img' => $data->head_img,
+                            'nickname' => $data->nickname,
+                            'openid'   => $data->openid,
+                          ]);
+                $data = [
+                    'user_id' => $flag->user_id,
+                    'head_img' => $data->head_img,
+                    'nickname' => $data->nickname,
+                ];
+                session()->put('uid', $flag->user_id);
+                session()->put('nickname', $data->nickname);
+                DB::commit();
+                return Response::Success($data);
+            }else{
+                $userModel->where([
+                    'user_id' => session()->get('uid')
+                ])->update([
+                    'mobile' => $mobile
+                ]);
             }
             DB::commit();
-            if (!$flag){
-                return response(Response::Success_No_Data('绑定手机成功'));
-            }else{
-                return response(Response::Success_No_Data('验证手机成功'));
-            }
+            return response(Response::Success_No_Data('验证成功'));
         }catch (\Exception $exception){
             DB::rollBack();
             return response(Response::Error(trans("ResponseMsg.User.binding.Fail")));

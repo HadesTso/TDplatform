@@ -45,10 +45,11 @@ class WechatController extends Controller
             }
             $Token = $this->setLoginInfo($userInfo);
             $data = [
-                    'token' => $userInfo->token,
-                    'user_id' => $userInfo->user_id,
+                    'token'    => $userInfo->token,
+                    'user_id'  => $userInfo->user_id,
                     'head_img' => $userInfo->head_img,
                     'nickname' => $userInfo->nickname,
+                    'mobile'   => $userInfo->mobile,
                 ];
             return response(Response::Success($data));
         }else{
@@ -185,16 +186,14 @@ class WechatController extends Controller
             return Response::Error('该手机号码不存在');
         }
 
-        //$b = $this->checkCode($mobile,$code);
-
-        $b = true;
+        $b = $this->checkCode($mobile,$code);
 
         if ($b){
             $data = [
                     'user_id' => $user->user_id,
                     'head_img' => $user->head_img,
                     'nickname' => $user->nickname,
-                ];
+            ];
             session()->put('uid', $user->user_id);
             session()->put('nickname', $user->nickname);
             return Response::Success($data);

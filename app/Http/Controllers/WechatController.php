@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libray\Message\sendSMS;
 use App\Libray\Response;
 use App\Model\Message;
 use App\Model\User;
@@ -66,8 +67,6 @@ class WechatController extends Controller
 
             if ($b){
                 $Token = $this->setLoginInfo($User);
-                $_SESSION['user_id'] = $User->user_id;
-                $_SESSION['user_name'] = $User->user_name;
                 $data = [
                     'token' => $User->token,
                     'user_id' => $User->user_id,
@@ -131,6 +130,7 @@ class WechatController extends Controller
         $Token = $Encryption->encode(json_encode($Token));
         session()->put('uid', $user->user_id);
         session()->put('nickname', $user->nickname);
+        session()->put('type', $user->type);
         session()->put($Token,time(),86400);
         return ['Token' => $Token];
     }
@@ -172,65 +172,56 @@ class WechatController extends Controller
         //存session
         session()->put('uid', $user_row->user_id);
         session()->put('nickname', $user_row->nickname);
+        session()->put('type', $user_row->type);
         return Response::Success('自动登录成功');
     }
 
-    public function MobileLogin(Request $request,User $userModel)
+    public function MobileLogin(Request $request, User $userModel)
     {
         $mobile = $request->input('mobile');
         $code = $request->input('code');
+        $type = $request->input('type');
 
-        $user = $userModel->where('mobile',$mobile)->first();
+        $a = new sendSMS();
+        $massage = $a->checkCode($mobile, $code);
 
-        if (!$user) {
-            return Response::Error('该手机号码不存在');
-        }
-
-        $b = $this->checkCode($mobile,$code);
-
-        if ($b){
-            $data = [
+        if ($massage){
+            $user = $userModel->where([
+                'mobile' => $mobile,
+                'type'   => $type
+            ])->first();
+            if (!$user) {
+                $User = $userModel->newInstance();
+                $User->mobile = $mobile;
+                $User->type   = $type;
+                $User->created_at   = date('Y-m-d H:i:s',time());
+                $User->updated_at   = date('Y-m-d H:i:s',time());
+                $User->save();
+                $data = [
+                    'user_id' => $User->user_id,
+                    'head_img' => '',
+                    'nickname' => '',
+                ];
+            }else{
+                $data = [
                     'user_id' => $user->user_id,
                     'head_img' => $user->head_img,
                     'nickname' => $user->nickname,
-            ];
-            session()->put('uid', $user->user_id);
-            session()->put('nickname', $user->nickname);
+                ];
+            }
+            session()->put('uid', $data['user_id']);
+            session()->put('nickname', $data['nickname']);
+            session()->put('type', $type);
             return Response::Success($data);
         }
         return Response::Error('登录失败');
     }
 
-
-    public function checkCode($mobile,$code) {
-        $m = Message::where([
-            'phone'     => $mobile,
-            'type'      => 1,
-            'user_id'   => 1,
-        ])->orderBy('id', 'DESC')->first();
-         if (empty($m)) {
-            return response(Response::Error('验证码不存在'));
-        }
-         // 最后一条是验证成功过的数据
-        if ($m->status == 1) {
-            return response(Response::Error('验证码错误'));
-        }
-         // 判断验证码是否过期
-        if (strtotime($m->created_at) + $m->expire_minutes * 60 < time()) {
-            return response(Response::Error('验证码已过期'));
-        }
-         // 判断验证次数
-        if ($m->check_times >= config('app.max_check_times')) {
-            return response(Response::Error('已超过验证次数'));
-        }
-         // 验证码错误，验证次数+1
-        if ($m->code != $code) {
-            $m->check_times = $m->check_times + 1;
-            $m->save();
-            return response(Response::Error('验证码错误'));
-        }
-        $m->status = 1;
-        $b = $m->save();
-        return $b;
+    public function logout()
+    {
+        session()->put('uid', null);
+        session()->put('nickname', null);
+        session()->put('type', null);
+        return response(Response::Success('退出登录成功'));
     }
 }

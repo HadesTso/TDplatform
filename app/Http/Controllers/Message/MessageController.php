@@ -61,68 +61,58 @@ class MessageController extends Controller
     public function checkCode(Request $request,User $userModel) {
         $mobile = $request->input('mobile');
         $code = $request->input('code');
-        $m = Message::where([
-            'phone'     => $mobile,
-            'type'      => 1,
-        ])->orderBy('id', 'DESC')->first();
+        $flag = $request->input('flag');
 
-        if (empty($m)) {
-            return response(Response::Error('验证码不存在'));
-        }
-        // 最后一条是验证成功过的数据
-        if ($m->status == 1) {
-            return response(Response::Error('验证码错误'));
-        }
-        // 判断验证码是否过期
-        if (strtotime($m->created_at) + $m->expire_minutes * 60 < time()) {
-            return response(Response::Error('验证码已过期'));
-        }
-        // 判断验证次数
-        if ($m->check_times >= config('app.max_check_times')) {
-            return response(Response::Error('已超过验证次数'));
-        }
-        // 验证码错误，验证次数+1
-        if ($m->code != $code) {
-            $m->check_times = $m->check_times + 1;
-            $m->save();
-            return response(Response::Error('验证码错误'));
+        $a = new sendSMS();
+        $b = $a->checkCode($mobile, $code);
+
+        if (!$b){
+           return response(Response::Error('验证失败'));
         }
 
-
-        $flag = $userModel->where('mobile',$mobile)->where('openid','!=','')->first();
         DB::beginTransaction();
         try{
-            $m->status = 1;
-            $m->save();
+            if ($flag == 'binding'){
+                $res = $userModel->where([
+                    'mobile' => $mobile,
+                    'type'   => session()->get('type'),
+                ])->where('openid','=','')->first();
 
-            if ($flag) {
-                $data = $userModel->where([
-                    'user_id' => session()->get('uid')
-                ])->first();
-                $userModel->where([
-                    'user_id' => session()->get('uid')
-                ])->delete();
-                $userModel->where('mobile',$mobile)
-                          ->update([
+                if ($res) {
+                    $data = $userModel->where([
+                        'user_id' => session()->get('uid')
+                    ])->first();
+
+                    $userModel->where([
+                        'user_id' => session()->get('uid')
+                    ])->delete();
+
+                    $userModel->where([
+                        'mobile'  => $mobile,
+                        'user_id' => $res->user_id
+                    ])
+                        ->update([
                             'head_img' => $data->head_img,
                             'nickname' => $data->nickname,
                             'openid'   => $data->openid,
-                          ]);
-                $data = [
-                    'user_id' => $flag->user_id,
-                    'head_img' => $data->head_img,
-                    'nickname' => $data->nickname,
-                ];
-                session()->put('uid', $flag->user_id);
-                session()->put('nickname', $data->nickname);
-                DB::commit();
-                return Response::Success($data);
-            }else{
-                $userModel->where([
-                    'user_id' => session()->get('uid')
-                ])->update([
-                    'mobile' => $mobile
-                ]);
+                        ]);
+                    $data = [
+                        'user_id'  => $res->user_id,
+                        'head_img' => $data->head_img,
+                        'nickname' => $data->nickname,
+                    ];
+                    session()->put('uid', $res->user_id);
+                    session()->put('nickname', $data->nickname);
+                    session()->put('type', $res->type);
+                    DB::commit();
+                    return response(Response::Success($data));
+                }else{
+                    $userModel->where([
+                        'user_id' => session()->get('type')
+                    ])->update([
+                        'mobile' => $mobile
+                    ]);
+                }
             }
             DB::commit();
             return response(Response::Success_No_Data('验证成功'));

@@ -66,7 +66,7 @@ class UserController extends Controller
         $list['total_count'] = $android_total + $ios_total; //用户总数
         $list['android_count'] = $android_total ;
         $list['ios_count'] = $ios_total ;
-        return Response::Success($list);
+        return Response::Success($list,1);
 
     }
 
@@ -107,7 +107,7 @@ class UserController extends Controller
         $people_count = $model->where('status', '=', $status)->count();
         $list['withdraw_count'] = $withdraw_count;
         $list['people_count'] = $people_count;
-        return Response::Success($list);
+        return Response::Success($list,1);
     }
 
     /**

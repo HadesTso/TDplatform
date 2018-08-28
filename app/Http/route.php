@@ -42,6 +42,8 @@ Route::group(['middleware' => 'Token'], function () {
 
 //后台登录
 Route::post('admin/auth', 'Admin\LoginController@login'); //登录接口
+// 退出登录
+Route::post('admin/logout','Admin\LoginControllerlogout');
 //后台接口
 Route::group(
     ['middleware' => 'Admin','prefix' => 'admin', 'namespace'=>'Admin'], function(){

@@ -118,6 +118,7 @@ class UserController extends Controller
     public function DealPay(){
         $withdraw_id = Input::get('withdraw_id', 0);
         $status = Input::get('status',1);
+        $note = Input::get('note','');
         if (empty($withdraw_id)){
             return Response::Error('提现明细id不能为空');
         }
@@ -142,7 +143,7 @@ class UserController extends Controller
             }
             if ($status == 3){
                 //打款失败
-                $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => $_SESSION['admin_id'],'admin_name' => $_SESSION['admin_name'], 'updated_at' => date('Y-m-d H:i:s')]);
+                $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => $_SESSION['admin_id'],'admin_name' => $_SESSION['admin_name'], 'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
             }
             \DB::commit();
             return Response::Success('操作成功',1);

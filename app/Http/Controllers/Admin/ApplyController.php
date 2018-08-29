@@ -61,7 +61,8 @@ class ApplyController extends Controller
      */
     public function add(){
         $name = Input::get('name', '');
-        $logo = Input::file('logo');
+        //$logo = Input::file('logo');
+        $logo = '';
         $type = Input::get('type', '');
         $money = Input::get('money', 0);
         $num = Input::get('num', 0);
@@ -72,9 +73,9 @@ class ApplyController extends Controller
         if (empty($name)){
             return Response::Error('应用名不能为空',1);
         }
-        if (empty($logo)){
+        /*if (empty($logo)){
             return Response::Error('应用logo不能为空',1);
-        }
+        }*/
         if (empty($num)){
             return Response::Error('应用分数不能为空',1);
         }
@@ -85,10 +86,10 @@ class ApplyController extends Controller
             return Response::Error('包名已经存在，请重新输入',1);
         }
         try{
-            $logo = $this->uploadImg($logo);
+            /*$logo = $this->uploadImg($logo);
             if (!$logo){
                 return Response::Error('上传logo失败',1);
-            }
+            }*/
 
             $data = [
                 'name' => $name,

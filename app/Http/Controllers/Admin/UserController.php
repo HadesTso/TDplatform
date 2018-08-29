@@ -14,6 +14,7 @@ use App\Libray\Response;
 use App\Model\Income;
 use App\Model\User;
 use App\Model\Withdraw;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 /**
@@ -127,12 +128,15 @@ class UserController extends Controller
         if (empty($info)){
             return Response::Error('提现信息不存在');
         }
+        DB::beginTransaction();
         try{
-            \DB::beginTransaction();
             if ($status == 2){
                 //付款成功
                 //修改用户的可提现金额
-                $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'),'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
+                $model->where([
+                    'withdraw_id' => $withdraw_id,
+                    'status'      => 1,
+                ])->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'),'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
             }
             if ($status == 3){
                 $user_model = new User();
@@ -140,12 +144,15 @@ class UserController extends Controller
                 $money = $user_info->money + $info->money;
                 $user_model->where('user_id', $info->user_id)->update(['money' => $money]);
                 //打款失败
-                $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'), 'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
+                $model->where([
+                    'withdraw_id' => $withdraw_id,
+                    'status'      => 1,
+                ])->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'), 'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
             }
-            \DB::commit();
+            DB::commit();
             return Response::Success('操作成功',1);
         }catch (\Exception $e){
-            \DB::rollBack();
+            DB::rollBack();
             return Response::Error('操作失败',1);
         }
     }

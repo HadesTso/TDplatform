@@ -21,11 +21,12 @@ class AdminController
      */
     public function index(){
         $name = Input::get('name', '');
-        $model = new Admin();
+        $adminModel = new Admin();
+        $model = $adminModel->select('admin_name', 'admin_mobile', 'created_at','operator_name', 'status');
         if ($name){
             $model->where('admin_name', 'like', '%'.$name.'%');
         }
-        $list = $model->select('admin_name', 'admin_mobile', 'created_at','operator_name')->paginate(20)->toArray();
+        $list = $model->->paginate(20)->toArray();
         $admin_user_count = (new Admin())->count();
         $list['admin_user_count'] = $admin_user_count;
         return Response::Success($list, 1);

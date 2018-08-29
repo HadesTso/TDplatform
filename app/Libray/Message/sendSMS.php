@@ -116,7 +116,7 @@ class sendSMS
      * @param int $tempId
      * @return bool
      */
-    private function sendTemplateSMS($to,$datas,$tempId = 319437)
+    private function sendTemplateSMS($to,$datas,$tempId = 320531)
     {
         // 初始化REST SDK
         $rest = new CCPRestSmsSDK($this->serverIP, $this->serverPort, $this->softVersion);

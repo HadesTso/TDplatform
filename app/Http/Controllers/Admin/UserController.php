@@ -133,14 +133,11 @@ class UserController extends Controller
             if ($status == 2){
                 //付款成功
                 //修改用户的可提现金额
-                $user_model = new User();
-                $user_info = $user_model->where('user_id', $info->user_id)->first();
-                if ($user_info->money < $info->money){
-                    return Response::Error('打款金额超过用户的可提现金额',1);
-                }
                 $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => $_SESSION['admin_id'],'admin_name' => $_SESSION['admin_name'],'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
             }
             if ($status == 3){
+                $user_model = new User();
+                $user_info = $user_model->where('user_id', $info->user_id)->first();
                 $user_model->where('user_id', $info->user_id)->update(['money' => $user_info->money + $info->money]);
                 //打款失败
                 $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => $_SESSION['admin_id'],'admin_name' => $_SESSION['admin_name'], 'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);

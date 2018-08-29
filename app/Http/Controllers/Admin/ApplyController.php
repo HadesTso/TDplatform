@@ -51,6 +51,8 @@ class ApplyController extends Controller
         }
         $list['rewards'] = $rewards;
         $list['get_reward_count'] = $get_reward_count;
+        $list['ios_count'] = $applyModel->where('type',1)->count();
+        $list['android_count'] = $applyModel->where('type',0)->count();
         return Response::Success($list,1);
     }
 

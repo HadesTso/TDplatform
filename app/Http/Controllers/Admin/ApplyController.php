@@ -39,6 +39,7 @@ class ApplyController extends Controller
         }
         $list = $model->paginate(20)->toArray();
         $rewards = 0;
+        $get_reward_count = 0;
         foreach($list['data'] as &$value){
             $spread_num = $incomeModel->where([
                 'app_id' => $value['app_id']
@@ -46,8 +47,10 @@ class ApplyController extends Controller
             $value['spread_num'] = $spread_num.'/'.$value['num'];
             $value['get_reward'] = $spread_num * $value['money'];
             $rewards += $value['money'] * $value['num'];
+            $get_reward_count += $value['get_reward'];
         }
         $list['rewards'] = $rewards;
+        $list['get_reward_count'] = $get_reward_count;
         return Response::Success($list,1);
     }
 

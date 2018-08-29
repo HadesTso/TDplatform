@@ -33,16 +33,17 @@ class UserController extends Controller
         $mobile = Input::get('mobile', '');
         $user_id = Input::get('user_id', '');
         $model = new User();
+        $userModel = $model->select();
         if ($nickname){
-            $model->where('nickname', 'like', '%'. $nickname. '%');
+            $userModel->where('nickname', 'like', '%'. $nickname. '%');
         }
         if ($mobile){
-            $model->where('mobile', 'like', '%'.$model.'%');
+            $userModel->where('mobile', 'like', '%'.$mobile.'%');
         }
         if ($user_id){
-            $model->where('user_id', '=', $user_id);
+            $userModel->where('user_id', '=', $user_id);
         }
-        $list = $model->paginate(20)->toArray();
+        $list = $userModel->paginate(20)->toArray();
         $data = (new Income())->select('user_id',\DB::raw('count(app_id) as try_num'))->groupby('user_id')->get();
 
         $try_num = json_encode($data);

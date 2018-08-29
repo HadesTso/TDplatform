@@ -40,7 +40,12 @@ class LoginController extends Controller
         return Response::Success($data,1);
 
     }
-
+    public function logout()
+    {
+        session()->put('admin_id', null);
+        session()->put('admin_name', null);
+        return response(Response::Success('退出登录成功',1));
+    }
     /*protected function setLoginInfo($admin){
         $Token = [
             'admin_id'  => $admin->admin_id,

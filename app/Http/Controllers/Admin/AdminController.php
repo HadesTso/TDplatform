@@ -26,7 +26,7 @@ class AdminController
         if ($name){
             $model->where('admin_name', 'like', '%'.$name.'%');
         }
-        $list = $model->->paginate(20)->toArray();
+        $list = $model->paginate(20)->toArray();
         $admin_user_count = (new Admin())->count();
         $list['admin_user_count'] = $admin_user_count;
         return Response::Success($list, 1);

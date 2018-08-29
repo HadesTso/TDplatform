@@ -137,7 +137,8 @@ class UserController extends Controller
             if ($status == 3){
                 $user_model = new User();
                 $user_info = $user_model->where('user_id', $info->user_id)->first();
-                $user_model->where('user_id', $info->user_id)->update(['money' => $user_info->money + $info->money]);
+                $money = $user_info->money + $info->money;
+                $user_model->where('user_id', $info->user_id)->update(['money' => $money]);
                 //打款失败
                 $model->where('withdraw_id', $withdraw_id)->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'), 'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
             }

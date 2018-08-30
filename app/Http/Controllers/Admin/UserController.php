@@ -124,31 +124,31 @@ class UserController extends Controller
             return Response::Error('提现明细id不能为空');
         }
         $model = new Withdraw();
-        $info = $model->where('withdraw_id', '=', $withdraw_id)->first();
+        $info = $model->where('withdraw_id', '=', $withdraw_id)->where('status',1)->first();
         if (empty($info)){
-            return Response::Error('提现信息不存在');
+            return Response::Error('提现信息不存在或已处理');
         }
         DB::beginTransaction();
         try{
-            if ($status == 2){
+            /*if ($status == 2){
                 //付款成功
                 //修改用户的可提现金额
                 $model->where([
                     'withdraw_id' => $withdraw_id,
                     'status'      => 1,
                 ])->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'),'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
-            }
+            }*/
             if ($status == 3){
                 $user_model = new User();
                 $user_info = $user_model->where('user_id', $info->user_id)->first();
                 $money = $user_info->money + $info->money;
                 $user_model->where('user_id', $info->user_id)->update(['money' => $money]);
                 //打款失败
-                $model->where([
+            }
+            $model->where([
                     'withdraw_id' => $withdraw_id,
                     'status'      => 1,
-                ])->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'), 'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
-            }
+            ])->update(['status' => $status,'admin_id' => session()->get('admin_id'),'admin_name' => session()->get('admin_name'), 'updated_at' => date('Y-m-d H:i:s'), 'note' => $note]);
             DB::commit();
             return Response::Success('操作成功',1);
         }catch (\Exception $e){

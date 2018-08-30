@@ -167,7 +167,7 @@ class ApplyController extends Controller
             $photo = '/'.md5(date('YmdHis').rand(1000, 9999)).'.'.$type;
             file_put_contents($fullpath.$photo, $img);
 
-            $url = $basedir.$photo;
+            $url = env('APP_URL').$basedir.$photo;
 
         }
         return $url;

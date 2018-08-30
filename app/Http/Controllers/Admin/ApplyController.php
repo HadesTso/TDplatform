@@ -140,11 +140,9 @@ class ApplyController extends Controller
     }
 
     protected function add_img($img){
-        //文件夹日期
-        $ymd = date("Ymd");
 
         //图片路径地址
-        $basedir = 'upload/base64/'.$ymd.'';
+        $basedir = 'upload/base64';
         $fullpath = $basedir;
         if(!is_dir($fullpath)){
             mkdir($fullpath,0777,true);

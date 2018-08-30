@@ -59,9 +59,9 @@ class ApplyController extends Controller
     /**
      * 添加应用
      */
-    public function add(){
+    public function add(Request $request){
         $name = Input::get('name', '');
-        $logo = Input::file('logo');
+        $logo = $request->input('logo');
         $type = Input::get('type', '');
         $money = Input::get('money', 0);
         $num = Input::get('num', 0);

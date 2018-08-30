@@ -19,7 +19,7 @@ class TokenMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $uid = Session::get('user_id');
+        $uid = Session::get('uid');
         if (empty($uid)){
             return Response::NotLogin('no_login');
         }

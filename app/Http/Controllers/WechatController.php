@@ -69,7 +69,7 @@ class WechatController extends Controller
                 $Token = $this->setLoginInfo($User);
                 $data = [
                     'token' => $User->token,
-                    'user_id' => $User->user_id,
+                    'user_id' => $b,
                     'head_img' => $User->head_img,
                     'nickname' => $User->nickname,
                 ];
@@ -200,9 +200,9 @@ class WechatController extends Controller
                 $User->token   = strtolower(str_random(10));
                 $User->created_at   = date('Y-m-d H:i:s',time());
                 $User->updated_at   = date('Y-m-d H:i:s',time());
-                $User->save();
+                $id = $User->save();
                 $data = [
-                    'user_id' => $User->user_id,
+                    'user_id' => $id,
                     'head_img' => '',
                     'nickname' => $User->mobile,
                     'token' => $User->token,

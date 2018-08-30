@@ -24,7 +24,7 @@ class WithdrawController extends Controller
         $money = $request->input('money');
 
         $userInfo = $userModel->where([
-            'user_id' => 1
+            'user_id' => session()->get('uid')
         ])->select('money')
           ->first();
 
@@ -34,7 +34,7 @@ class WithdrawController extends Controller
 
         DB::beginTransaction();
         try{
-            $withdrawModel->user_id = 1;
+            $withdrawModel->user_id = session()->get('uid');
             $withdrawModel->money = $money;
             $withdrawModel->status = 1;
             $withdrawModel->created_at = date('Y-m-d H:i:s',time());
@@ -61,7 +61,7 @@ class WithdrawController extends Controller
     public function withdrawList(Withdraw $withdrawModel)
     {
         $withdrawlist = $withdrawModel->where([
-            'user_id' => 1
+            'user_id' => session()->get('uid')
         ])->select('withdraw_id','user_id','money','status','note', 'created_at')
           ->paginate(10)->toArray();
 
@@ -75,7 +75,7 @@ class WithdrawController extends Controller
      * @param Income $incomeModel
      */
     public function incomeList(Request $request, User $userModel, Income $incomeModel){
-        $user_id = 1;
+        $user_id = session()->get('uid');
         $list = $incomeModel
             ->where(['user_id' => $user_id])
             ->select('income_id', 'app_name', 'app_logo', 'money', 'created_at')
@@ -128,7 +128,7 @@ class WithdrawController extends Controller
             $cumulative_amount = $apply->money + $user->cumulative_amount;
 
             $userModel->where([
-                'user_id' => 1
+                'user_id' => session()->get('uid')
             ])->update([
                 'money' => $money,
                 'cumulative_amount' => $cumulative_amount,

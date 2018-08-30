@@ -17,7 +17,7 @@ class UserController extends Controller
     public function personalCenter(User $userModel)
     {
         $personaInfo = $userModel->where([
-            'user_id' => 1
+            'user_id' => session()->get('uid')
         ])
             ->select('user_id','nickname','head_img','money','cumulative_amount','is_binding','alipay','alipay_name')
             ->first();
@@ -38,15 +38,14 @@ class UserController extends Controller
         $alipay_name = $request->input('alipay_name');
 
         $user = $userModel->where([
-            'user_id' => 1
-        ])->first();
+            'user_id' => session()->get('uid')
+        ])->update([
+            'alipay' => $alipay,
+            'alipay_name' => $alipay_name,
+            'is_binding' => 1
+        ]);
 
-        $user->alipay = $alipay;
-        $user->alipay_name = $alipay_name;
-        $user->is_binding = 1;
-        $b = $user->save();
-
-        if ($b){
+        if ($user){
             return response(Response::Success_No_Data('操作成功'));
         }
         return response(Response::Error('操作失败'));

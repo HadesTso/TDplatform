@@ -22,7 +22,7 @@ class ApplyController extends Controller
         $type = $request->input('type',1);
 
         $incomelist = $incomeModel->where([
-            'user_id' => 1,
+            'user_id' => session()->get('uid'),
         ])->select('app_id')->get();
 
         $incomeArray = array();

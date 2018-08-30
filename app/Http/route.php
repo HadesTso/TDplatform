@@ -22,22 +22,23 @@ Route::post('send/message','Message\MessageController@getCode');
 Route::post('check/code','Message\MessageController@checkCode');
 
 
-// 用户信息
-Route::get('personal/info','UserController@personalCenter');
-// 绑定支付宝账号
-Route::post('binding/alipay','UserController@bindingAliPay');
-// 应用列表
-Route::get('app/list','ApplyController@appList');
 
-Route::post('withdraw','WithdrawController@withdraw');
-Route::get('withdraw/list','WithdrawController@withdrawList');
-Route::get('income/list','WithdrawController@incomeList');
-Route::post('income/receive','WithdrawController@incomeReceive');
 
 Route::get('amWiki','UserController@amWiki');
 
-Route::group(['middleware' => 'Token'], function () {
 
+Route::group(['middleware' => 'Token'], function(){
+    // 用户信息
+    Route::get('personal/info','UserController@personalCenter');
+    // 绑定支付宝账号
+    Route::post('binding/alipay','UserController@bindingAliPay');
+    // 应用列表
+    Route::get('app/list','ApplyController@appList');
+
+    Route::post('withdraw','WithdrawController@withdraw');
+    Route::get('withdraw/list','WithdrawController@withdrawList');
+    Route::get('income/list','WithdrawController@incomeList');
+    Route::post('income/receive','WithdrawController@incomeReceive');
 });
 
 //后台登录

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Input;
 
 class WechatController extends Controller
 {
-    public function wechatLogin(Request $request,User $userModel)
+      public function wechatLogin(Request $request,User $userModel)
     {
         $code = $request->input('code');
         $appid = $request->input('appid');
@@ -42,7 +42,7 @@ class WechatController extends Controller
 
         if ($userInfo){
             if ($userInfo->status == 0){
-                return response(Response::Error('账户已被禁禁用'));
+                return response(Response::Error('账户已被禁用'));
             }
             $Token = $this->setLoginInfo($userInfo);
             $data = [
@@ -73,6 +73,9 @@ class WechatController extends Controller
                     'head_img' => $User->head_img,
                     'nickname' => $User->nickname,
                 ];
+                session()->put('uid', $data['user_id']);
+                session()->put('nickname', $data['nickname']);
+                session()->put('type', $type);
                 return Response::Success($data);
             }
             return Response::Error('登录失败');
@@ -194,19 +197,22 @@ class WechatController extends Controller
                 $User = $userModel->newInstance();
                 $User->mobile = $mobile;
                 $User->type   = $type;
+                $User->token   = strtolower(str_random(10));
                 $User->created_at   = date('Y-m-d H:i:s',time());
                 $User->updated_at   = date('Y-m-d H:i:s',time());
                 $User->save();
                 $data = [
                     'user_id' => $User->user_id,
                     'head_img' => '',
-                    'nickname' => '',
+                    'nickname' => $User->mobile,
+                    'token' => $User->token,
                 ];
             }else{
                 $data = [
                     'user_id' => $user->user_id,
                     'head_img' => $user->head_img,
                     'nickname' => $user->nickname,
+                    'token' => $user->token,
                 ];
             }
             session()->put('uid', $data['user_id']);
@@ -214,7 +220,7 @@ class WechatController extends Controller
             session()->put('type', $type);
             return Response::Success($data);
         }
-        return Response::Error('登录失败');
+        return Response::Error('验证码错误');
     }
 
     public function logout()

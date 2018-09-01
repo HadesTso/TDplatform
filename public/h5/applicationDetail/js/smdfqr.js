@@ -12,8 +12,8 @@
             isShowLayer:false,//弹框显示
             ajaxParams:{
                 page:'1',//页码
-                status:'',//状态
-                search:'',//搜索
+                //status:'',//状态
+                //search:'',//搜索
             },
             makeSureAjaxParams:{//确认评估参数
                 id:'',//id
@@ -25,29 +25,27 @@
             page:'',//保存分页数据
         },
         methods:{
-            getSmdfqrList: function(opt, cb, cberr) {
+            getAppDetail: function(opt, cb, cberr) {
                 var that = this;
                 var url = '/app/list';
                 that.$httpGet(url, opt)
                     .then(cb, cberr);
             },
-            getSmdfqrListHandle: function (data) {
+            getAppDetailHandler: function (data) {
                 var that = this;
                 that.loading = false;
                 that.ajaxParams.search = '';
-                if(data && data.state && data.state.code === 10200) {
-                    that.list.push(...data.data.data);
+                if(data && data.code === 200) {
+                    //that.list.push(...data.data.data);
                     that.page = data.data;
-                    //that.list = data.data.data
-                    console.log(that.list)
                     console.log(data.data)
 
-                    for(var i=0;i<data.data.data.length;i++){
-                        var a = data.data.data[i].mobile.slice(0,3);
-                        var b = data.data.data[i].mobile.slice(7,11);
-                        that.list[i].mobile = a + '****' +b;
-
-                    }
+                    //for(var i=0;i<data.data.data.length;i++){
+                    //    var a = data.data.data[i].mobile.slice(0,3);
+                    //    var b = data.data.data[i].mobile.slice(7,11);
+                    //    that.list[i].mobile = a + '****' +b;
+                    //
+                    //}
                     //配置页码
                     //that.pageConfig.page = data.data.currentPage;
                     //that.pageConfig.lastPage = data.data.lastPage;
@@ -104,13 +102,12 @@
                     name: 'close_window',
                 });
             },
-            testApp: function (rul) {
+            testApp1: function (rul) {
+                var that = this;
                 //判断时Android还时iOS
-                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 
                 function android(){
-                    window.location.href = "openwjtr://com.tyrbl.wjtr"; /***打开app的协议，有安卓同事提供***/
+                    window.location.href = "mqqapi://"; /***打开app的协议，有安卓同事提供***/
                     window.setTimeout(function(){
                         window.location.href = "http://www.wjtr.com/download/index.html"; /***打开app的协议，有安卓同事提供***/
                     },2000);
@@ -127,36 +124,55 @@
                         window.location.href = "http:baidu.html"; /***下载app的地址***/
                     },2000)
                 };
-                if(isAndroid){
+                if(that.isAndroid){
                     android()
                 }
-                if(isiOS){
+                if(that.isiOS){
                     ios()
                 }
         },
-        testApp: function () {
+            testApp2: function () {
+            var that = this;
             //判断时Android还时iOS
-            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-            if(isiOS){
+            console.log(that.isAndroid);
+            console.log(that.isiOS);
+
+            if(that.isiOS){
                 //if ([[UIApplication sharedApplication] canOpenURL:[NSURL  URLWithString:@"mqq://"]]){
                 //    NSLog(@"install--");
                 //}else{
                 //    NSLog(@"no---");
                 //}
+                alert('IOS')
+            }else if(that.isAndroid){
+                alert('androad')
+            }else{
+                alert('未检测到')
             }
+        }
         },
         mounted: function() {
             var that = this;
             // 获取链接上的参数
             that.urlParams = that.$tools.getUrlParams();
-            that.urlStatus = that.urlParams.status;
-            that.ajaxParams.status = that.urlStatus;
-
+            that.ajaxParams.status = that.urlParams.status;
+            that.ajaxParams.appId = that.urlParams.id;
+            console.log(that.urlParams)
             //判断时Android还时iOS
-            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
+            var u = navigator.userAgent;
+            that.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+            that.isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+            if(that.isiOS){
+                that.ajaxParams.type = 1;
+            }else{
+                that.ajaxParams.type = 0;
+            }
+            if(that.ajaxParams.status==1){
+                $('.open-app').css('background-color','#ff3e1e');
+            }else{
+                $('.open-app').css('background-color','darkgray');
+            }
+            that.getAppDetail(that.ajaxParams,that.getAppDetailHandler)
             //console.log($('body').height());
             // 下拉刷新
             var $section = $('body'),
@@ -177,7 +193,7 @@
                             //console.log('执行翻页：' + that.pageConfig.page)
                             //    获取列表
                             that.loading = true;
-                            that.getSmdfqrList(that.ajaxParams,that.getSmdfqrListHandle)
+                            that.getAppDetail(that.ajaxParams,that.getAppDetailHandler)
                         }
                         // that.$myalert(12333333);
                     }, 200);

@@ -1,0 +1,121 @@
+<style>
+    .bigText{
+        font-size: 28px;
+    }
+    .active{
+        color: #E3E3E3;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>后台帐号配置</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+        <div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">当前后台帐户</label>
+                <label for="" class="bigText" style="color: red;">{{state.adminUserCount}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;&#12288;
+            </div>
+        </div>
+        <div>
+            <div class="bm-form-group">
+                <label for="city">管理员名称</label>
+                <input type="text" size="15" class="form-control" ng-model="search.name">
+            </div>
+
+
+            <div class="bm-form-group">
+                <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+                <button class="btn btn-primary" ng-click="act.addAccountLayer();">添加账号</button>
+                <!--<a href="javascript:;" class="btn btn-primary" ng-click="act.addApplication()">添加苹果应用</a>-->
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>添加时间</th>
+            <th>账户手机号</th>
+            <th>添加人</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="item in list">
+        <tr ng-class="{'active':item.status == 0}">
+            <td ng-bind="$index + 1"></td>
+            <td ng-bind="item.createdAt || '-'"></td>
+            <td ng-bind="item.adminMobile || '-'"></td>
+            <td ng-bind="item.adminName"></td>
+            <td style="width: 105px;">
+                <!--<a ui-sref="mymanagement-info({id:item.id,status:item.status})">查看</a>-->
+                <a ng-show="item.status == 1" ui-sref="mymanagement-info({id:item.id,status:'-2'})">禁用</a>
+                <a ng-show="item.status == 0" ui-sref="mymanagement-info({id:item.id,status:'-2'})">启用</a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone" class="ng-scope">
+        <tr>
+            <td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-10 text-right">
+        <div class="pagin">
+            <ul class="pagin-page">
+                <li>
+                    <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+                </li>
+                <li>
+                    <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+                </li>
+            </ul>
+            <div class="pagin-input-page">
+                跳至
+                <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+            </div>
+            <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+            <span>
+                第<em ng-bind="state.currentPage"></em>页 / 
+                共<em ng-bind="state.lastPage"></em>页&emsp;
+                总记录：<em ng-bind="state.total"></em>条
+            </span>
+        </div>
+    </div>
+</div>
+
+<!--添加应用弹框-->
+<section class="layer-section">
+    <div ng-show="state.isShowAdd" id="addAccount" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span>添加后台管理员账号</span>
+            </h4>
+            <div class="col-sm-12">
+                <div style="margin:0 15px;">
+                    <label for="city"><i class="required">*</i>名称:</label>
+                    <input type="text" name="name" ng-model="addAjaxParams.name" value=""/>
+                </div>
+                <div style="margin:0 15px;">
+                    <label for="city"><i class="required">*</i>账号:</label>
+                    <input type="text" name="num" ng-model="addAjaxParams.mobile" value=""/>
+                </div>
+                <div style="margin:0 15px;">
+                    <label for="city"><i class="required">*</i>密码:</label>
+                    <input type="text" name="num" ng-model="addAjaxParams.password" value=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

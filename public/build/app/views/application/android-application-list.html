@@ -1,0 +1,189 @@
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>应用列表</li>
+        </ol>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-6">
+        <a ui-sref="application-list" class="btn">苹果应用</a>
+        <a href="javascript:;" class="btn active">安卓应用</a>
+        <!--<a ng-if="page.isUpdate" ui-sref="recommend-agent({projectId:page.projectId,projectName:page.projectName})" class="btn">推荐经纪人</a>-->
+        <!--<a ng-if="page.isUpdate" ui-sref="building-update-log({projectId:page.projectId,projectName:page.projectName})" class="btn">操作日志</a>-->
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+        <div>
+            <div class="bm-form-group">
+                <label for="city">应用名字</label>
+                <input type="text" size="15" class="form-control" ng-model="search.name">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">时间</label>
+                <input type="text" ng-model="search.startTime" id="startTime" class="form-control" placeholder="" bm:datepick date-formate="YYYY-MM-DD" bind-date="search.startTime">
+                <label>至</label>
+                <input type="text" ng-model="search.endTime" id="endTime" class="form-control" placeholder="" bm:datepick date-formate="YYYY-MM-DD" bind-date="search.endTime">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">状态</label>
+                <select style=" min-width: 80px" ng-model="search.status">
+                    <option value="2">全部</option>
+                    <option value="1">已上架</option>
+                    <option value="0">已下架</option>
+                </select>
+            </div>
+            <div class="bm-form-group">
+                <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+                <a href="javascript:;" class="btn btn-primary" ng-click="act.addApplicationLayer()">添加安卓应用</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>添加时间</th>
+            <th>应用名称</th>
+            <th>应用logo</th>
+            <th>应用奖励</th>
+            <th>应用份数</th>
+            <th>包名</th>
+            <th>当前状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="item in list">
+        <tr>
+            <td ng-bind="$index + 1"></td>
+            <td ng-bind="item.createdAt || '-'"></td>
+            <td ng-bind="item.name || '-'"></td>
+            <td width='75' id='logo-box'>
+                <img width="25" height="25" ng-src="{{item.logo}}"/>
+                <img id='hover-logo' ng-src="{{item.logo}}"/>
+            </td>
+            <td ng-bind="item.money || '-'"></td>
+            <td ng-bind="item.num || '-'"></td>
+            <td ng-bind="item.packName || '-'"></td>
+            <!--<td>-->
+            <!--<div grouponer:binghtml bind-data="item.projectCommission"></div>-->
+            <!--</td>-->
+            <td ng-bind="item.status==1?'上架':'下架'"></td>
+            <!--<td ng-bind="item.status  | filtstatus"></td>-->
+            <td style="width: 105px;">
+                <!--<a ui-sref="mymanagement-info({id:item.id,status:item.status})">查看</a>-->
+                <a ng-show="item.status == 0" href="javescript:;" ng-click="act.onlinelayer(item)">上架</a>
+                <a ng-show="item.status == 1" href="javescript:;" ng-click="act.onlinelayer(item)">下架</a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone" class="ng-scope">
+        <tr>
+            <td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-10 text-right">
+        <div class="pagin">
+            <ul class="pagin-page">
+                <li>
+                    <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+                </li>
+                <li>
+                    <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+                </li>
+            </ul>
+            <div class="pagin-input-page">
+                跳至
+                <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+            </div>
+            <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+            <span>
+                第<em ng-bind="state.currentPage"></em>页 / 
+                共<em ng-bind="state.lastPage"></em>页&emsp;
+                总记录：<em ng-bind="state.total"></em>条
+            </span>
+        </div>
+    </div>
+</div>
+
+<!--<img id="image"src=""/>-->
+<!--<br/>-->
+<!--<input type="file"/>-->
+<!--<br/>-->
+<!--<input type="button" ng-click="act.uploadImage();"value="提交"/>-->
+
+<!--添加应用弹框-->
+<section class="layer-section">
+    <div ng-show="state.isShowAdd" id="addApp" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span>添加安卓应用</span>
+            </h4>
+
+            <form action="/admin/app/add" class="indexForm" method="post" enctype="multipart/form-data" name="indexForm" role="form">
+                <div class="col-sm-6">
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>应用名称:</label>
+                        <input type="text" name="name" ng-model="addAjaxParams.name" value=""/>
+                    </div>
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>应用份数:</label>
+                        <input type="text" name="num" ng-model="addAjaxParams.num" value=""/>
+                    </div>
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>搜索排名:</label>
+                        <input type="text" name="rank" ng-model="addAjaxParams.rank" value=""/>
+                    </div>
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>包&#12288;&#12288;名:</label>
+                        <input type="text" name="packName" ng-model="addAjaxParams.packName" value=""/>
+                    </div>
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required"></i>&nbsp;&nbsp;<i class="required">*</i>协议名:</label>
+                        <input type="text" name="urlscheme" ng-model="addAjaxParams.urlscheme" value=""/>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>应用logo:</label>
+                        <label>
+                            <div bm:upload-imgbase64 bind-id="state.logoId" bind-url="send.logo" bind-file="addAjaxParams.logo" bindbase="state.base64"></div>
+                            <!--<input type="file" id="fileId" name="logo" value="请上传图片"/>-->
+                        </label>
+                    </div>
+                    <div style="margin:0 15px 0px;">
+                        <label for="city"><i class="required">*</i>应用奖励:</label>
+                        <input type="text" name="number" ng-model="addAjaxParams.money" value=""/>
+                    </div>
+                    <div style="margin:0 15px 20px;">
+                        <label for="city"><i class="required"></i>&nbsp;&nbsp;应用备注:</label>
+                        <input type="text" name="number" ng-model="addAjaxParams.note" value=""/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!--上架app与下架app二次确认弹框-->
+<section class="layer-section">
+    <div ng-show="state.ismakesure" id="makesure" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span>二次确认</span>
+            </h4>
+            <div style="text-align: center;"ng-show="state.appStatus == 1">是否确认上架该app</div>
+            <div style="text-align: center;"ng-show="state.appStatus == 0">是否确认下架该app</div>
+        </div>
+    </div>
+</section>

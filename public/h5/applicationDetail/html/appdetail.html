@@ -13,25 +13,35 @@
 </head>
 <body>
 <div id="smdfqr">
-    <img src="../images/background.png" alt="" class="background"/>
+    <img src="../images/background.jpg" alt="" class="background"/>
     <div class="titlebar">
         <span class="back"></span>
         <div class="title">应用试玩详情</div>
     </div>
+    <!--<div class="reword">-->
+        <!--<div class="reword-money">{{page.money}}</div>-->
+    <!--</div>-->
     <div class="app-list">
+        <div class="reword">
+             <div class="reword-money">+{{page.money}}元</div>
+            <div class="reword-text">任务奖励</div>
+            <div class="reword-num">剩余<span>{{page.num}}</span>份</div>
+        </div>
         <ul>
             <li>
                 <div class="li-part1">
-                    <div class="li-part1-left"></div>
+                    <div class="li-part1-left">
+                        <img src="{{page.logo}}" alt=""/>
+                    </div>
                     <div class="li-part1-right">
-                        <div>“微信”</div>
+                        <div>“<span>{{page.name}}</span>”</div>
                         <div>搜索关键字，长按应用名可复制</div>
                     </div>
                     <div class="firstStep"></div>
                 </div>
                 <div class="li-part2">
-                    <div class="li-part2-left">appstore搜索排名第<span>1</span>名</div>
-                    <a href="" class="li-part2-right" @click="testApp()">前往下载</a>
+                    <div class="li-part2-left">appstore搜索排名第<span>{{page.rank}}</span>名</div>
+                    <a href="javascript:;" class="li-part2-right" @click="testApp2()">前往下载</a>
                 </div>
             </li>
             <li>
@@ -41,7 +51,7 @@
                 </div>
                 <div class="li-part2">
                     <div class="li-part2-left">打开时请“允许”使用数据</div>
-                    <a href="" class="li-part2-right">打开应用</a>
+                    <a href="" class="li-part2-right open-app">打开应用</a>
                 </div>
             </li>
         </ul>
@@ -109,7 +119,7 @@
 <script src="../libs/axios/axios.min.js"></script>
 <script src="../libs/vue/vue.min.js"></script>
 <script src="../tools/mytools.js"></script>
-<!--<script src="../js/smdfqr.js?v=681828232"></script>-->
+<script src="../js/smdfqr.js?v=681828232"></script>
 </body>
 </html>
 

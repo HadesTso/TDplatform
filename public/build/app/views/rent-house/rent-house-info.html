@@ -321,6 +321,7 @@
 	</div>
 </section>
 
+<!--添加手机应用-->
 <section class="layer-section" ng-show="state.isShowChangeType2">
 	<div id="changeType2" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
 		<div>
@@ -329,6 +330,38 @@
 			</h4>
 			<div style="margin:0 15px;">
 				<label for="city">&emsp;<i class="required">*</i>您确认将该房状态更改为未出租吗？</label>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="layer-section">
+	<div ng-show="state.showEditList" id="addList" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+		<div>
+			<h4 class="layer-title">
+				<span ng-if="!state.isUpdate">楼盘权重</span>
+				<span ng-if="state.isUpdate">用户权限</span>
+			</h4>
+			<div style="margin:0 15px;">
+				<label for="city"><i class="required"></i>&nbsp;&nbsp;&nbsp;&nbsp;楼盘id:</label>
+				<label for="city"><i style="color: black" class="required" ng-bind="state.tempItem.projectId"></i></label>
+			</div>
+			<div style="margin:0 15px;">
+				<label for="city"><i class="required"></i>楼盘名称:</label>
+				<label for="city"><i style="color: black" class="required" ng-bind="state.tempItem.projectName"></i></label>
+
+			</div>
+			<div style="margin:0 15px;">
+				<label for="city">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="required">*</i>权重:</label>
+				<input type="text" ng-model="state.number"/>
+				<!--<label ng-repeat="item in state.result">-->
+				<!--<input type="input" ng-model="item.checked"/>{{item.text}}-->
+				<!--</label>-->
+			</div>
+			<div style="height: 30px;width: 100%">
+				<div ng-show="state.showError">
+					<label style="color: red;margin-left: 94px" for="city">权重为正整数，请重新填写</label>
+				</div>
 			</div>
 		</div>
 	</div>

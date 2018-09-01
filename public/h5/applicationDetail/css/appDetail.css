@@ -51,6 +51,39 @@ body{
     text-align: center;
 }
 
+.reword{
+    width: 100%;
+    height: 150px;
+    /*background-color: red;*/
+    position: absolute;
+    top: 60px;
+    /*opacity: 0.5;*/
+
+}
+.reword .reword-money{
+    width: 100%;
+    text-align: center;
+    color: #ffe100;
+    position: absolute;
+    top: 30px;
+    font-size: 30px;
+}
+.reword div.reword-text{
+    width: 100%;
+    text-align: center;
+    color: #ffbebb;
+    position: absolute;
+    top: 70px;
+    font-size: 18px;
+}
+.reword div.reword-num{
+    color: #ffbebb;
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    font-size: 14px;
+}
+
 .app-list ul{
     position: absolute;
     top: 19rem;
@@ -74,12 +107,16 @@ body{
     display: inline-block;
     width: 3.78rem;
     height: 3.78rem;
-    background-image: url("../images/weixinlogo.png");
-    background-repeat: no-repeat;
-    -webkit-background-size: 100% 100%;
-    background-size: 100% 100%;
+    /*background-image: url("../images/weixinlogo.png");*/
+    /*background-repeat: no-repeat;*/
+    /*-webkit-background-size: 100% 100%;*/
+    /*background-size: 100% 100%;*/
     margin-left: 1.58rem;
     margin-top: 1.48rem;
+}
+.app-list ul li .li-part1 .li-part1-left img{
+    width: 100%;
+    height: 100%;
 }
 .app-list ul li .li-part1 .li-part1-right{
     display: inline-block;
@@ -403,4 +440,7 @@ body{
 
 .required{
     color: #f75522;
+}
+.btn-bgc{
+    background-color: darkgray;
 }

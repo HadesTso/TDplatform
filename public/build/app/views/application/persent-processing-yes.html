@@ -1,0 +1,164 @@
+<style>
+    .bigText{
+        font-size: 28px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>提现处理</li>
+            <li>提现已处理</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+        <div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">用户总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.totleNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;&#12288;
+            </div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">苹果用户总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.iOSNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;&#12288;
+            </div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">安卓用户总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.androidNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;
+            </div>
+        </div>
+        <div>
+            <div class="bm-form-group">
+                <label for="city">用户昵称</label>
+                <input type="text" size="15" class="form-control" ng-model="search.nickname">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">用户号码</label>
+                <input type="text" size="15" class="form-control" ng-model="search.mobile">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">提现帐号</label>
+                <input type="text" size="15" class="form-control" ng-model="search.alipay">
+            </div>
+
+            <div class="bm-form-group">
+                <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+                <!--<a href="javascript:;" class="btn btn-primary" ng-click="act.addApplication()">添加苹果应用</a>-->
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>申请时间</th>
+            <th>提现用户</th>
+            <th>提现用户手机</th>
+            <th>提现金额</th>
+            <th>提现账号</th>
+            <th>操作时间</th>
+            <th>操作人</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="item in list">
+        <tr>
+            <td ng-bind="$index + 1"></td>
+            <td ng-bind="item.createdAt || '-'"></td>
+            <td ng-bind="item.nickname || '-'"></td>
+            <td ng-bind="item.mobile || '-'"></td>
+            <td ng-bind="item.money || '-'"></td>
+            <td ng-bind="item.alipay || '-'"></td>
+            <td ng-bind="item.updatedAt || '-'"></td>
+            <td ng-bind="item.adminName || '-'"></td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone" class="ng-scope">
+        <tr>
+            <td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-10 text-right">
+        <div class="pagin">
+            <ul class="pagin-page">
+                <li>
+                    <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+                </li>
+                <li>
+                    <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+                </li>
+            </ul>
+            <div class="pagin-input-page">
+                跳至
+                <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+            </div>
+            <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+            <span>
+                第<em ng-bind="state.currentPage"></em>页 / 
+                共<em ng-bind="state.lastPage"></em>页&emsp;
+                总记录：<em ng-bind="state.total"></em>条
+            </span>
+        </div>
+    </div>
+</div>
+
+<!--添加应用弹框-->
+<section class="layer-section">
+    <div ng-show="state.isShowAdd" id="addApp" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span ng-if="state.isiOS == 0">添加安卓应用</span>
+                <span ng-if="state.isiOS == 1">添加苹果应用</span>
+            </h4>
+
+            <form action="/admin/app/add" class="indexForm" method="post" enctype="multipart/form-data" name="indexForm" role="form">
+                <div class="col-sm-6">
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>应用名称:</label>
+                        <input type="text" name="name" ng-model="addAjaxParams.name" value=""/>
+                    </div>
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>应用份数:</label>
+                        <input type="text" name="num" ng-model="addAjaxParams.num" value=""/>
+                    </div>
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>搜索排名:</label>
+                        <input type="text" name="rank" ng-model="addAjaxParams.rank" value=""/>
+                    </div>
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required"></i>包&#12288;&#12288;名:</label>
+                        <input type="text" name="packName" ng-model="addAjaxParams.packName" value=""/>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div style="margin:0 15px;">
+                        <label for="city"><i class="required">*</i>应用logo:</label>
+                        <label>
+                            <div bm:upload-img bind-id="state.logoId" bind-url="send.logo" bind-file="addAjaxParams.logo"></div>
+                        </label>
+                    </div>
+                    <div style="margin:0 15px 20px;">
+                        <label for="city"><i class="required"></i>应用备注:</label>
+                        <input type="text" name="number" ng-model="addAjaxParams.number" value=""/>
+                    </div>
+                </div>
+                <input class="submitForm" type="submit"/>
+            </form>
+
+            <!--<div style="height: 30px;width: 100%">-->
+            <!--<div ng-show="state.showError">-->
+            <!--<label style="color: red;margin-left: 94px" for="city">权重为正整数，请重新填写</label>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</section>

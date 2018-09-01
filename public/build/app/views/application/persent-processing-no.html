@@ -1,0 +1,146 @@
+<style>
+    .bigText{
+        font-size: 28px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>提现处理</li>
+            <li>提现待处理</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+        <div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">用户总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.totleNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;&#12288;
+            </div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">苹果用户总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.iOSNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;&#12288;
+            </div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">安卓用户总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.androidNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;
+            </div>
+        </div>
+        <div>
+            <div class="bm-form-group">
+                <label for="city">用户昵称</label>
+                <input type="text" size="15" class="form-control" ng-model="search.nickname">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">用户号码</label>
+                <input type="text" size="15" class="form-control" ng-model="search.mobile">
+            </div>
+            <div class="bm-form-group">
+                <label for="city">提现帐号</label>
+                <input type="text" size="15" class="form-control" ng-model="search.alipay">
+            </div>
+
+            <div class="bm-form-group">
+                <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+                <!--<a href="javascript:;" class="btn btn-primary" ng-click="act.addApplication()">添加苹果应用</a>-->
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>申请时间</th>
+            <th>提现用户</th>
+            <th>提现用户手机</th>
+            <th>提现金额</th>
+            <th>提现账号</th>
+            <th style="width: 150px;">操作</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="item in list">
+        <tr>
+            <td ng-bind="$index + 1"></td>
+            <td ng-bind="item.createdAt || '-'"></td>
+            <td ng-bind="item.nickname || '-'"></td>
+            <td ng-bind="item.mobile || '-'"></td>
+            <td ng-bind="item.money || '-'"></td>
+            <td ng-bind="item.alipay || '-'"></td>
+            <td style="width: 105px;">
+                <a href="javascript:;" ng-click="act.pay(2,item)">已打款</a>&#12288;
+                <a href="javascript:;" ng-click="act.pay(3,item)">打款失败</a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone" class="ng-scope">
+        <tr>
+            <td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-10 text-right">
+        <div class="pagin">
+            <ul class="pagin-page">
+                <li>
+                    <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+                </li>
+                <li>
+                    <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+                </li>
+            </ul>
+            <div class="pagin-input-page">
+                跳至
+                <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+            </div>
+            <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+            <span>
+                第<em ng-bind="state.currentPage"></em>页 / 
+                共<em ng-bind="state.lastPage"></em>页&emsp;
+                总记录：<em ng-bind="state.total"></em>条
+            </span>
+        </div>
+    </div>
+</div>
+
+<!--打款状态操作-->
+<section class="layer-section">
+    <div ng-show="state.isShowAdd" id="addApp" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span ng-if="state.isiOS == 1">打款状态确认</span>
+            </h4>
+
+            <div style="margin:0 15px">
+                <label for="city"><i class="required"></i>提现用户名:</label>
+                <label for="" ng-bind="layerData.nickname"></label>
+            </div>
+            <div style="margin:0 15px">
+                <label for="city"><i class="required"></i>提现用户手机:</label>
+                <label for="" ng-bind="layerData.mobile"></label>
+            </div>
+            <div style="margin:0 15px;">
+                <label for="city"><i class="required"></i>提现金额:</label>
+                <label for="" ng-bind="layerData.money"></label>
+            </div>
+            <div style="margin:0 15px">
+                <label for="city"><i class="required"></i>提现账号:</label>
+                <label for="" ng-bind="layerData.alipay"></label>
+            </div>
+
+            <div ng-show="state.areadyPay" style="text-align: center;color: red;">确定操作线下已打款？操作后该用户此次申请将变为提现成功</div>
+            <div ng-show="!state.areadyPay" style="text-align: center;color: red;">您确定线下打款失败？失败请填写失败原因，原因将会告诉给用户</div>
+            <textarea ng-show="!state.areadyPay" ng-model="layerData.note" style="margin-left: 20px;" name="" id="" cols="42" rows="8" placeholder="请填写打款失败原因"></textarea>
+
+        </div>
+    </div>
+</section>

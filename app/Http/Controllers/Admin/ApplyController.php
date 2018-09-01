@@ -7,6 +7,7 @@ use App\Model\Apply;
 use App\Model\Income;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 
 /**
  * 后端应用控制器
@@ -110,6 +111,7 @@ class ApplyController extends Controller
                 return Response::Error('保存失败',1);
             }
         }catch (\Exception $exception){
+            Log::info($exception->getMessage());
             return response(Response::Error('新增失败',1));
         }
     }

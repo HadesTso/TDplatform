@@ -306,6 +306,7 @@ app
             urlGetBackstageList = '/admin/list', // 后台帐户列表
             urlOnline = '/admin/app/update', // 上架app与下架app操作
             urlAddAccount = '/admin/add', // 添加后台管理员账号
+            urlChangeAccountStatus = '/admin/update', // 添加后台管理员账号
 
             urlUploadImg = '/upload-base64-image', // 图片上传
             service = null;
@@ -394,6 +395,16 @@ app
         addAccount: function(opt) { // 添加后台管理员账号
             var d = $q.defer();
             _httpPost(urlAddAccount, opt)
+                .then(function(data) {
+                    d.resolve(data);
+                }, function(data) {
+                    d.reject(data);
+                });
+            return d.promise;
+        },
+        changeAccountStatus: function(opt) { // 更改管理员账号状态
+            var d = $q.defer();
+            _httpPost(urlChangeAccountStatus, opt)
                 .then(function(data) {
                     d.resolve(data);
                 }, function(data) {

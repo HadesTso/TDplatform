@@ -20,7 +20,7 @@
     <favorites_list name="build" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.17275156">
+    <splitter split-orientation="horizontal" split-proportion="0.7424779">
       <split-first>
         <leaf>
           <file leaf-file-name="navList.json" pinned="false" current-in-tab="false">
@@ -70,10 +70,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="android-application-list.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="android-application-list.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/application/android-application-list.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5631769">
+                <state vertical-scroll-proportion="-10.75862">
                   <caret line="127" column="36" selection-start-line="127" selection-start-column="36" selection-end-line="127" selection-end-column="36" />
                   <folding>
                     <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
@@ -111,11 +111,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="backstage-account-list.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="backstage-account-list.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/application/backstage-account-list.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-6.644068">
-                  <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+                <state vertical-scroll-proportion="0.66412216">
+                  <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+                  <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
                   <folding>
                     <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#!!top" expanded="true" />
@@ -188,10 +189,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="android-application-list.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="android-application-list.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/application/android-application-list.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.32368898">
+                <state vertical-scroll-proportion="-54.366665">
                   <caret line="256" column="25" selection-start-line="256" selection-start-column="25" selection-end-line="256" selection-end-column="25" />
                   <folding>
                     <element signature="e#0#48#0" expanded="false" />
@@ -224,8 +225,8 @@
           <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/js/services.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="307" column="54" selection-start-line="307" selection-start-column="54" selection-end-line="307" selection-end-column="54" />
+                <state vertical-scroll-proportion="-7.6">
+                  <caret line="310" column="58" selection-start-line="310" selection-start-column="58" selection-end-line="310" selection-end-column="58" />
                   <folding>
                     <element signature="e#100#9095#0" expanded="false" />
                   </folding>
@@ -259,11 +260,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="backstage-account-list.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="backstage-account-list.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/application/backstage-account-list.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-14.766666">
-                  <caret line="192" column="52" selection-start-line="192" selection-start-column="52" selection-end-line="192" selection-end-column="52" />
+                <state vertical-scroll-proportion="1.278481">
+                  <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
                   <folding>
                     <element signature="e#0#49#0" expanded="false" />
                   </folding>
@@ -314,13 +315,13 @@
         <option value="$PROJECT_DIR$/app/views/home.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/_data/navList.json" />
-        <option value="$PROJECT_DIR$/app/js/services.js" />
-        <option value="$PROJECT_DIR$/app/views/application/backstage-account-list.html" />
-        <option value="$PROJECT_DIR$/app/controllers/application/backstage-account-list.js" />
         <option value="$PROJECT_DIR$/app/controllers/application/application-list.js" />
         <option value="$PROJECT_DIR$/app/views/application/application-list.html" />
         <option value="$PROJECT_DIR$/app/views/application/android-application-list.html" />
         <option value="$PROJECT_DIR$/app/controllers/application/android-application-list.js" />
+        <option value="$PROJECT_DIR$/app/js/services.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application/backstage-account-list.js" />
+        <option value="$PROJECT_DIR$/app/views/application/backstage-account-list.html" />
       </list>
     </option>
   </component>
@@ -959,16 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="307" column="54" selection-start-line="307" selection-start-column="54" selection-end-line="307" selection-end-column="54" />
-          <folding>
-            <element signature="e#100#9095#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application/user-management.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1509434">
@@ -1009,31 +1000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application/backstage-account-list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.766666">
-          <caret line="192" column="52" selection-start-line="192" selection-start-column="52" selection-end-line="192" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#49#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/application/backstage-account-list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.644068">
-          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/web-forms.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0686107">
@@ -1063,7 +1029,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/application/android-application-list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5631769">
+        <state vertical-scroll-proportion="-10.75862">
           <caret line="127" column="36" selection-start-line="127" selection-start-column="36" selection-end-line="127" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
@@ -1090,11 +1056,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application/android-application-list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32368898">
+        <state vertical-scroll-proportion="-54.366665">
           <caret line="256" column="25" selection-start-line="256" selection-start-column="25" selection-end-line="256" selection-end-column="25" />
           <folding>
             <element signature="e#0#48#0" expanded="false" />
             <element signature="e#9971#11418#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.6">
+          <caret line="310" column="58" selection-start-line="310" selection-start-column="58" selection-end-line="310" selection-end-column="58" />
+          <folding>
+            <element signature="e#100#9095#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/backstage-account-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.278481">
+          <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#49#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/backstage-account-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66412216">
+          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+          <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

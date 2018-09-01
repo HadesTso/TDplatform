@@ -89,6 +89,28 @@ app.register.controller('backstage-account-list', function ($scope, $timeout,App
             }
         };
 
+    // -- 更改管理员账号状态
+    var changeAccountStatus = function(opt, cb, cberr) {
+            ApplicationService.changeAccountStatus(opt)
+                .then(function(data) {
+                    if(typeof cb === 'function')cb(data);
+                }, function(data) {
+                    if(typeof cberr === 'function')cberr(data);
+                });
+        },
+        changeAccountStatusHandler = function(data) {
+            //var data = JSON.parse(data)
+            console.log(123)
+            console.log(data)
+            //console.log(data.state)
+            //console.log(data.state.code)
+            if(data && data['__state'] && data['__state'].code === 200) {
+                layer.alert('修改成功', function () {
+                    window.location.reload();
+                });
+            }
+        };
+
     // 匹配模型中的参数 到 请求参数
     var matchAjaxParams = function(modelParams, reqParams) {
             var temp = '';
@@ -204,6 +226,16 @@ app.register.controller('backstage-account-list', function ($scope, $timeout,App
                     }
                 });
             },0);
+        },
+        changeAccountStatus: function (item) {
+            var postData = {}
+            postData.adminId = 4;
+            if(item.status == 1){
+                postData.status = 0;
+            }else{
+                postData.status = 1;
+            }
+            changeAccountStatus(postData,changeAccountStatusHandler)
         }
     };
 });

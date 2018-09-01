@@ -52,6 +52,7 @@ Route::group(
     Route::group(['prefix' => 'app'], function(){
         Route::get('list', 'ApplyController@index'); //应用列表
         Route::post('add', 'ApplyController@add'); //添加应用
+        Route::post('update', 'ApplyController@updateStatus'); //更改应用状态
     });
     Route::group(['prefix' => 'user'], function(){
         Route::get('list', 'UserController@index'); //用户列表

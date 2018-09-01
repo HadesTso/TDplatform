@@ -172,4 +172,11 @@ class ApplyController extends Controller
         }
         return $url;
     }
+
+    public function updateStatus(){
+        $status = Input::get('status', 1); //1上架 0下架
+        $app_id = Input::get('app_id', 0);
+        (new Apply())->where('app_id', '=', $app_id)->update(['status' => $status]);
+        return Response::Success_No_Data('操作成功',1);
+    }
 }

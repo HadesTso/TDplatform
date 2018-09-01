@@ -18,7 +18,9 @@ class WechatController extends Controller
         $code = $request->input('code');
         $appid = $request->input('appid');
         $type = $request->input('type');
-
+        if (empty($code) || empty($appid) || is_null($type)){
+            return Response::Error('缺少参数');
+        }
         $secret = config('app.'.$appid);
 
         if (empty($secret)){
@@ -184,7 +186,9 @@ class WechatController extends Controller
         $mobile = $request->input('mobile');
         $code = $request->input('code');
         $type = $request->input('type');
-
+        if (empty($mobile) || empty($code) || is_null($type)){
+            return Response::Error('缺少参数');
+        }
         $a = new sendSMS();
         $massage = $a->checkCode($mobile, $code);
 

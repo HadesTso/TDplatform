@@ -106,7 +106,7 @@ class ApplyController extends Controller
             ];
             $res = $model->insert($data);
             if ($res){
-                return Response::Success('添加成功',1);
+                return Response::Success_No_Data('添加成功',1);
             }else{
                 return Response::Error('保存失败',1);
             }

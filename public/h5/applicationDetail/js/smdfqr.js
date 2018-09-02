@@ -10,17 +10,14 @@
             urlStatus:'',//获取链接上的参数
             list:[],
             isShowLayer:false,//弹框显示
+            urlscheme:'',//app的打开链接
+            step1done:0,//是否完成第一步
+            step2done:0,//是否完成第二步
+            showTip:false,//是否展示
             ajaxParams:{
                 page:'1',//页码
                 //status:'',//状态
                 //search:'',//搜索
-            },
-            makeSureAjaxParams:{//确认评估参数
-                id:'',//id
-                status:50,//30为评估成功，40为评估失败，50为确认签约
-                imgurls:[],// 图片url 评估成功或者确认签约时必传
-                imgIds:'',// 图片id 评估成功或者确认签约时必传
-                note:'',// 评估备注
             },
             page:'',//保存分页数据
         },
@@ -38,7 +35,8 @@
                 if(data && data.code === 200) {
                     //that.list.push(...data.data.data);
                     that.page = data.data;
-                    console.log(data.data)
+                    that.urlscheme = data.data.urlscheme;
+                    console.log(that.page.logo)
 
                     //for(var i=0;i<data.data.data.length;i++){
                     //    var a = data.data.data[i].mobile.slice(0,3);
@@ -51,38 +49,26 @@
                     //that.pageConfig.lastPage = data.data.lastPage;
                 }
             },
-            makeSure: function(opt, cb, cberr) {
+            receiveReward: function(opt, cb, cberr) {
                 var that = this;
-                var url = '/jf/save-order/upload-data';
+                var url = '/income/receive';
                 that.$httpPost(url, opt)
                     .then(cb, cberr);
             },
-            makeSureHandle: function (data) {
+            receiveRewardHandler: function (data) {
                 var that = this;
+                console.log(data)
                 that.loading = false;
-                if(data && data.state && data.state.code === 10200) {
-                    that.$myalert(data.state.msg)
+                if(data && data.code === 200) {
+                    that.$myalert(data.msg)
                     //that.list.push(...data.data.data);
                     //that.page = data.data
-                    window.location.reload();
+                    window.location.href="qianjinbao://";
                     $(".layer").css("display","none");
+                }else{
+                    that.$myalert(data.msg)
                 }
             },
-
-            submit: function () {
-                var that = this;
-                that.makeSureAjaxParams.imgIds=that.makeSureAjaxParams.imgIds.substring(0,that.makeSureAjaxParams.imgIds.length-1)
-                //that.makeSureAjaxParams.imgIds = that.urlId;
-                //if(that.makeSureAjaxParams.status == 50){
-                    if(that.makeSureAjaxParams.imgIds == ''){
-                        that.$myalert("图片不能为空！")
-                        return false;
-                    }
-                //}
-                that.loading = true;
-                that.makeSure(that.makeSureAjaxParams,that.makeSureHandle)
-            },
-
 
             backLayer: function () {
                 var that = this;
@@ -149,7 +135,53 @@
             }else{
                 alert('未检测到')
             }
-        }
+        },
+            goback: function () {
+                var that = this;
+                setTimeout(function () {
+                    console.log(1)
+                    $('.tip').css('opacity',1)
+                },100)
+                that.showTip = true;
+            },
+            tipsure: function () {
+                var that = this;
+                that.showTip = false;
+                window.location.href="qianjinbao://";
+            },
+            tipcancle: function () {
+                var that = this;
+                that.showTip = false;
+            },
+            goDownload: function () {
+                var that = this;
+                if(that.ajaxParams.status == 1){//已经下载该应用
+                    that.$myalert('当前设备已安装此应用，无法完成此任务')
+                    return false;
+                }
+                window.location.href="itms-apps://itunes.apple.com/app";
+                that.step1done = 1;
+            },
+            openApp: function () {
+                var that = this;
+                window.location.href = that.urlscheme;
+                that.step2done = 1;
+            },
+            getReward: function () {
+                var that = this;
+                if(that.step1done==0){
+                    that.$myalert('请先完成第1步哦')
+                    return false;
+                }
+                if(that.step2done==0){
+                    that.$myalert('请先完成第2步哦')
+                    return false;
+                }
+                var postData = {}
+                postData.appId = that.ajaxParams.appId
+                that.loading = true;
+                that.receiveReward(postData,that.receiveRewardHandler)
+            },
         },
         mounted: function() {
             var that = this;

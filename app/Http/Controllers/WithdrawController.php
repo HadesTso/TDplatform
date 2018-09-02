@@ -104,7 +104,7 @@ class WithdrawController extends Controller
             return response(Response::Error('该应用不存在'));
         }
 
-        if ($apply->num > 0){
+        if ($apply->num < 0){
             return response(Response::Error('该应用数量不足'));
         }
 

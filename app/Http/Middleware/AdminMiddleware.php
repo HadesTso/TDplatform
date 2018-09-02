@@ -11,7 +11,7 @@ class AdminMiddleware
     {
         $admin_id = session()->get('admin_id');
         if (empty($admin_id)){
-            return Response::NotLogin('no_login');
+            return Response::NotLogin('no_login',1);
         }
 //        $token = $request->header('token');
 //        $token = $token?$token:$request->input('token','');

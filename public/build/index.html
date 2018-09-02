@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>房者荣耀后台管理中心</title>
+        <title>钱进宝应用支撑系统</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="renderer" content="webkit" />
@@ -19,12 +19,12 @@
             <!-- Header -->
             <header class="backman-header">
                 <a class="logo" ui-sref="home">
-                    <b>房者荣耀后台管理中心</b>
+                    <b>钱进宝应用系统</b>
                 </a>
                 <nav class="navbar">
                     <a class="sidebar-toggle" ng-click="act.toggleSidebar()" href="javascript:;"></a>
                     <div class="navbar-right">欢迎您！<strong ng-bind="adminName"></strong> |
-                        <a class="btn-default" ng-href="">退出</a>
+                        <a class="btn-default loginout" ng-href="">退出</a>
                     </div>
                 </nav>
             </header>
@@ -108,6 +108,30 @@
         <script src="app/js/directives.js"></script>
         <script src="app/js/filters.js"></script>
 
+        <script>
+            (function () {
+                $('.loginout').on('click', function () {
+                    var url = '/admin/logout';
+                    $.post(url, {
+//                    'admin_name': $loginMobile.val(),
+//                    'password': $loginPassword.val()
+                    }).done(function(data) {
+                        var data = JSON.parse(data)
+                        if(data.state.code == 200){
+                            layer.alert('退出成功！', function () {
+                                window.location.href = '/build/login.html'
+                            })
+                        }
+                    }).fail(function(data) {
+                        if(typeof cberr === 'function') {
+                            cberr(data);
+                        }
+                    }).always(function(){
+//                        toggleLoading(); // 隐藏loading
+                    });
+                })
+            })()
+        </script>
     </body>
 
 </html>

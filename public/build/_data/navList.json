@@ -3,41 +3,71 @@
         "code": 10200,
         "msg": "ok"
     },
-    "data": 
+    "data":
     [
         {
             "order": 1,
-            "text": "房屋租赁",
+            "text": "应用列表",
             "children": [
                 {
                     "order": 1,
-                    "text": "所有房源",
-                    "state": "rent-house-list",
-                    "hash": "/rent-house-list"
+                    "text": "应用列表",
+                    "state": "application-list",
+                    "hash": "/application-list"
+                }
+            ]
+        },
+        {
+            "order": 2,
+            "text": "用户管理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "用户管理列表",
+                    "state": "user-management",
+                    "hash": "/user-management"
+                }
+            ]
+        },
+        {
+            "order": 3,
+            "text": "数据统计",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "数据统计",
+                    "state": "data-statistics",
+                    "hash": "/data-statistics"
+                }
+            ]
+        },
+        {
+            "order": 4,
+            "text": "提现处理",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "提现待处理",
+                    "state": "persent-processing-no",
+                    "hash": "/persent-processing-no"
                 },
                 {
-                    "order": 2,
-                    "text": "存房订单",
-                    "state": "save-house-order-list",
-                    "hash": "/save-house-order-list"
-                },
+                    "order": 1,
+                    "text": "提现已处理",
+                    "state": "persent-processing-yes",
+                    "hash": "/persent-processing-yes"
+                }
+            ]
+        },
+        {
+            "order": 5,
+            "text": "其他配置",
+            "children": [
                 {
-                    "order":3,
-                    "text": "小区管理",
-                    "state": "area-management",
-                    "hash": "/area-management"
-                },
-                {
-                    "order":4,
-                    "text": "开锁二维码管理",
-                    "state": "code-management",
-                    "hash": "/code-management"
-                },
-                {
-                    "order":5,
-                    "text": "基本信息",
-                    "state": "base",
-                    "hash": "/base"
+                    "order": 1,
+                    "text": "后台账号配置",
+                    "state": "backstage-account-list",
+                    "hash": "/backstage-account-list"
                 }
             ]
         }

@@ -1,0 +1,87 @@
+{
+    "state": {
+        "code": 10200,
+        "msg": "ok"
+    },
+    "data": 
+    [
+        {
+            "order": 1,
+            "text": "房屋租赁",
+            "children": [
+                {
+                    "order": 1,
+                    "text": "所有房源",
+                    "state": "rent-house-list",
+                    "hash": "/rent-house-list"
+                },
+                {
+                    "order": 2,
+                    "text": "存房订单",
+                    "state": "save-house-order-list",
+                    "hash": "/save-house-order-list"
+                },
+                {
+                    "order":3,
+                    "text": "小区管理",
+                    "state": "area-management",
+                    "hash": "/area-management"
+                },
+                {
+                    "order":4,
+                    "text": "开锁二维码管理",
+                    "state": "code-management",
+                    "hash": "/code-management"
+                },
+                {
+                    "order":5,
+                    "text": "基本信息",
+                    "state": "base",
+                    "hash": "/base"
+                }
+            ]
+        }
+    ]
+}
+
+
+
+{
+"state": {
+"code": 10200,
+"msg": "ok"
+},
+"data":
+[
+{
+"order": 1,
+"text": "应用列表",
+"state": "application-list",
+"hash": "/application-list"
+},
+{
+"order": 2,
+"text": "用户管理",
+"state": "user-management",
+"hash": "/user-management"
+},
+{
+"order": 3,
+"text": "数据统计",
+"state": "data-statistics",
+"hash": "/data-statistics"
+},
+{
+"order": 4,
+"text": "提现处理",
+"state": "application-list2",
+"hash": "/application-list2"
+},
+{
+"order": 5,
+"text": "其他配置",
+"state": "application-list2",
+"hash": "/application-list2"
+}
+]
+}

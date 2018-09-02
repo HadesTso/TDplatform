@@ -1,5 +1,4 @@
 $(function(){
-    console.log("123")
     var $formLogin = $('#formLogin'),
         $loginBtn = $('#loginBtn'),
         $loginMobile = $('#loginMobile'),
@@ -29,12 +28,10 @@ $(function(){
                 'admin_name': $loginMobile.val(),
                 'password': $loginPassword.val()
             }).done(function(data) {
-                console.log("666")
                 if(typeof cb === 'function') {
                     cb(data);
                 }
             }).fail(function(data) {
-                console.log("666")
                 if(typeof cberr === 'function') {
                     cberr(data);
                 }
@@ -75,14 +72,16 @@ $(function(){
     var loginHandler = function(e) {
         var successCb = function(data) {
                 console.log("登录成功")
-            //var successUrl = test() + '/acjl-admin/index'; // 登录成功后跳转
-            var successUrl = 'www.baidu.com'; // 登录成功后跳转
-
-            if(data.state && data.state.code && data.state.code === 10200) {
-                localStorage.setItem('kojiadmin-user', JSON.stringify(data));
+                var data = JSON.parse(data)
+                console.log(data)
+            var successUrl = test() + '/build/index.html'; // 登录成功后跳转
+            //var successUrl = 'www.baidu.com'; // 登录成功后跳转
+            if(data.state.code === 200) {
+                localStorage.setItem('user', JSON.stringify(data));
                 window.location.href = successUrl;
             }else {
-                if(data.state && data.state.msg) {
+                console.log(data)
+                if(data && data.state.msg) {
                     alert(data.state.msg);
                 }
             }

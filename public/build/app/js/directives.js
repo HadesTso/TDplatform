@@ -448,5 +448,66 @@ app
     };
 })
 
+// 多图片上传
+    .directive('ysfImageupload', function(_tools, _httpPost, CommonService,$timeout) {
+        // Runs during compile
+        return {
+            scope: {
+                appid: '=',
+                useType: '=',
+                cb: '&',
+                cberr: '&',
+                bindbase:'='
+            },
+            restrict: 'AE',
+            template:   '<input type="file" style="display: none;" value="" />',
+            replace: true,
+            link: function($scope, iElm, iAttrs, controller) {
+                var $file = $(iElm);
+                var cb = $scope.cb(),
+                    cberr = $scope.cberr();
+
+                $file.on('change',function(e) {
+                    var files = $file.get(0).files;
+                    var count = 0;
+                    if(files.length) {
+                        for(var i = 0; i < files.length; i++) {
+                            (function(idx) {
+                                var reader = new FileReader();
+                                reader.readAsDataURL(files[idx]);
+                                reader.onload = function(ev){
+                                    count++;
+                                    if(count == files.length) {
+                                        $file.val('');
+                                    }
+                                    var setting = {
+                                        appid: $scope.appid || 4,
+                                        useType: $scope.useType || 'project',
+                                        base64File:''
+                                    };
+                                    //$scope.bindbase = ev.target.result
+                                    $timeout(function () {
+                                        $scope.bindbase = '123';
+                                    },100)
+
+
+                                    console.log(ev.target.result)
+                                    //CommonService.doUploadImg(angular.merge(setting, {
+                                    //    base64File: ev.currentTarget.result
+                                    //})).then(function(data) {
+                                    //    if(typeof cb === 'function')cb(data);
+                                    //}, function(data) {
+                                    //    if(typeof cberr === 'function')cberr(data);
+                                    //});
+                                };
+                            })(i);
+                        }
+                    }
+                });
+
+            }
+        };
+    })
+
 
 ;

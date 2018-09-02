@@ -1,0 +1,165 @@
+<style>
+    .bigText{
+        font-size: 28px;
+    }
+    .logoImg{
+        width: 50px;
+        height: 50px;
+    }
+    .pagin{
+        margin-top: 20px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>数据统计</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <form class="form-search form-inline col-md-12">
+        <div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">应用总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.iOSNum+state.androidNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;&#12288;
+            </div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">苹果应用总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.iOSNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;&#12288;
+            </div>
+            <div class="bm-form-group">
+                <label for="city" class="bigText">安卓应用总数</label>
+                <label for="" class="bigText" style="color: red;">{{state.androidNum}}</label>
+                <label for="" class="bigText">个</label>&#12288;&#12288;
+            </div>
+        </div>
+        <div>
+            <div class="bm-form-group">
+                <label for="city">应用名字</label>
+                <input type="text" size="15" class="form-control" ng-model="search.name">
+            </div>
+
+
+            <div class="bm-form-group">
+                <button class="btn btn-primary" ng-click="act.doSearch();">搜索</button>
+                <!--<a href="javascript:;" class="btn btn-primary" ng-click="act.addApplication()">添加苹果应用</a>-->
+            </div>
+        </div>
+    </form>
+</div>
+<hr/>
+<div class="table-responsive col-md-6">
+    <div style="text-align: center;font-size: 22px">苹果应用（总奖励：{{state.iOSreword}}元）</div>
+    <table class="col-md-12">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>名字</th>
+            <th >LOGO</th>
+            <th>推广量</th>
+            <th>发出奖励</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="item in iOSlist">
+        <tr>
+            <td ng-bind="$index + 1"></td>
+            <td ng-bind="item.name || '-'"></td>
+            <td width='75' id='logo-box'>
+                <img width="25" height="25" ng-src="{{item.logo}}"/>
+                <img id='hover-logo' ng-src="{{item.logo}}"/>
+            </td>
+            <td ng-bind="item.num || '-'"></td>
+            <td ng-bind="item.money || '-'"></td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone" class="ng-scope">
+        <tr>
+            <td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+        </tr>
+        </tfoot>
+    </table>
+    <div class="row">
+        <div class="col-md-10 text-right">
+            <div class="pagin">
+                <ul class="pagin-page">
+                    <li>
+                        <a ng-click="act.goPrePage();" class="pagin-prev" href="javascript:;"></a>
+                    </li>
+                    <li>
+                        <a ng-click="act.goNextPage();" class="pagin-next" href="javascript:;"></a>
+                    </li>
+                </ul>
+                <div class="pagin-input-page">
+                    跳至
+                    <input type="text" ng-model="search.inputCurPage" ng-keyup="act.keyGoToPage($event);">页
+                </div>
+                <a href="javascript:;" class="pagin-go" ng-click="act.goToPage()">跳转</a>
+            <span>
+                第<em ng-bind="state.currentPage"></em>页 /
+                共<em ng-bind="state.lastPage"></em>页&emsp;
+                总记录：<em ng-bind="state.total"></em>条
+            </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive col-md-6">
+    <div style="text-align: center;font-size: 22px">安卓应用（总奖励：{{state.androidreword}}元）</div>
+    <table>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>名字</th>
+            <th>LOGO</th>
+            <th>推广量</th>
+            <th>发出奖励</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="item in androidlist">
+        <tr>
+            <td ng-bind="$index + 1"></td>
+            <td ng-bind="item.name || '-'"></td>
+            <td width='75' id='logo-box'>
+                <img width="25" height="25" ng-src="{{item.logo}}"/>
+                <img id='hover-logo' ng-src="{{item.logo}}"/>
+            </td>
+            <td ng-bind="item.num || '-'"></td>
+            <td ng-bind="item.money || '-'"></td>
+        </tr>
+        </tbody>
+        <tfoot ng-if="state.dataNone2" class="ng-scope">
+        <tr>
+            <td colspan="10" class="dataTables_empty">抱歉， 暂无数据</td>
+        </tr>
+        </tfoot>
+    </table>
+    <div class="row">
+        <div class="col-md-10 text-right">
+            <div class="pagin">
+                <ul class="pagin-page">
+                    <li>
+                        <a ng-click="act.goPrePage2();" class="pagin-prev" href="javascript:;"></a>
+                    </li>
+                    <li>
+                        <a ng-click="act.goNextPage2();" class="pagin-next" href="javascript:;"></a>
+                    </li>
+                </ul>
+                <div class="pagin-input-page">
+                    跳至
+                    <input type="text" ng-model="search.inputCurPage2" ng-keyup="act.keyGoToPage($event);">页
+                </div>
+                <a href="javascript:;" class="pagin-go" ng-click="act.goToPage2()">跳转</a>
+            <span>
+                第<em ng-bind="state.currentPage2"></em>页 /
+                共<em ng-bind="state.lastPage2"></em>页&emsp;
+                总记录：<em ng-bind="state.total2"></em>条
+            </span>
+            </div>
+        </div>
+    </div>
+</div>

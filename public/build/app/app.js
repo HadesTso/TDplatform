@@ -12,14 +12,14 @@ app.config(function () {
 app.run(function ($rootScope, _setting) {
 
     'use strict';
-    var user = localStorage.getItem("kojiadmin-user") ? JSON.parse(localStorage.getItem("kojiadmin-user")) : null;
+    var user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
 
     //右上角管理员名称
-    $rootScope.adminName = user.data.mobile || 'anonymous';
+    $rootScope.adminName = user.data.admin_name || 'anonymous';
     //$rootScope.adminName = window.localStorage['adminName@' + window.location.href.split('#')[0]] || 'anonymous';
 
     //修改左侧导航栏接口地址
-    _setting.set('navListUrl', '/acjladmin/build/_data/navList.json');
+    _setting.set('navListUrl', '/build/_data/navList.json');
 
     //修改退出按钮接口地址
     _setting.set('logoutUrl', '/acjl-admin/auth/logout');

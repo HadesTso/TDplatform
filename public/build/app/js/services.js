@@ -294,4 +294,127 @@ app
     return service;
 })
 
+app
+// 服务：一般性公用服务
+    .factory('ApplicationService',  function($q, _jsonp, _httpGet, _httpPost,_setting){
+        var urlGetApplicationList = '/admin/app/list', // 获取app列表
+            urlAddApplication = '/admin/app/add', // 添加app
+            urlGetAppUserList = '/admin/user/list', // 获取app用户列表
+            urlGetAPersentList = '/admin/withdraw/list', // 提现处理
+            urlChangeUserStatus = '/admin/user/update-status', // 更改用户状态
+            urlDoPay = '/admin/deal/pay', // 打款状态操作
+            urlGetBackstageList = '/admin/list', // 后台帐户列表
+            urlOnline = '/admin/app/update', // 上架app与下架app操作
+            urlAddAccount = '/admin/add', // 添加后台管理员账号
+            urlChangeAccountStatus = '/admin/update', // 添加后台管理员账号
+
+            urlUploadImg = '/upload-base64-image', // 图片上传
+            service = null;
+
+        service = {
+            getApplicationList: function(opt) { // 获取应用列表
+                var d = $q.defer();
+                _httpGet(urlGetApplicationList, opt)
+                    .then(function(data) {
+                        d.resolve(data);
+                    }, function(data) {
+                        d.reject(data);
+                    });
+                return d.promise;
+            },
+            addApplication: function(opt) { // 添加应用
+                var d = $q.defer();
+                _httpPost(urlAddApplication, opt)
+                    .then(function(data) {
+                        d.resolve(data);
+                    }, function(data) {
+                        d.reject(data);
+                    });
+                return d.promise;
+            },
+            getAppUserList: function(opt) { // 获取APP用户列表
+                var d = $q.defer();
+                _httpGet(urlGetAppUserList, opt)
+                    .then(function(data) {
+                        d.resolve(data);
+                    }, function(data) {
+                        d.reject(data);
+                    });
+                return d.promise;
+            },
+            getAPersentList: function(opt) { // 提现处理列表
+                var d = $q.defer();
+                _httpGet(urlGetAPersentList, opt)
+                    .then(function(data) {
+                        d.resolve(data);
+                    }, function(data) {
+                        d.reject(data);
+                    });
+                return d.promise;
+            },
+            changeUserStatus: function(opt) { // 更改用户状态
+                var d = $q.defer();
+                _httpGet(urlChangeUserStatus, opt)
+                    .then(function(data) {
+                        d.resolve(data);
+                    }, function(data) {
+                        d.reject(data);
+                    });
+                return d.promise;
+            },
+            doPay: function(opt) { // 打款状态操作
+            var d = $q.defer();
+            _httpGet(urlDoPay, opt)
+                .then(function(data) {
+                    d.resolve(data);
+                }, function(data) {
+                    d.reject(data);
+                });
+            return d.promise;
+        },
+        getBackstageList: function(opt) { // 打款状态操作
+            var d = $q.defer();
+            _httpGet(urlGetBackstageList, opt)
+                .then(function(data) {
+                    d.resolve(data);
+                }, function(data) {
+                    d.reject(data);
+                });
+            return d.promise;
+        },
+        online: function(opt) { // 上架与下架app
+            var d = $q.defer();
+            _httpPost(urlOnline, opt)
+                .then(function(data) {
+                    d.resolve(data);
+                }, function(data) {
+                    d.reject(data);
+                });
+            return d.promise;
+        },
+        addAccount: function(opt) { // 添加后台管理员账号
+            var d = $q.defer();
+            _httpPost(urlAddAccount, opt)
+                .then(function(data) {
+                    d.resolve(data);
+                }, function(data) {
+                    d.reject(data);
+                });
+            return d.promise;
+        },
+        changeAccountStatus: function(opt) { // 更改管理员账号状态
+            var d = $q.defer();
+            _httpPost(urlChangeAccountStatus, opt)
+                .then(function(data) {
+                    d.resolve(data);
+                }, function(data) {
+                    d.reject(data);
+                });
+            return d.promise;
+        },
+
+        };
+
+        return service;
+    })
 ;

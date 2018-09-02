@@ -20,24 +20,120 @@
     <favorites_list name="build" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.2857143">
+    <splitter split-orientation="horizontal" split-proportion="0.24690266">
       <split-first>
         <leaf>
-          <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/login.html">
+          <file leaf-file-name="navList.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/_data/navList.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.71480143">
-                  <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/app.js">
+          <file leaf-file-name="data-statistics.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/application/data-statistics.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+                  <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+                  <folding>
+                    <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#label#1;n#div#1;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#label#1;n#div#2;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="application-list.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/application/application-list.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="39" column="102" selection-start-line="39" selection-start-column="102" selection-end-line="39" selection-end-column="102" />
+                  <folding>
+                    <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#4;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="android-application-list.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/application/android-application-list.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="127" column="36" selection-start-line="127" selection-start-column="36" selection-end-line="127" selection-end-column="36" />
+                  <folding>
+                    <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#4;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-2.9491525">
+                  <caret line="107" column="32" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="32" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/home.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.041984733">
+                  <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="backstage-account-list.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/application/backstage-account-list.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-0.0">
+                  <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+                  <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
+                  <folding>
+                    <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="present-processing.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/application/present-processing.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -47,17 +143,7 @@
             <entry file="file://$PROJECT_DIR$/app/controllers/app-login.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="navList.json" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/_data/navList.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <caret line="39" column="15" selection-start-line="26" selection-start-column="12" selection-end-line="39" selection-end-column="15" />
                   <folding />
                 </state>
               </provider>
@@ -67,20 +153,120 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="app-login.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/controllers/app-login.js">
+          <file leaf-file-name="backman.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/backman/backman.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.318264">
-                  <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+                <state vertical-scroll-proportion="0.29294756">
+                  <caret line="209" column="3" selection-start-line="209" selection-start-column="3" selection-end-line="209" selection-end-column="3" />
                   <folding>
-                    <element signature="e#1441#2093#0" expanded="false" />
-                    <element signature="e#2129#2247#0" expanded="false" />
-                    <element signature="e#2284#3088#0" expanded="false" />
-                    <element signature="e#3119#3226#0" expanded="false" />
-                    <element signature="e#3444#3538#0" expanded="false" />
-                    <element signature="e#3576#3729#0" expanded="false" />
-                    <element signature="e#3760#4114#0" expanded="false" />
-                    <element signature="e#4150#4478#0" expanded="false" />
+                    <element signature="e#17534#18653#0" expanded="false" />
+                    <element signature="e#18733#18862#0" expanded="false" />
+                    <element signature="e#18940#19267#0" expanded="false" />
+                    <element signature="e#22315#24641#0" expanded="false" />
+                    <element signature="e#31622#33284#0" expanded="false" />
+                    <element signature="e#31635#33282#0" expanded="false" />
+                    <element signature="e#33403#39429#0" expanded="false" />
+                    <element signature="e#39496#47310#0" expanded="false" />
+                    <element signature="e#51300#52907#0" expanded="false" />
+                    <element signature="e#55528#56082#0" expanded="false" />
+                    <element signature="e#57365#57971#0" expanded="false" />
+                    <marker date="1535617091020" expanded="true" signature="33953:33963" placeholder="..." />
+                    <marker date="1535617091020" expanded="true" signature="34352:34362" placeholder="..." />
+                    <marker date="1535617091020" expanded="true" signature="34504:34514" placeholder="..." />
+                    <marker date="1535617091020" expanded="true" signature="48040:48060" placeholder="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="application-list.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/application/application-list.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="119" column="42" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="android-application-list.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/application/android-application-list.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="256" column="25" selection-start-line="256" selection-start-column="25" selection-end-line="256" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#0#48#0" expanded="false" />
+                    <element signature="e#9971#11418#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/router.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="present-processing.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/application/present-processing.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/js/services.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="310" column="58" selection-start-line="310" selection-start-column="58" selection-end-line="310" selection-end-column="58" />
+                  <folding>
+                    <element signature="e#100#9095#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="persent-processing-no.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/application/persent-processing-no.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="42" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#0#49#0" expanded="false" />
+                    <element signature="e#6095#9026#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="data-statistics.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/application/data-statistics.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="115" column="15" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
+                  <folding>
+                    <element signature="e#0#49#0" expanded="false" />
+                    <element signature="e#9065#11996#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="backstage-account-list.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/application/backstage-account-list.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
+                  <folding>
+                    <element signature="e#0#49#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -90,11 +276,52 @@
       </split-second>
     </splitter>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Html5" />
+      </list>
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/login.html" />
+        <option value="$PROJECT_DIR$/app/views/rent-house/rent-house-info.html" />
+        <option value="$PROJECT_DIR$/app/app.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application/user-management.html" />
         <option value="$PROJECT_DIR$/app/controllers/app-login.js" />
+        <option value="$PROJECT_DIR$/_data/navList1.json" />
+        <option value="$PROJECT_DIR$/app/controllers/application/present-processing.js" />
+        <option value="$PROJECT_DIR$/app/views/application/present-processing.html" />
+        <option value="$PROJECT_DIR$/app/controllers/application/application-list-no.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application/application-list-yes.js" />
+        <option value="$PROJECT_DIR$/app/views/application/application-list-no.html" />
+        <option value="$PROJECT_DIR$/app/views/application/application-list-yes.html" />
+        <option value="$PROJECT_DIR$/app/views/application/user-management.html" />
+        <option value="$PROJECT_DIR$/app/controllers/application/user-management.js" />
+        <option value="$PROJECT_DIR$/app/views/application/persent-processing-no.html" />
+        <option value="$PROJECT_DIR$/app/controllers/application/persent-processing-no.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application/persent-processing-yes.js" />
+        <option value="$PROJECT_DIR$/app/views/application/persent-processing-yes.html" />
+        <option value="$PROJECT_DIR$/app/js/directives.js" />
+        <option value="$PROJECT_DIR$/backman/backman.js" />
+        <option value="$PROJECT_DIR$/app/views/application/android-applicetion-list.html" />
+        <option value="$PROJECT_DIR$/app/router.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application/android-applicetion-list.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application/data-statistics.js" />
+        <option value="$PROJECT_DIR$/app/views/application/data-statistics.html" />
+        <option value="$PROJECT_DIR$/app/views/home.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/_data/navList.json" />
+        <option value="$PROJECT_DIR$/app/controllers/application/application-list.js" />
+        <option value="$PROJECT_DIR$/app/views/application/application-list.html" />
+        <option value="$PROJECT_DIR$/app/views/application/android-application-list.html" />
+        <option value="$PROJECT_DIR$/app/controllers/application/android-application-list.js" />
+        <option value="$PROJECT_DIR$/app/js/services.js" />
+        <option value="$PROJECT_DIR$/app/controllers/application/backstage-account-list.js" />
+        <option value="$PROJECT_DIR$/app/views/application/backstage-account-list.html" />
       </list>
     </option>
   </component>
@@ -108,7 +335,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -168,7 +395,79 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="backman" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -206,8 +505,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,6 +516,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="FullScreen" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="fa-folder-open&#9;null&#9;null&#10;navListUrl&#9;null&#9;null" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\github\TDplatform\public\build\_data" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -249,6 +555,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
       <method />
     </configuration>
   </component>
@@ -266,28 +578,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15895523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1592262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -306,59 +619,452 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_data/navList.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_data/navList.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
-          <folding />
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.html">
+    <entry file="file://$PROJECT_DIR$/_data/navList.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71480143">
-          <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/app-login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.318264">
-          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_data/navList.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/app-login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_data/navList.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/myproject/mymanagement-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="138" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/myproject/mymanagement-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19855596">
+          <caret line="5" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/rent-house/rent-house-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.11913358">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backman/backman.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34954956">
+          <caret line="0" column="7729" selection-start-line="0" selection-start-column="7729" selection-end-line="0" selection-end-column="7729" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/rent-house/rent-user-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="40" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backman/backman.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="338" column="55" selection-start-line="338" selection-start-column="55" selection-end-line="338" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="90" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/rent-house/rent-house-info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="337" column="0" selection-start-line="337" selection-start-column="0" selection-end-line="367" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_data/navList1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5162455">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="77" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/font-awesome/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="543" column="1" selection-start-line="543" selection-start-column="1" selection-end-line="543" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/web-forms2.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="639" column="28" selection-start-line="639" selection-start-column="28" selection-end-line="639" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/persent-processing-yes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/filters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="446" column="9" selection-start-line="446" selection-start-column="9" selection-end-line="446" selection-end-column="9" />
           <folding>
-            <element signature="e#1441#2093#0" expanded="false" />
-            <element signature="e#2129#2247#0" expanded="false" />
-            <element signature="e#2284#3088#0" expanded="false" />
-            <element signature="e#3119#3226#0" expanded="false" />
-            <element signature="e#3444#3538#0" expanded="false" />
-            <element signature="e#3576#3729#0" expanded="false" />
-            <element signature="e#3760#4114#0" expanded="false" />
-            <element signature="e#4150#4478#0" expanded="false" />
+            <element signature="e#16197#18681#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/persent-processing-yes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="53" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/persent-processing-no.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.5172415">
+          <caret line="141" column="73" selection-start-line="141" selection-start-column="59" selection-end-line="141" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/user-management.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.379311">
+          <caret line="80" column="17" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/app-login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="15" selection-start-line="26" selection-start-column="12" selection-end-line="39" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_data/navList.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/present-processing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/data-statistics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#1;n#div#1;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#1;n#div#2;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/user-management.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1509434">
+          <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/present-processing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/data-statistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="15" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#49#0" expanded="false" />
+            <element signature="e#9065#11996#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/persent-processing-no.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="42" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#49#0" expanded="false" />
+            <element signature="e#6095#9026#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/web-forms.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0686107">
+          <caret line="579" column="29" selection-start-line="579" selection-start-column="25" selection-end-line="579" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/application-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="102" selection-start-line="39" selection-start-column="102" selection-end-line="39" selection-end-column="102" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/android-application-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="36" selection-start-line="127" selection-start-column="36" selection-end-line="127" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/android-application-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="256" column="25" selection-start-line="256" selection-start-column="25" selection-end-line="256" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#48#0" expanded="false" />
+            <element signature="e#9971#11418#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="310" column="58" selection-start-line="310" selection-start-column="58" selection-end-line="310" selection-end-column="58" />
+          <folding>
+            <element signature="e#100#9095#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/backstage-account-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+          <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/backstage-account-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#49#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9491525">
+          <caret line="107" column="32" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.041984733">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application/application-list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="119" column="42" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backman/backman.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29294756">
+          <caret line="209" column="3" selection-start-line="209" selection-start-column="3" selection-end-line="209" selection-end-column="3" />
+          <folding>
+            <element signature="e#17534#18653#0" expanded="false" />
+            <element signature="e#18733#18862#0" expanded="false" />
+            <element signature="e#18940#19267#0" expanded="false" />
+            <element signature="e#22315#24641#0" expanded="false" />
+            <element signature="e#31622#33284#0" expanded="false" />
+            <element signature="e#31635#33282#0" expanded="false" />
+            <element signature="e#33403#39429#0" expanded="false" />
+            <element signature="e#39496#47310#0" expanded="false" />
+            <element signature="e#51300#52907#0" expanded="false" />
+            <element signature="e#55528#56082#0" expanded="false" />
+            <element signature="e#57365#57971#0" expanded="false" />
+            <marker date="1535617091020" expanded="true" signature="33953:33963" placeholder="..." />
+            <marker date="1535617091020" expanded="true" signature="34352:34362" placeholder="..." />
+            <marker date="1535617091020" expanded="true" signature="34504:34514" placeholder="..." />
+            <marker date="1535617091020" expanded="true" signature="48040:48060" placeholder="..." />
           </folding>
         </state>
       </provider>

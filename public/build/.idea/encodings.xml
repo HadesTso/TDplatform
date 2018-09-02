@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/controllers/application/android-application-list.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/controllers/application/application-list.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/controllers/application/backstage-account-list.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/controllers/application/persent-processing-no.js" charset="UTF-8" />
+  </component>
+</project>

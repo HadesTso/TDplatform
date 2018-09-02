@@ -8,7 +8,7 @@ angular
         $urlRouterProvider.otherwise('/home');
 
         //var a = _tools.transKeyName('camel',{key_name:1}); console.log(a);
-        var base = '/acjladmin/build';
+        var base = '/build';
 
 
         $stateProvider
@@ -154,7 +154,114 @@ angular
                     ])
                 }
             })
-            
+
+
+            //ios应用列表
+            .state('application-list', {
+                url: '/application-list',
+                views: {
+                    'content': {
+                        templateUrl: base + '/app/views/application/application-list.html',
+                        controller: 'application-list'
+                    }
+                },
+                resolve:{
+                    'load': _tools.loadJs([
+                        base + '/app/controllers/application/application-list.js'
+                    ])
+                }
+            })
+            //android应用列表
+            .state('android-application-list', {
+                url: '/android-application-list',
+                views: {
+                    'content': {
+                        templateUrl: base + '/app/views/application/android-application-list.html',
+                        controller: 'android-application-list'
+                    }
+                },
+                resolve:{
+                    'load': _tools.loadJs([
+                        base + '/app/controllers/application/android-application-list.js'
+                    ])
+                }
+            })
+            //用户管理
+            .state('user-management', {
+                url: '/user-management',
+                views: {
+                    'content': {
+                        templateUrl: base + '/app/views/application/user-management.html',
+                        controller: 'user-management'
+                    }
+                },
+                resolve:{
+                    'load': _tools.loadJs([
+                        base + '/app/controllers/application/user-management.js'
+                    ])
+                }
+            })
+            //数据统计
+            .state('data-statistics', {
+                url: '/data-statistics',
+                views: {
+                    'content': {
+                        templateUrl: base + '/app/views/application/data-statistics.html',
+                        controller: 'data-statistics'
+                    }
+                },
+                resolve:{
+                    'load': _tools.loadJs([
+                        base + '/app/controllers/application/data-statistics.js'
+                    ])
+                }
+            })
+            //提现已处理
+            .state('persent-processing-yes', {
+                url: '/persent-processing-yes',
+                views: {
+                    'content': {
+                        templateUrl: base + '/app/views/application/persent-processing-yes.html',
+                        controller: 'persent-processing-yes'
+                    }
+                },
+                resolve:{
+                    'load': _tools.loadJs([
+                        base + '/app/controllers/application/persent-processing-yes.js'
+                    ])
+                }
+            })
+            //提现未处理
+            .state('persent-processing-no', {
+                url: '/persent-processing-no',
+                views: {
+                    'content': {
+                        templateUrl: base + '/app/views/application/persent-processing-no.html',
+                        controller: 'persent-processing-no'
+                    }
+                },
+                resolve:{
+                    'load': _tools.loadJs([
+                        base + '/app/controllers/application/persent-processing-no.js'
+                    ])
+                }
+            })
+            //后台账号配置列表
+            .state('backstage-account-list', {
+                url: '/backstage-account-list',
+                views: {
+                    'content': {
+                        templateUrl: base + '/app/views/application/backstage-account-list.html',
+                        controller: 'backstage-account-list'
+                    }
+                },
+                resolve:{
+                    'load': _tools.loadJs([
+                        base + '/app/controllers/application/backstage-account-list.js'
+                    ])
+                }
+            })
+
             /**
              * 下面的路由是测试用路由可以删除，删除需同时删除左侧目录了的相关条目
              */

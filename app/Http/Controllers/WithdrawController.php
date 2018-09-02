@@ -143,6 +143,7 @@ class WithdrawController extends Controller
             return response(Response::Success_No_Data('领取奖励成功'));
         }catch (\Exception $exception){
             DB::rollBack();
+            \Log::info($exception->getMessage());
             return response(Response::Error('领取奖励失败'));
         }
 

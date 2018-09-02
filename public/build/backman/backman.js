@@ -230,7 +230,9 @@ backman.factory('_responePreHandler', function (_tools, _setting) {
                     }
                 );
                 setTimeout(function () {
-                    window.location.href = _setting.get('loginUrl');
+                    //window.location.href = _setting.get('loginUrl');//原始
+                    //console.log(location.protocol+location.host+location.pathname.split('/index.html')[0]+'/login.html');
+                    window.location.href =location.pathname.split('/index.html')[0]+'/login.html';
                 }, 3000);
                 return null;
             }
@@ -347,18 +349,18 @@ backman.factory('_setting', function ($rootScope) {
 
     var _data = {
         base: location.protocol + '//' + location.host,
-        path: '/' + location.pathname.split('/index.html')[0],
+        path: location.pathname.split('/index.html')[0],
         // path: '/' + location.pathname.split(/\/([^\/])*?$/)[0],
         globAjaxParams: {}
     };
     _data.path = _data.path == '/' ? '' : _data.path;
 
     //左侧导航栏接口地址
-    _data.navListUrl = _data.base + '/kojiadmin/build/_data/navList.json';
+    _data.navListUrl = _data.base + '/build/_data/navList.json';
 
     //登录页地址
     _data.loginUrl = _data.base + _data.path + '/login.html';
-
+console.log(_data.loginUrl)
     //退出登录接口地址
     _data.logoutUrl = _data.base + _data.path + '';
     // 退出后重定向地址

@@ -15,7 +15,7 @@
 <div id="smdfqr">
     <img src="../images/background.jpg" alt="" class="background"/>
     <div class="titlebar">
-        <span class="back"></span>
+        <span class="back" @click="goback()"></span>
         <div class="title">应用试玩详情</div>
     </div>
     <!--<div class="reword">-->
@@ -31,7 +31,7 @@
             <li>
                 <div class="li-part1">
                     <div class="li-part1-left">
-                        <img src="{{page.logo}}" alt=""/>
+                        <img v-bind:src="page.logo" alt=""/>
                     </div>
                     <div class="li-part1-right">
                         <div>“<span>{{page.name}}</span>”</div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="li-part2">
                     <div class="li-part2-left">appstore搜索排名第<span>{{page.rank}}</span>名</div>
-                    <a href="javascript:;" class="li-part2-right" @click="testApp2()">前往下载</a>
+                    <a href="javascript:;" class="li-part2-right" target="_blank" @click="goDownload()">前往下载</a>
                 </div>
             </li>
             <li>
@@ -51,18 +51,32 @@
                 </div>
                 <div class="li-part2">
                     <div class="li-part2-left">打开时请“允许”使用数据</div>
-                    <a href="" class="li-part2-right open-app">打开应用</a>
+                    <a href="javascript:;" class="li-part2-right open-app" @click="openApp()">打开应用</a>
                 </div>
             </li>
         </ul>
     </div>
     <div class="btn">
-        <a>领取奖励</a>
+        <a href="javascript:;" @click="getReward()">领取奖励</a>
     </div>
     <!--加载-->
     <!--<div class="loading" v-if="loading">-->
     <!--<img src="../images/loading.gif" alt=""/>-->
     <!--</div>-->
+    <!--提示弹框-->
+    <div class="tip" v-if="showTip">
+        <div class="tip-content">
+            <div class="tip-title">提示</div>
+            <div style="text-align: center;">您正在进行试玩任务，此时退出</div>
+            <div style="text-align: center;">则无法完成任务</div>
+            <div style="text-align: center;margin-bottom: 10px;">是否继续退出？</div>
+            <hr/>
+            <div class="ok">
+                <a href="javascript:;" @click="tipsure()">确认</a>
+                <a href="javascript:;" @click="tipcancle()">取消</a>
+            </div>
+        </div>
+    </div>
     </div>
 
     <!--放大图片弹框-->
@@ -101,16 +115,7 @@
         <!--</div>-->
     </div>
 
-    <!--提示弹框-->
-    <div class="tip">
-        <div class="tip-content">
-            <div class="tip-title">标题</div>
-            <div class="tip-msg">内容审核成功</div>
-            <div class="ok">
-                <a>确认</a>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 <script src="../libs/jquery/jquery.min.js"></script>

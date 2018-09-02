@@ -107,18 +107,19 @@ class WithdrawController extends Controller
         if ($apply->num < 0){
             return response(Response::Error('该应用数量不足'));
         }
-
-        $user = $userModel->where('user_id',1)->first();
+        $user_id = session()->get('uid');
+        $user = $userModel->where('user_id',$user_id)->first();
         if ($user->type != $apply->type){
             return response(Response::Error('该用户类型不符合'));
         }
         DB::beginTransaction();
         try{
-            $incomeModel->user_id = 1;
+            $incomeModel->user_id = $user_id;
             $incomeModel->money = $apply->money;
             $incomeModel->app_id = $app_id;
             $incomeModel->app_logo = $apply->logo;
             $incomeModel->app_name = $apply->name;
+            $incomeModel->app_type = $apply->type;
             $incomeModel->created_at = date('Y-m-d H:i:s',time());
             $incomeModel->updated_at = date('Y-m-d H:i:s',time());
 
@@ -128,7 +129,7 @@ class WithdrawController extends Controller
             $cumulative_amount = $apply->money + $user->cumulative_amount;
 
             $userModel->where([
-                'user_id' => session()->get('uid')
+                'user_id' => $user_id
             ])->update([
                 'money' => $money,
                 'cumulative_amount' => $cumulative_amount,

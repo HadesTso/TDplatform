@@ -100,6 +100,7 @@ class ApplyController extends Controller
                 'logo' => $logo,
                 'type' => $type,
                 'status' => 1,
+                'num' => $num,
                 'urlscheme' => $urlscheme,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),

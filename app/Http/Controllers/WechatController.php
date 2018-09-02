@@ -189,10 +189,10 @@ class WechatController extends Controller
         if (empty($mobile) || empty($code) || is_null($type)){
             return Response::Error('缺少参数');
         }
-        $a = new sendSMS();
-        $massage = $a->checkCode($mobile, $code);
+//        $a = new sendSMS();
+//        $massage = $a->checkCode($mobile, $code);
 
-        if ($massage){
+//        if ($massage){
             $user = $userModel->where([
                 'mobile' => $mobile,
                 'type'   => $type
@@ -223,7 +223,7 @@ class WechatController extends Controller
             session()->put('nickname', $data['nickname']);
             session()->put('type', $type);
             return Response::Success($data);
-        }
+//        }
         return Response::Error('验证码错误');
     }
 

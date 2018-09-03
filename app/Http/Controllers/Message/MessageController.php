@@ -63,12 +63,12 @@ class MessageController extends Controller
         $code = $request->input('code');
         $flag = $request->input('flag');
 
-        $a = new sendSMS();
-        $b = $a->checkCode($mobile, $code);
-
-        if (!$b){
-           return response(Response::Error('验证失败'));
-        }
+//        $a = new sendSMS();
+//        $b = $a->checkCode($mobile, $code);
+//
+//        if (!$b){
+//           return response(Response::Error('验证失败'));
+//        }
 
         DB::beginTransaction();
         try{

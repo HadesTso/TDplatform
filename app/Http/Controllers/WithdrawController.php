@@ -22,9 +22,9 @@ class WithdrawController extends Controller
     public function withdraw(Request $request, User $userModel, Withdraw $withdrawModel)
     {
         $money = $request->input('money');
-
+        $user_id = session()->get('uid');
         $userInfo = $userModel->where([
-            'user_id' => session()->get('uid')
+            'user_id' => $user_id
         ])->select('money')
           ->first();
 
@@ -34,14 +34,15 @@ class WithdrawController extends Controller
 
         DB::beginTransaction();
         try{
-            $withdrawModel->user_id = session()->get('uid');
+
+            $withdrawModel->user_id = $user_id;
             $withdrawModel->money = $money;
             $withdrawModel->status = 1;
             $withdrawModel->created_at = date('Y-m-d H:i:s',time());
             $withdrawModel->updated_at = date('Y-m-d H:i:s',time());
             $withdrawModel->save();
             $userModel->where([
-                'user_id' => 1
+                'user_id' => $user_id
             ])->update([
                 'money' => ($userInfo->money - $money)
             ]);

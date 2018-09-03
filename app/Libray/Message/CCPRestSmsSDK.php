@@ -14,9 +14,9 @@ class CCPRestSmsSDK {
 	private $SoftVersion = '2013-12-26';
 	private $Batch;  //时间戳
 	private $BodyType = "xml";//包体格式，可填值：json 、xml
-	/*private $enabeLog = true; //日志开关。可填值：true、
+	/*private $enabeLog = false; //日志开关。可填值：true、
 	private $Filename="./log.txt"; //日志文件
-	private $Handle; */
+	private $Handle;*/
 	function __construct($ServerIP,$ServerPort,$SoftVersion)	
 	{
 		$this->Batch = date("YmdHis");
@@ -52,11 +52,11 @@ class CCPRestSmsSDK {
     * 
     * @param log 日志内容
     */
-    function showlog($log){
+    /*function showlog($log){
       if($this->enabeLog){
          fwrite($this->Handle,$log."\n");  
       }
-    }
+    }*/
     
     /**
      * 发起HTTPS请求

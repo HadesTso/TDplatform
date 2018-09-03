@@ -186,6 +186,7 @@ class WechatController extends Controller
         $mobile = $request->input('mobile');
         $code = $request->input('code');
         $type = $request->input('type');
+        \Log::info('登录手机号：----'.$mobile);
         if (empty($mobile) || empty($code) || is_null($type)){
             return Response::Error('缺少参数');
         }

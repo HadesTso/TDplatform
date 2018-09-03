@@ -14,16 +14,20 @@ class CCPRestSmsSDK {
 	private $SoftVersion = '2013-12-26';
 	private $Batch;  //时间戳
 	private $BodyType = "xml";//包体格式，可填值：json 、xml
+<<<<<<< HEAD
 	private $enabeLog = false; //日志开关。可填值：true、
+=======
+	/*private $enabeLog = false; //日志开关。可填值：true、
+>>>>>>> 66828e46ecc029c8a9a5152dc8ca35eb40e53a01
 	private $Filename="./log.txt"; //日志文件
-	private $Handle; 
+	private $Handle;*/
 	function __construct($ServerIP,$ServerPort,$SoftVersion)	
 	{
 		$this->Batch = date("YmdHis");
 		$this->ServerIP = $ServerIP;
 		$this->ServerPort = $ServerPort;
 		$this->SoftVersion = $SoftVersion;
-        $this->Handle = fopen($this->Filename, 'a');
+        //$this->Handle = fopen($this->Filename, 'a');
 	}
 
    /**
@@ -52,11 +56,11 @@ class CCPRestSmsSDK {
     * 
     * @param log 日志内容
     */
-    function showlog($log){
+    /*function showlog($log){
       if($this->enabeLog){
          fwrite($this->Handle,$log."\n");  
       }
-    }
+    }*/
     
     /**
      * 发起HTTPS请求
@@ -123,19 +127,19 @@ class CCPRestSmsSDK {
                     <datas>".$data."</datas>
                   </TemplateSMS>";
         }
-        $this->showlog("request body = ".$body);
+        //$this->showlog("request body = ".$body);
         // 大写的sig参数 
         $sig =  strtoupper(md5($this->AccountSid . $this->AccountToken . $this->Batch));
         // 生成请求URL        
         $url="https://$this->ServerIP:$this->ServerPort/$this->SoftVersion/Accounts/$this->AccountSid/SMS/TemplateSMS?sig=$sig";
-        $this->showlog("request url = ".$url);
+        //$this->showlog("request url = ".$url);
         // 生成授权：主帐户Id + 英文冒号 + 时间戳。
         $authen = base64_encode($this->AccountSid . ":" . $this->Batch);
         // 生成包头  
         $header = array("Accept:application/$this->BodyType","Content-Type:application/$this->BodyType;charset=utf-8","Authorization:$authen");
         // 发送请求
         $result = $this->curl_post($url,$body,$header);
-        $this->showlog("response body = ".$result);
+        //$this->showlog("response body = ".$result);
         if($this->BodyType=="json"){//JSON格式
            $datas=json_decode($result); 
         }else{ //xml格式

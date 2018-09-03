@@ -14,16 +14,16 @@ class CCPRestSmsSDK {
 	private $SoftVersion = '2013-12-26';
 	private $Batch;  //时间戳
 	private $BodyType = "xml";//包体格式，可填值：json 、xml
-	private $enabeLog = true; //日志开关。可填值：true、
+	/*private $enabeLog = true; //日志开关。可填值：true、
 	private $Filename="./log.txt"; //日志文件
-	private $Handle; 
+	private $Handle; */
 	function __construct($ServerIP,$ServerPort,$SoftVersion)	
 	{
 		$this->Batch = date("YmdHis");
 		$this->ServerIP = $ServerIP;
 		$this->ServerPort = $ServerPort;
 		$this->SoftVersion = $SoftVersion;
-        $this->Handle = fopen($this->Filename, 'a');
+        //$this->Handle = fopen($this->Filename, 'a');
 	}
 
    /**

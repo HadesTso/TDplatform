@@ -194,11 +194,7 @@
             var u = navigator.userAgent;
             that.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
             that.isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-            if(that.isiOS){
-                that.ajaxParams.type = 1;
-            }else{
-                that.ajaxParams.type = 0;
-            }
+            that.ajaxParams.type = 1;
             if(that.ajaxParams.status==1){
                 $('.open-app').css('background-color','#ff3e1e');
             }else{

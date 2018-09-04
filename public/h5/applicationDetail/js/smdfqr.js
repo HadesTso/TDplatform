@@ -37,6 +37,7 @@
                     that.page = data.data;
                     that.urlscheme = data.data.urlscheme;
                     console.log(that.page.logo)
+                    $('.appLogo').attr('src',that.page.logo)
 
                     //for(var i=0;i<data.data.data.length;i++){
                     //    var a = data.data.data[i].mobile.slice(0,3);

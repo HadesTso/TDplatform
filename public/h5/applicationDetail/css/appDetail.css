@@ -14,7 +14,7 @@ body{
 .background{
     width: 100%;
     height: auto;
-    background-image: url("../images/background.png");
+    background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
     -webkit-background-size: 100% auto;
     background-size: 100% auto;

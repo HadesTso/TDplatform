@@ -167,7 +167,7 @@
                     that.$myalert('当前设备已安装此应用，无法完成此任务')
                     return false;
                 }
-                window.location.href="itms-apps://itunes.apple.com/app";
+                window.location.href="itms-apps://itunes.apple.com/";
                 that.step1done = 1;
             },
             openApp: function () {
@@ -177,6 +177,9 @@
             },
             getReward: function () {
                 var that = this;
+                if(that.ajaxParams.status!=1){
+                    return false;
+                }
                 if(that.step1done==0){
                     that.$myalert('请先完成第1步哦')
                     return false;

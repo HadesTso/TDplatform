@@ -172,6 +172,19 @@
             },
             openApp: function () {
                 var that = this;
+
+                var loadDateTime = +new Date();
+                window.setTimeout(function() {
+                    const timeOutDateTime = +new Date();
+                    if ((timeOutDateTime - loadDateTime) < 5000) {
+                        alert('请完成第一步!')
+//                        window.location.href = 'itms-apps://itunes.apple.com/'; // ios下载地址
+                    } else {
+                        window.close();
+                    }
+                }, 2000);
+                //window.location.href = 'weixin://'; // ios对应的app协议
+
                 window.location.href = that.urlscheme;
                 that.step2done = 1;
             },

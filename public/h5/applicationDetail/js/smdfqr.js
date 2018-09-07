@@ -303,11 +303,11 @@
             that.isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
             that.isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
             that.ajaxParams.type = 1;
-            if(that.ajaxParams.status==1){
-                $('.open-app').css('background-color','#ff3e1e');
-            }else{
-                $('.open-app').css('background-color','darkgray');
-            }
+            //if(that.ajaxParams.status==1){
+            //    $('.open-app').css('background-color','#ff3e1e');
+            //}else{
+            //    $('.open-app').css('background-color','darkgray');
+            //}
             that.getAppDetail(that.ajaxParams,that.getAppDetailHandler)
             //console.log($('body').height());
             // 下拉刷新

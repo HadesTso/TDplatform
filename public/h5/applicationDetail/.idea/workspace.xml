@@ -96,10 +96,12 @@
                 <state vertical-scroll-proportion="0.0">
                   <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
                   <folding>
-                    <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-                    <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-                    <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-                    <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="11708:11793" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="11797:11883" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -112,13 +114,13 @@
           <file leaf-file-name="smdfqr.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/smdfqr.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7169811">
-                  <caret line="188" column="35" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.7735849">
+                  <caret line="189" column="14" selection-start-line="189" selection-start-column="14" selection-end-line="189" selection-end-column="14" />
                   <folding>
-                    <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-                    <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-                    <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-                    <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+                    <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -128,7 +130,7 @@
             <entry file="file://$PROJECT_DIR$/css/appDetail.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                  <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -163,8 +165,8 @@
         <option value="$PROJECT_DIR$/css/smdfqr.css" />
         <option value="$PROJECT_DIR$/html/smdfqr.html" />
         <option value="$PROJECT_DIR$/html/appdetail.html" />
-        <option value="$PROJECT_DIR$/css/appDetail.css" />
         <option value="$PROJECT_DIR$/js/smdfqr.js" />
+        <option value="$PROJECT_DIR$/css/appDetail.css" />
       </list>
     </option>
   </component>
@@ -493,10 +495,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
-            <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -579,10 +581,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="20" selection-start-line="42" selection-start-column="22" selection-end-line="47" selection-end-column="23" />
           <folding>
-            <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -665,10 +667,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
-            <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -751,10 +753,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
-            <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -824,10 +826,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
-            <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -907,14 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/appDetail.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/feiyuGame/h5-login-component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.6717267">
@@ -938,15 +932,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/appDetail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/smdfqr.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7169811">
-          <caret line="188" column="35" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.7735849">
+          <caret line="189" column="14" selection-start-line="189" selection-start-column="14" selection-end-line="189" selection-end-column="14" />
           <folding>
-            <marker date="1536285880742" expanded="true" signature="602:4859" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="1647:1901" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="3603:4773" placeholder="{...}" />
-            <marker date="1536285880742" expanded="true" signature="11626:11664" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="602:4859" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="1647:1901" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="3603:4773" placeholder="{...}" />
+            <marker date="1536286933542" expanded="true" signature="11626:11664" placeholder="{...}" />
           </folding>
         </state>
       </provider>

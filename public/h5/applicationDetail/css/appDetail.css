@@ -87,11 +87,12 @@ body{
 .app-list ul{
     position: absolute;
     top: 19rem;
-    left: 0.72rem;
+    /*left: 0.72rem;*/
 }
 .app-list ul li{
     display: inline-block;
-    width: 25rem;
+    width: 90%;
+    margin-left: 5%;
     height: 9rem;
     background-color: #fff;
     margin-bottom: 1.67rem;

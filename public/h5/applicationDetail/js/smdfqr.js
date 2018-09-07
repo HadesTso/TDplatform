@@ -191,6 +191,7 @@
             getReward: function () {
                 var that = this;
                 if(that.ajaxParams.status!=1){
+                    that.$myalert('当前设备已安装此应用，无法完成此任务')
                     return false;
                 }
                 if(that.step1done==0){

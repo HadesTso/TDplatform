@@ -26,7 +26,6 @@ Route::post('check/code','Message\MessageController@checkCode');
 
 Route::get('amWiki','UserController@amWiki');
 
-
 Route::group(['middleware' => 'Token'], function(){
     // 用户信息
     Route::get('personal/info','UserController@personalCenter');

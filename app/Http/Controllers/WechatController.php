@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Input;
 
 class WechatController extends Controller
 {
-      public function wechatLogin(Request $request,User $userModel)
+    public function wechatLogin(Request $request,User $userModel)
     {
         $code = $request->input('code');
         $appid = $request->input('appid');

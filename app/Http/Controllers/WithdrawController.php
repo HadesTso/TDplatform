@@ -113,6 +113,10 @@ class WithdrawController extends Controller
         if ($user->type != $apply->type){
             return response(Response::Error('该用户类型不符合'));
         }
+        $res = $incomeModel->where(['user_id' => session()->get('uid'), 'app_id' => $app_id])->first();
+        if ($res){
+            return response(Response::Error('该奖励已被领取'));
+        }
         DB::beginTransaction();
         try{
             $incomeModel->user_id = $user_id;

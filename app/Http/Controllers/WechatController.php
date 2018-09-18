@@ -190,42 +190,38 @@ class WechatController extends Controller
         if (empty($mobile) || empty($code) || is_null($type)){
             return Response::Error('缺少参数');
         }
-//        $a = new sendSMS();
-//        $massage = $a->checkCode($mobile, $code);
 
-//        if ($massage){
-            $user = $userModel->where([
-                'mobile' => $mobile,
-                'type'   => $type
-            ])->first();
-            if (!$user) {
-                $User = $userModel->newInstance();
-                $User->mobile = $mobile;
-                $User->type   = $type;
-                $User->token   = strtolower(str_random(10));
-                $User->created_at   = date('Y-m-d H:i:s',time());
-                $User->updated_at   = date('Y-m-d H:i:s',time());
-                $id = $User->save();
-                $data = [
-                    'user_id' => $id,
-                    'head_img' => '',
-                    'nickname' => $User->mobile,
-                    'token' => $User->token,
-                ];
-            }else{
-                $data = [
-                    'user_id' => $user->user_id,
-                    'head_img' => $user->head_img,
-                    'nickname' => $user->nickname,
-                    'token' => $user->token,
-                ];
-            }
-            session()->put('uid', $data['user_id']);
-            session()->put('nickname', $data['nickname']);
-            session()->put('type', $type);
-            return Response::Success($data);
-//        }
-        return Response::Error('验证码错误');
+        $user = $userModel->where([
+            'mobile' => $mobile,
+            'type'   => $type
+        ])->first();
+
+        if (!$user) {
+            $User = $userModel->newInstance();
+            $User->mobile = $mobile;
+            $User->type   = $type;
+            $User->token   = strtolower(str_random(10));
+            $User->created_at   = date('Y-m-d H:i:s',time());
+            $User->updated_at   = date('Y-m-d H:i:s',time());
+            $id = $User->save();
+            $data = [
+                'user_id' => $id,
+                'head_img' => '',
+                'nickname' => $User->mobile,
+                'token' => $User->token,
+            ];
+        }else{
+            $data = [
+                'user_id' => $user->user_id,
+                'head_img' => $user->head_img,
+                'nickname' => $user->nickname,
+                'token' => $user->token,
+            ];
+        }
+        session()->put('uid', $data['user_id']);
+        session()->put('nickname', $data['nickname']);
+        session()->put('type', $type);
+        return Response::Success($data);
     }
 
     public function logout()

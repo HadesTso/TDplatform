@@ -219,7 +219,7 @@ class ApplyController extends Controller
                 'updated_at' => date('Y-m-d H:i:s', time()),
             ];
 
-        $res = $applyModel->where(['id' => $id])->update($data);
+        $res = $applyModel->where(['app_id' => $id])->update($data);
 
         if ($res){
             return Response::Success_No_Data('修改成功',1);

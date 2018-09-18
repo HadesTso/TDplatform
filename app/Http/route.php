@@ -15,13 +15,10 @@ Route::post('mobile/login','WechatController@MobileLogin');
 // 退出登录
 Route::post('logout','WechatController@logout');
 
-
 // 获取验证码
 Route::post('send/message','Message\MessageController@getCode');
 // 检验验证码
 Route::post('check/code','Message\MessageController@checkCode');
-
-
 
 
 Route::get('amWiki','UserController@amWiki');
@@ -52,6 +49,8 @@ Route::group(
         Route::get('list', 'ApplyController@index'); //应用列表
         Route::post('add', 'ApplyController@add'); //添加应用
         Route::post('update', 'ApplyController@updateStatus'); //更改应用状态
+        Route::post('update/info', 'ApplyController@updateInfo'); //更改应用信息
+        Route::post('delete', 'ApplyController@deleteApply'); //删除应用
     });
     Route::group(['prefix' => 'user'], function(){
         Route::get('list', 'UserController@index'); //用户列表

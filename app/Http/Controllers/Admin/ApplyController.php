@@ -61,13 +61,13 @@ class ApplyController extends Controller
      * 添加应用
      */
     public function add(Request $request){
-        $name = Input::get('name', '');
-        $logo = $request->input('logo');
-        $type = Input::get('type', '');
-        $money = Input::get('money', 0);
-        $num = Input::get('num', 0);
-        $rank = Input::get('rank', 0);
-        $note = Input::get('note', '');
+        $name      = Input::get('name', '');
+        $logo      = $request->input('logo');
+        $type      = Input::get('type', '');
+        $money     = Input::get('money', 0);
+        $num       = Input::get('num', 0);
+        $rank      = Input::get('rank', 0);
+        $note      = Input::get('note', '');
         $pack_name = Input::get('pack_name', '');
         $urlscheme = Input::get('urlscheme', '');
         if (empty($name)){
@@ -179,5 +179,73 @@ class ApplyController extends Controller
         $app_id = Input::get('app_id', 0);
         (new Apply())->where('app_id', '=', $app_id)->update(['status' => $status]);
         return Response::Success_No_Data('操作成功',1);
+    }
+
+    /**
+     *
+     * 修改应用信息
+     *
+     * @param Request $request
+     * @param Apply $applyModel
+     * @return string
+     */
+    public function updateInfo(Request $request, Apply $applyModel)
+    {
+        $id        = $request->input('id');
+        $name      = $request->input('name');
+        $logo      = $request->input('logo');
+        $type      = $request->input('type');
+        $money     = $request->input('money');
+        $num       = $request->input('num');
+        $rank      = $request->input('rank');
+        $note      = $request->input('note');
+        $pack_name = $request->input('pack_name');
+        $urlscheme = $request->input('urlscheme');
+
+        if (strpos($logo,'http://') === false){
+            $logo = $this->add_img($logo);
+        }
+
+        $data = [
+                'name'       => $name,
+                'rank'       => $rank,
+                'note'       => $note,
+                'money'      => $money,
+                'pack_name'  => $pack_name,
+                'logo'       => $logo,
+                'type'       => $type,
+                'num'        => $num,
+                'urlscheme'  => $urlscheme,
+                'updated_at' => date('Y-m-d H:i:s', time()),
+            ];
+
+        $res = $applyModel->where(['id' => $id])->update($data);
+
+        if ($res){
+            return Response::Success_No_Data('修改成功',1);
+        }else{
+            return Response::Error('修改失败',1);
+        }
+    }
+
+    /**
+     *
+     * 删除应用
+     *
+     * @param Request $request
+     * @param Apply $applyModel
+     * @return string
+     */
+    public function deleteApply(Request $request, Apply $applyModel)
+    {
+        $id = $request->input('id');
+
+        $res = $applyModel::destroy($id);
+
+        if ($res){
+            return Response::Success_No_Data('删除成功',1);
+        }else{
+            return Response::Error('删除失败',1);
+        }
     }
 }

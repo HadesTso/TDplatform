@@ -81,10 +81,10 @@ class ApplyController extends Controller
         }
         $model = new Apply();
         //包名不能重复
-        $is_exit = $model->where('pack_name','like', '%'.$pack_name.'%')->where('type', '=', $type)->first();
-        if ($is_exit){
-            return Response::Error('包名已经存在，请重新输入',1);
-        }
+//        $is_exit = $model->where('pack_name','like', '%'.$pack_name.'%')->where('type', '=', $type)->first();
+//        if ($is_exit){
+//            return Response::Error('包名已经存在，请重新输入',1);
+//        }
         try{
             $logo = $this->add_img($logo);
             if (!$logo){

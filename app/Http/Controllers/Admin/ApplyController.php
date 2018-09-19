@@ -206,7 +206,9 @@ class ApplyController extends Controller
             $logo = $this->add_img($logo);
         }
 
-        $data = [
+
+        $res = $applyModel->where(['app_id' => $id])
+            ->update([
                 'name'       => $name,
                 'rank'       => $rank,
                 'note'       => $note,
@@ -217,9 +219,7 @@ class ApplyController extends Controller
                 'num'        => $num,
                 'urlscheme'  => $urlscheme,
                 'updated_at' => date('Y-m-d H:i:s', time()),
-            ];
-
-        $res = $applyModel->where(['app_id' => $id])->update($data);
+            ]);
 
         if ($res){
             return Response::Success_No_Data('修改成功',1);

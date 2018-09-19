@@ -55,7 +55,7 @@
             <th>应用份数</th>
             <th>包名</th>
             <th>当前状态</th>
-            <th>操作</th>
+            <th style="width: 150px">操作</th>
         </tr>
         </thead>
         <tbody ng-repeat="item in list">
@@ -79,6 +79,8 @@
                 <!--<a ui-sref="mymanagement-info({id:item.id,status:item.status})">查看</a>-->
                 <a ng-show="item.status == 0" href="javescript:;" ng-click="act.onlinelayer(item)">上架</a>
                 <a ng-show="item.status == 1" href="javescript:;" ng-click="act.onlinelayer(item)">下架</a>
+                &#12288;<a href="javescript:;" ng-click="act.edit(item)">編輯</a>
+                &#12288;<a href="javescript:;" ng-click="act.delete(item)">刪除</a>
             </td>
         </tr>
         </tbody>
@@ -184,6 +186,18 @@
             </h4>
             <div style="text-align: center;"ng-show="state.appStatus == 1">是否确认上架该app</div>
             <div style="text-align: center;"ng-show="state.appStatus == 0">是否确认下架该app</div>
+        </div>
+    </div>
+</section>
+
+<!--删除二次确认弹框-->
+<section class="layer-section">
+    <div ng-show="state.isShowDelete" id="deleteApp" style="height: auto;padding-bottom: 15px;" ng-click="state.showUserList=false;$event.stopPropagation();">
+        <div>
+            <h4 class="layer-title">
+                <span>删除应用</span>
+            </h4>
+            <div style="text-align: center;">是否删除该应用!</div>
         </div>
     </div>
 </section>

@@ -307,6 +307,8 @@ app
             urlOnline = '/admin/app/update', // 上架app与下架app操作
             urlAddAccount = '/admin/add', // 添加后台管理员账号
             urlChangeAccountStatus = '/admin/update', // 添加后台管理员账号
+            urlEditApplication = '/admin/app/update/info', // 修改应用信息
+            urlDeleteApplication = '/admin/app/delete', // 删除列表应用
 
             urlUploadImg = '/upload-base64-image', // 图片上传
             service = null;
@@ -412,6 +414,26 @@ app
                 });
             return d.promise;
         },
+        editApplication: function(opt) { // 修改应用信息
+            var d = $q.defer();
+            _httpPost(urlEditApplication, opt)
+                .then(function(data) {
+                    d.resolve(data);
+                }, function(data) {
+                    d.reject(data);
+                });
+            return d.promise;
+        },
+            deleteApplication: function(opt) { // 删除列表应用
+                var d = $q.defer();
+                _httpPost(urlDeleteApplication, opt)
+                    .then(function(data) {
+                        d.resolve(data);
+                    }, function(data) {
+                        d.reject(data);
+                    });
+                return d.promise;
+            },
 
         };
 

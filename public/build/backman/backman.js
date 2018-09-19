@@ -1286,7 +1286,7 @@ backman.directive('bmUploadImgbase64', function (_setting, _httpPost,$timeout) {
         '<div class="bm-upload-img-input"><input class="fileinput" type="file" /></div>' +
         '<div class="bm-upload-img-uping" ng-if="state.upAjaxing" title="上传中，请稍后...">' +
         '  <i class="fa fa-spinner"></i></div>' +
-        '<div class="bm-upload-img-view img-thumbnail" ng-if="bindbase"  tabindex="-1">' +
+        '<div class="bm-upload-img-view img-thumbnail" ng-if="bindbase || bindUrl"  tabindex="-1">' +
         '  <span style="pointer-events:auto;"><img class="baseImg" ng-src="{{bindUrl}}" data-img-id="{{bindId}}"/></span>' +
         '  <i class="fa fa-times" ng-click="act.delImg()"></i>' +
         '</div>',

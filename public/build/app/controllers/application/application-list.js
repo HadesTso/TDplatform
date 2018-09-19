@@ -37,6 +37,7 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
     $scope.state = {
         isShowAdd:'',//是否显示添加应用弹框
         ismakesure:false,//是否显示二次确认弹框
+        isShowDelete:false,//是否显示删除二次确认弹框
         isiOS:1,// 应用类型 0为安卓 1为iOS
         appStatus:'',//应用状态，是否上架，上架未1，下架为2
         file:'',
@@ -106,6 +107,44 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
             console.log(data.data)
             console.log(data.__state)
             console.log(data.__state.code)
+            if(data && data['__state'] && data['__state'].code === 200) {
+                console.log('reload')
+                layer.alert(data['__state'].msg, function () {
+                    window.location.reload();
+                });
+                //getTeamMateList(ajaxParams, getTeamMateListHandler);
+            }
+        };
+
+    //修改应用信息
+    var editApplication = function(opt, cb, cberr) {
+        ApplicationService.editApplication(opt)
+            .then(function(data) {
+                if(typeof cb === 'function')cb(data);
+            }, function(data) {
+                if(typeof cberr === 'function')cberr(data);
+            });
+    },
+        editApplicationHandler = function(data) {
+            if(data && data['__state'] && data['__state'].code === 200) {
+                console.log('reload')
+                layer.alert(data['__state'].msg, function () {
+                    window.location.reload();
+                });
+                //getTeamMateList(ajaxParams, getTeamMateListHandler);
+            }
+        };
+
+    //删除列表应用
+    var deleteApplication = function(opt, cb, cberr) {
+            ApplicationService.deleteApplication(opt)
+                .then(function(data) {
+                    if(typeof cb === 'function')cb(data);
+                }, function(data) {
+                    if(typeof cberr === 'function')cberr(data);
+                });
+        },
+        deleteApplicationHandler = function(data) {
             if(data && data['__state'] && data['__state'].code === 200) {
                 console.log('reload')
                 layer.alert(data['__state'].msg, function () {
@@ -217,6 +256,15 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
         },
         addApplicationLayer: function () {
             $scope.state.isShowAdd = true;//显示弹窗列表
+            $scope.addAjaxParams.name = '';
+            $scope.addAjaxParams.num = '';
+            $scope.addAjaxParams.rank = '';
+            $scope.addAjaxParams.packName = '';
+            $scope.addAjaxParams.urlscheme = '';
+            $scope.send.logo = '';
+            $scope.addAjaxParams.logo = '';
+            $scope.addAjaxParams.money = '';
+            $scope.addAjaxParams.note = '';
             $timeout(function(){
                 layer.open({
                     type: 1
@@ -296,6 +344,108 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
                     ,content: $('#makesure')
                     ,yes: function(){
                         doOnline(postData,doOnlineHandler);
+                        $scope.state.ismakesure = false;
+                        layer.closeAll();
+
+                    }
+                    ,btn2: function(){
+                        $scope.state.ismakesure = false;
+                        if (!$scope.$$phase) {
+                            $scope.$apply();
+                        }
+                    }
+                    ,success: function(layero){
+                        layero.find('.layui-layer-btn').css('text-align', 'center');
+                        $('.layui-layer-content').css({'height':'auto','overflow':'visible'});
+                    }
+                });
+            },0);
+        },
+        edit: function (item) {
+            $scope.state.isShowAdd = true;
+            $scope.addAjaxParams.name = item.name;
+            $scope.addAjaxParams.num = item.num;
+            $scope.addAjaxParams.rank = item.rank;
+            $scope.addAjaxParams.packName = item.packName;
+            $scope.addAjaxParams.urlscheme = item.urlscheme;
+            $scope.addAjaxParams.logo = item.logo;
+            $scope.addAjaxParams.logo=$scope.send.logo = item.logo;
+            //console.log($scope.send.logo)
+            $scope.addAjaxParams.money = item.money;
+            $scope.addAjaxParams.note = item.note;
+            $timeout(function(){
+                layer.open({
+                    type: 1
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: ['680px','auto']//初始化Layer高度
+                    ,shade: 0.8
+                    ,btn: ['添加', '取消']
+                    ,content: $('#addApp')
+                    ,yes: function(){
+                        if($scope.state.base64){
+                            $scope.addAjaxParams.logo = $scope.state.base64;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.name)) {
+                            layer.alert('请填写应用名称');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.num)) {
+                            layer.alert('请填写应用份数');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.rank)) {
+                            layer.alert('请填写搜索排名');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.packName)) {
+                            layer.alert('请填写包名');
+                            return false;
+                        }if(!_validate.isRequired($scope.addAjaxParams.urlscheme)) {
+                            layer.alert('请填写协议名');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.logo)) {
+                            layer.alert('请上传应用logo');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.money)) {
+                            layer.alert('请填写应用奖励');
+                            return false;
+                        }
+                        editApplication($scope.addAjaxParams,editApplicationHandler);
+                        $scope.state.isShowAdd = false;
+                        layer.closeAll();
+
+                    }
+                    ,btn2: function(){
+                        console.log($scope.state.number);
+                        $scope.state.isShowAdd = false;
+                        if (!$scope.$$phase) {
+                            $scope.$apply();
+                        }
+                    }
+                    ,success: function(layero){
+                        layero.find('.layui-layer-btn').css('text-align', 'center');
+                        $('.layui-layer-content').css({'height':'auto','overflow':'visible'});
+                    }
+                });
+            },0);
+        },
+        delete: function (item) {
+            $scope.state.isShowDelete = true;//显示弹窗列表
+            $timeout(function(){
+                layer.open({
+                    type: 1
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: ['400px','auto']//初始化Layer高度
+                    ,shade: 0.8
+                    ,btn: ['确认', '取消']
+                    ,content: $('#deleteApp')
+                    ,yes: function(){
+                        console.log(item)
+                        deleteApplication({id:item.appId},deleteApplicationHandler);
                         $scope.state.ismakesure = false;
                         layer.closeAll();
 

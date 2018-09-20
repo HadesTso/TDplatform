@@ -133,6 +133,44 @@ app.register.controller('android-application-list', function ($scope, $timeout,A
             }
         };
 
+    //修改应用信息
+    var editApplication = function(opt, cb, cberr) {
+            ApplicationService.editApplication(opt)
+                .then(function(data) {
+                    if(typeof cb === 'function')cb(data);
+                }, function(data) {
+                    if(typeof cberr === 'function')cberr(data);
+                });
+        },
+        editApplicationHandler = function(data) {
+            if(data && data['__state'] && data['__state'].code === 200) {
+                console.log('reload')
+                layer.alert(data['__state'].msg, function () {
+                    window.location.reload();
+                });
+                //getTeamMateList(ajaxParams, getTeamMateListHandler);
+            }
+        };
+
+    //删除列表应用
+    var deleteApplication = function(opt, cb, cberr) {
+            ApplicationService.deleteApplication(opt)
+                .then(function(data) {
+                    if(typeof cb === 'function')cb(data);
+                }, function(data) {
+                    if(typeof cberr === 'function')cberr(data);
+                });
+        },
+        deleteApplicationHandler = function(data) {
+            if(data && data['__state'] && data['__state'].code === 200) {
+                console.log('reload')
+                layer.alert(data['__state'].msg, function () {
+                    window.location.reload();
+                });
+                //getTeamMateList(ajaxParams, getTeamMateListHandler);
+            }
+        };
+
 
     // 匹配模型中的参数 到 请求参数
     var matchAjaxParams = function(modelParams, reqParams) {
@@ -216,7 +254,18 @@ app.register.controller('android-application-list', function ($scope, $timeout,A
             }
         },
         addApplicationLayer: function () {
-            $scope.state.isShowAdd = true;//显示弹窗列表
+            $scope.state.isShowAdd = true;
+            $scope.addAjaxParams.id = '';
+            $scope.addAjaxParams.name = '';
+            $scope.addAjaxParams.num = '';
+            $scope.addAjaxParams.rank = '';
+            $scope.addAjaxParams.packName = '';
+            $scope.addAjaxParams.urlscheme = '';
+            $scope.addAjaxParams.logo = '';
+            $scope.addAjaxParams.logo=$scope.send.logo = '';
+            //console.log($scope.send.logo)
+            $scope.addAjaxParams.money = '';
+            $scope.addAjaxParams.note = '';
             $timeout(function(){
                 layer.open({
                     type: 1
@@ -296,6 +345,109 @@ app.register.controller('android-application-list', function ($scope, $timeout,A
                     ,content: $('#makesure')
                     ,yes: function(){
                         doOnline(postData,doOnlineHandler);
+                        $scope.state.ismakesure = false;
+                        layer.closeAll();
+
+                    }
+                    ,btn2: function(){
+                        $scope.state.ismakesure = false;
+                        if (!$scope.$$phase) {
+                            $scope.$apply();
+                        }
+                    }
+                    ,success: function(layero){
+                        layero.find('.layui-layer-btn').css('text-align', 'center');
+                        $('.layui-layer-content').css({'height':'auto','overflow':'visible'});
+                    }
+                });
+            },0);
+        },
+        edit: function (item) {
+            $scope.state.isShowAdd = true;
+            $scope.addAjaxParams.id = item.appId;
+            $scope.addAjaxParams.name = item.name;
+            $scope.addAjaxParams.num = item.num;
+            $scope.addAjaxParams.rank = item.rank;
+            $scope.addAjaxParams.packName = item.packName;
+            $scope.addAjaxParams.urlscheme = item.urlscheme;
+            $scope.addAjaxParams.logo = item.logo;
+            $scope.addAjaxParams.logo=$scope.send.logo = item.logo;
+            //console.log($scope.send.logo)
+            $scope.addAjaxParams.money = item.money;
+            $scope.addAjaxParams.note = item.note;
+            $timeout(function(){
+                layer.open({
+                    type: 1
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: ['680px','auto']//初始化Layer高度
+                    ,shade: 0.8
+                    ,btn: ['确认', '取消']
+                    ,content: $('#addApp')
+                    ,yes: function(){
+                        if($scope.state.base64){
+                            $scope.addAjaxParams.logo = $scope.state.base64;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.name)) {
+                            layer.alert('请填写应用名称');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.num)) {
+                            layer.alert('请填写应用份数');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.rank)) {
+                            layer.alert('请填写搜索排名');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.packName)) {
+                            layer.alert('请填写包名');
+                            return false;
+                        }if(!_validate.isRequired($scope.addAjaxParams.urlscheme)) {
+                            layer.alert('请填写协议名');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.logo)) {
+                            layer.alert('请上传应用logo');
+                            return false;
+                        }
+                        if(!_validate.isRequired($scope.addAjaxParams.money)) {
+                            layer.alert('请填写应用奖励');
+                            return false;
+                        }
+                        editApplication($scope.addAjaxParams,editApplicationHandler);
+                        $scope.state.isShowAdd = false;
+                        layer.closeAll();
+
+                    }
+                    ,btn2: function(){
+                        console.log($scope.state.number);
+                        $scope.state.isShowAdd = false;
+                        if (!$scope.$$phase) {
+                            $scope.$apply();
+                        }
+                    }
+                    ,success: function(layero){
+                        layero.find('.layui-layer-btn').css('text-align', 'center');
+                        $('.layui-layer-content').css({'height':'auto','overflow':'visible'});
+                    }
+                });
+            },0);
+        },
+        delete: function (item) {
+            $scope.state.isShowDelete = true;//显示弹窗列表
+            $timeout(function(){
+                layer.open({
+                    type: 1
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: ['400px','auto']//初始化Layer高度
+                    ,shade: 0.8
+                    ,btn: ['确认', '取消']
+                    ,content: $('#deleteApp')
+                    ,yes: function(){
+                        console.log(item)
+                        deleteApplication({id:item.appId},deleteApplicationHandler);
                         $scope.state.ismakesure = false;
                         layer.closeAll();
 

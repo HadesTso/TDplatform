@@ -382,7 +382,7 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
                     ,closeBtn: false
                     ,area: ['680px','auto']//初始化Layer高度
                     ,shade: 0.8
-                    ,btn: ['添加', '取消']
+                    ,btn: ['确认', '取消']
                     ,content: $('#addApp')
                     ,yes: function(){
                         if($scope.state.base64){

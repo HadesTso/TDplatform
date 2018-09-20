@@ -256,6 +256,7 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
         },
         addApplicationLayer: function () {
             $scope.state.isShowAdd = true;//显示弹窗列表
+            $scope.addAjaxParams.id = '';
             $scope.addAjaxParams.name = '';
             $scope.addAjaxParams.num = '';
             $scope.addAjaxParams.rank = '';
@@ -363,6 +364,7 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
         },
         edit: function (item) {
             $scope.state.isShowAdd = true;
+            $scope.addAjaxParams.id = item.appId;
             $scope.addAjaxParams.name = item.name;
             $scope.addAjaxParams.num = item.num;
             $scope.addAjaxParams.rank = item.rank;
@@ -380,7 +382,7 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
                     ,closeBtn: false
                     ,area: ['680px','auto']//初始化Layer高度
                     ,shade: 0.8
-                    ,btn: ['添加', '取消']
+                    ,btn: ['确认', '取消']
                     ,content: $('#addApp')
                     ,yes: function(){
                         if($scope.state.base64){

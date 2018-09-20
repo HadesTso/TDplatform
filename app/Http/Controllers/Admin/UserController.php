@@ -14,6 +14,7 @@ use App\Libray\Response;
 use App\Model\Income;
 use App\Model\User;
 use App\Model\Withdraw;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
@@ -56,7 +57,6 @@ class UserController extends Controller
         if ($list['data']){
             foreach ($list['data'] as &$item){
                 if (isset($try_num[$item['user_id']])){
-                    //$item['try_num'] = $try_num[$item['user_id']]['try_num'];
                     $item['try_num'] = $try_num[$item['user_id']];
                 }else{
                     $item['try_num'] = 0;
@@ -85,11 +85,11 @@ class UserController extends Controller
     /**
      * 提现处理列表
      */
-    public function withdrawList(){
-        $status = Input::get('status', 1); //1为待提现 2为提现成功
-        $nickname = Input::get('nickname', ''); //用户昵称
-        $mobile = Input::get('mobile', ''); //用户手机号码
-        $alipay = Input::get('alipay', ''); //提现账号
+    public function withdrawList(Request $request){
+        $status   = $request->input('status', 1); //1为待提现 2为提现成功
+        $nickname = $request->input('nickname', ''); //用户昵称
+        $mobile   = $request->input('mobile', ''); //用户手机号码
+        $alipay   = $request->input('alipay', ''); //提现账号
         $where = [];
         $where[] = ['withdraw.status', '=', $status];
         if ($nickname){

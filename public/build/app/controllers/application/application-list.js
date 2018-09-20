@@ -256,6 +256,7 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
         },
         addApplicationLayer: function () {
             $scope.state.isShowAdd = true;//显示弹窗列表
+            $scope.addAjaxParams.id = '';
             $scope.addAjaxParams.name = '';
             $scope.addAjaxParams.num = '';
             $scope.addAjaxParams.rank = '';
@@ -363,6 +364,7 @@ app.register.controller('application-list', function ($scope, $timeout,Applicati
         },
         edit: function (item) {
             $scope.state.isShowAdd = true;
+            $scope.addAjaxParams.id = item.appId;
             $scope.addAjaxParams.name = item.name;
             $scope.addAjaxParams.num = item.num;
             $scope.addAjaxParams.rank = item.rank;

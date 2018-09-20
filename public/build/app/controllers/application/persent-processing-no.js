@@ -103,12 +103,12 @@ app.register.controller('persent-processing-no', function ($scope, $timeout,Appl
                 });
         },
         doPayHandler = function(data) {
-            if(data && data['__state'] && data['__state'].code === 10200) {
+            //if(data && data['__state'] && data['__state'].code === 10200) {
                 layer.alert(data['__state'].msg, function () {
                     window.location.reload();
                 });
                 //getTeamMateList(ajaxParams, getTeamMateListHandler);
-            }
+            //}
         };
 
 

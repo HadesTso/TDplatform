@@ -15,7 +15,8 @@ class Withdraw extends Model
 
     public function getList($where){
         $withdrawModel = \DB::table($this->table)
-            ->leftJoin('user', 'user.user_id', '=', 'withdraw.user_id');
+            ->leftJoin('user', 'user.user_id', '=', 'withdraw.user_id')
+            ->select('withdraw.withdraw_id as user_id', 'withdraw.money', 'withdraw.status', 'withdraw.admin_name', 'withdraw.created_at', 'withdraw.updated_at', 'user.mobile', 'user.nickname', 'user.alipay', 'user.alipay_name', 'user.status as us_status');
         if ($where){
             foreach ($where as $item){
                 $withdrawModel->where($item[0], $item[1], $item[2]);
